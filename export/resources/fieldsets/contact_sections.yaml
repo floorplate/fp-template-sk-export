@@ -1,0 +1,55 @@
+title: 'Contact Sections'
+fields:
+  -
+    import: background_color_override
+  -
+    import: text_color
+  -
+    handle: contact_sections
+    field:
+      type: replicator
+      display: 'Contact Sections'
+      validate:
+        - required
+      sets:
+        new_set_group:
+          display: 'New Set Group'
+          sets:
+            contact_section:
+              display: 'Contact Section'
+              icon: user-avatar
+              fields:
+                -
+                  handle: section_title
+                  field:
+                    buttons:
+                      - bts_attributes
+                      - highlight
+                      - secondary
+                      - h3
+                      - h4
+                      - h5
+                      - h6
+                      - bold
+                      - italic
+                    remove_empty_nodes: false
+                    type: bard
+                    display: 'Section Title'
+                -
+                  handle: section_contacts
+                  field:
+                    type: replicator
+                    display: 'Section Contacts'
+                    validate:
+                      - required
+                    sets:
+                      new_set_group:
+                        display: 'New Set Group'
+                        sets:
+                          contact:
+                            display: Contact
+                            fields:
+                              -
+                                import: text_content
+  -
+    import: spacing_section

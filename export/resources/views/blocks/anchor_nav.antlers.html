@@ -1,0 +1,54 @@
+<div x-data="anchorNav()" x-init="initAnchors()"
+    class="shadow-nav z-[60] left-0 right-0 mx-auto sticky top-[88px] rounded-full w-full max-w-[300px] h-[48px] md:max-w-[478x] lg:max-w-[632px] lg:top-[10px] xl:max-w-[1145px] xl:h-[55px] xl:top-[100px] 2xl:max-w-[1193px] 3xl:max-w-[1241px]">
+    <div style="background-color: {{anchor_background_color}};" class="hidden rounded-full xl:h-full xl:items-center xl:w-full xl:flex-row xl:flex xl:justify-between xl:px-[10px]">
+        <template x-for="(section, index) in sections" :key="index">
+            <div
+                role="button"
+                @click="goToSection(section.id)"
+                class="group relative overflow-hidden cursor-pointer button  px-[14px] py-2 rounded-full capitalize transition-colors duration-200"
+            >   
+                <div
+                   style="color: {{text_color}};"
+                   class="relative z-10"
+                 x-text="section.title"></div>
+                <div  :class="index === activeIndex ? 'opacity-100' : 'opacity-0 group-hover:opacity-50'" class="absolute inset-0" style="background-color: {{active_item_background_color}}">
+
+                </div>
+            </div>
+        </template>
+    </div>
+
+    <div style="background-color: {{anchor_background_color}};" class="rounded-3xl px-2 shadow-md xl:hidden">
+        <div class=" h-[48px] w-full flex flex-row items-center justify-between">
+            <div style="background-color: {{active_item_background_color}}" class=" w-full grow h-[32px] rounded-full flex justify-start items-center overflow-hidden">
+                <div class="button-text  ml-4">
+                    <template x-for="(section, index) in sections" :key="index">
+                        <span :class="index === activeIndex ? 'black' : 'hidden'"
+                            style="color: {{text_color}};"
+                            class="button-text text-nowrap  capitalize" x-text="section.title">
+                        </span>
+                    </template>
+                </div>
+            </div>
+            <svg x-bind:class="mobileAnchorOpen ? 'rotate-180' : ''" @click="mobileAnchorOpen = !mobileAnchorOpen"
+                fill="none" class="transition-all ml-2 h-[32px]" viewBox="0 0 32 32"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="m15.5952 19.6892c.2214.2214.5857.2214.8071 0l5.7143-5.7143c.2215-.2214.2215-.5857 0-.8071-.2214-.2214-.5857-.2214-.8071 0l-5.3107 5.3107-5.3107-5.3107c-.2215-.2214-.5858-.2214-.80718 0-.22143.2214-.22143.5857 0 .8071z"
+                    fill="{{text_color}}" />
+                <rect height="31" rx="15.5" stroke="{{text_color}}" width="31" x=".5" y=".5" />
+            </svg>
+        </div>
+
+        <div x-cloak x-bind:class="mobileAnchorOpen ? 'max-h-[500px] py-[18px]' : 'max-h-0'"
+            class="flex flex-col overflow-hidden transition-all duration-200 gap-y-6">
+            <template x-for="(section, index) in sections" :key="index">
+                <div style="color: {{text_color}};" role="button" @click="goToSectionMobile(section.id)"
+                    class="text-center cursor-pointer text-nowrap button-text rounded-full capitalize"
+                    x-text="section.title">
+                </div>
+            </template>
+        </div>
+    </div>
+
+</div>

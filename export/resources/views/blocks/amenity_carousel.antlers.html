@@ -1,0 +1,44 @@
+<div {{partial:anchor_id}} x-data="amenityCarousel('{{image_side}}')" class="{{if !background_color_override}}bg-primary-light-color{{/if}} {{if image_side == 'left'}}pr-om{{else}}pl-om{{/if}} {{partial:text_color}} {{if spacing_top_override}}{{partial:spacing_top_override}}{{else}}pt-fm-8xl{{/if}} {{if spacing_bottom_override}}{{partial:spacing_bottom_override}}{{else}}pb-fm-8xl{{/if}}"
+    style="{{if background_color_override}}background-color: {{background_color_override}};{{/if}}">
+    <div class="screen-max overflow-x-hidden max-w-screen flex flex-col gap-y-fm-2xl {{if image_side == 'left'}}lg:flex-row-reverse{{else}}lg:flex-row{{/if}} lg:items-center lg:gap-x-fm-8xl ">
+        <div class="w-full {{if image_side == 'left'}} pl-om lg:pl-0{{else}}pr-om lg:pr-0{{/if}}">
+            {{partial:text_content}}
+        </div>
+
+        <div class="w-full lg:min-w-[50vw] lg:w-[50vw]">
+            <section  x-ref="amenityCarousel" class="splide">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        {{carousel_images}}
+                        <li class="splide__slide {{if image_side == 'left'}}pl-fm-md{{else}}pr-fm-md{{/if}}">
+                            <img src="{{glide:url height='1000'}}" alt="{{alt}}" class="h-c-[200px,1000px] {{partial:rounding}}">
+                        </li>
+                        {{/carousel_images}}
+                    </ul>
+                </div>    
+            </section>
+            <div class="mt-fm-lg w-full flex {{if image_side == 'left'}}flex-row-reverse{{else}}flex-row{{/if}} items-center gap-x-fm-md lg:w-[60%]  {{if image_side == 'left'}}pl-om lg:ml-auto lg:pl-0{{else}}pr-om lg:pr-0{{/if}}">
+                <div class="relative h-[2px] w-full flex flex-row items-center justify-center">
+                    <div class="absolute inset-0 opacity-20" style="background-color: {{pagination_color}};"></div>
+                    {{carousel_images}}
+                    <div style="background-color: {{pagination_color}};" class="h-full grow transition-all duration-200" x-bind:class="activeIndex == {{index}} ? 'opacity-100' : 'opacity-0'"></div>
+                    {{/carousel_images}}
+                </div>
+                <div class="flex flex-row items-center gap-x-fm-3xs">
+                    <!-- previous arrow -->
+                    <svg class="cursor-pointer" @click="previous" xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31" fill="none">
+                        <circle cx="15.5" cy="15.5" r="14.5" transform="rotate(-180 15.5 15.5)" stroke="{{pagination_color}}" />
+                        <path d="M22.2666 15.5007L9.69994 15.5006M9.69994 15.5006L14.5333 20.334M9.69994 15.5006L14.5333 10.6673"
+                            stroke="{{pagination_color}}" />                
+                    </svg>
+                    <!-- next arrow -->
+                    <svg class="cursor-pointer rotate-180" @click="next" xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31" fill="none">
+                        <circle cx="15.5" cy="15.5" r="14.5" transform="rotate(-180 15.5 15.5)" stroke="{{pagination_color}}" />
+                        <path d="M22.2666 15.5007L9.69994 15.5006M9.69994 15.5006L14.5333 20.334M9.69994 15.5006L14.5333 10.6673"
+                            stroke="{{pagination_color}}" />                
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

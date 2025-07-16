@@ -1,0 +1,48 @@
+title: 'Amenity Carousel'
+fields:
+  -
+    import: background_color_override
+  -
+    import: text_color
+  -
+    import: text_content
+  -
+    handle: carousel_images
+    field:
+      container: assets
+      type: assets
+      display: 'Carousel Images'
+      validate:
+        - required
+      width: 50
+  -
+    handle: image_side
+    field:
+      options:
+        -
+          key: left
+          value: Left
+        -
+          key: right
+          value: Right
+      default: right
+      type: select
+      display: 'Image Side'
+      width: 50
+      validate:
+        - required
+  -
+    handle: pagination_color
+    field:
+      default: '#1D1D1D'
+      type: color
+      display: 'Pagination Color'
+      validate:
+        - required
+      swatches:
+        - '#1D1D1D'
+        - '#ffffff'
+  -
+    import: spacing_section
+  -
+    import: anchor_id

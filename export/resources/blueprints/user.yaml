@@ -1,0 +1,35 @@
+title: User
+tabs:
+  main:
+    sections:
+      -
+        fields:
+          -
+            handle: name
+            field:
+              type: text
+              display: Name
+          -
+            handle: email
+            field:
+              type: text
+              input_type: email
+              display: 'Email Address'
+              listable: true
+              input: email
+          -
+            handle: avatar
+            field:
+              type: assets
+              max_files: 1
+              container: assets
+      -
+        display: 'Two Factor Authentication'
+        fields:
+          -
+            handle: two_factor
+            field:
+              display: 'Two Factor Status'
+              hide_display: true
+              type: two_factor
+              listable: true

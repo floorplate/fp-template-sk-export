@@ -1,0 +1,17 @@
+<div class="w-full aspect-[9/16] md:aspect-video">
+    <div
+        class="relative w-full overflow-hidden h-full">
+        {{media_type}}
+            {{if type == 'image'}}
+                {{hero_image}}
+                <img src="{{glide:url width='3840'}}"  class="z-10 absolute inset-0 m-auto min-w-full min-h-full object-cover" alt="{{alt}}" />
+                {{/hero_image}}
+            {{/if}}
+
+            {{if type == "vimeo_video_embed"}}
+            <video muted loop playsinline autoplay src="{{vimeo_embed_link}}"
+                class="z-10 absolute inset-0 m-auto min-w-full min-h-full object-cover"></video>
+            {{/if}}
+        {{/media_type}}
+    </div>    
+</div>

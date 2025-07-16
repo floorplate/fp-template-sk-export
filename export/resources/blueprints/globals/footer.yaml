@@ -1,0 +1,64 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: footer_logo
+            field:
+              max_files: 1
+              min_files: 1
+              container: assets
+              type: assets
+              display: 'Footer Logo'
+              width: 50
+              validate:
+                - required
+          -
+            handle: address
+            field:
+              buttons:
+                - bold
+                - alignleft
+                - aligncenter
+                - alignright
+                - bts_attributes
+              remove_empty_nodes: false
+              type: bard
+              display: Address
+              width: 50
+              validate:
+                - required
+          -
+            handle: partner_logos
+            field:
+              type: replicator
+              display: 'Partner Logos'
+              validate:
+                - required
+              sets:
+                new_set_group:
+                  display: 'New Set Group'
+                  sets:
+                    partner_logo:
+                      display: 'Partner Logo'
+                      icon: media-image-picture-orientation
+                      fields:
+                        -
+                          handle: partner_image
+                          field:
+                            max_files: 1
+                            min_files: 1
+                            container: assets
+                            type: assets
+                            display: 'Partner Image'
+                            width: 50
+                            validate:
+                              - required
+                        -
+                          handle: partner_link
+                          field:
+                            type: link
+                            display: 'Partner Link'
+                            width: 50

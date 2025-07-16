@@ -1,0 +1,24 @@
+{
+    "name": "floorplate/fp-template-sk-export",
+    "extra": {
+        "statamic": {
+            "name": "Floorplate Starter Kit",
+            "description": "A starterkit for Floorplate projects"
+        },
+        "laravel": {
+            "providers": [
+                "Floorplate\\FloorplateStarterKit\\ServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Floorplate\\FloorplateStarterKit\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests"
+        }
+    }
+}

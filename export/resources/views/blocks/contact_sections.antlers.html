@@ -1,0 +1,19 @@
+<div class="{{if !background_color_override}}bg-primary-color{{/if}} px-om {{partial:text_color}} {{if spacing_top_override}}{{partial:spacing_top_override}}{{else}}pt-fm-8xl{{/if}} {{if spacing_bottom_override}}{{partial:spacing_bottom_override}}{{else}}pb-fm-8xl{{/if}}" style="{{if background_color_override}}background-color: {{background_color_override}};{{/if}}">
+    <div class="screen-max flex flex-col gap-fm-8xl">
+        {{contact_sections}}
+        <div class="grid gap-y-fm-lg grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {{if section_title}}
+            <div class="prose w-full md:col-span-2 lg:col-span-1">
+                <div class="">{{section_title}}</div>
+            </div>
+            {{/if}}
+
+            {{section_contacts}}
+            <div class="prose">
+                {{partial:text_content}}
+            </div>
+            {{/section_contacts}}
+        </div>
+        {{/contact_sections}}
+    </div>
+</div>

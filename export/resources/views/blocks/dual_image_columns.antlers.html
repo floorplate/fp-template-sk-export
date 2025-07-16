@@ -1,0 +1,17 @@
+<div {{partial:anchor_id}} class="{{if !background_color_override}}bg-primary-light-color{{/if}} px-fm-md {{if spacing_top_override}}{{partial:spacing_top_override}}{{else}}pt-fm-8xl{{/if}} {{if spacing_bottom_override}}{{partial:spacing_bottom_override}}{{else}}pb-fm-8xl{{/if}}"
+    style="{{if background_color_override}}background-color: {{background_color_override}};{{/if}}">
+    <div
+        class="screen-max gap-y-fm-md grid grid-cols-1 lg:grid-cols-2 lg:gap-x-fm-md">
+       <div class="relative overflow-hidden w-full aspect-[915/560] {{partial:rounding}}">
+          {{image_one}}
+            <img src="{{glide:url width='1400'}}" class="z-10 absolute inset-0 m-auto min-w-full min-h-full object-cover" alt="{{alt}}" />
+          {{/image_one}}
+       </div>
+
+       <div class="relative overflow-hidden  w-full aspect-[915/560] {{partial:rounding}}">
+          {{image_two}}
+            <img src="{{glide:url width='1400'}}" class="z-10 absolute inset-0 m-auto min-w-full min-h-full object-cover" alt="{{alt}}" />
+          {{/image_two}}
+       </div>
+    </div>
+</div>

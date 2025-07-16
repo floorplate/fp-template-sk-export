@@ -1,0 +1,105 @@
+title: 'Content Blocks'
+fields:
+  -
+    handle: content_blocks
+    field:
+      type: replicator
+      display: 'Content Blocks'
+      sets:
+        heros:
+          display: Heros
+          icon: align-object-top
+          sets:
+            large_media_hero:
+              display: 'Large Media Hero'
+              icon: media-image-picture-orientation
+              fields:
+                -
+                  import: large_media_hero
+        text:
+          display: Text
+          icon: text-formatting-all-caps
+          sets:
+            intro_text:
+              display: 'Intro Text'
+              icon: text-formatting-all-caps
+              fields:
+                -
+                  import: background_color_override
+                -
+                  import: text_color
+                -
+                  import: intro_text
+            dual_column_text_blocks:
+              display: 'Dual Column Text Blocks'
+              icon: layout-two-columns
+              fields:
+                -
+                  import: background_color_override
+                -
+                  import: text_color
+                -
+                  import: dual_column_text_blocks
+        images:
+          display: Images/Video
+          icon: media-image-picture-gallery
+          sets:
+            full_screen_media:
+              display: 'Full Screen Media'
+              icon: media-image-picture-gallery
+              fields:
+                -
+                  import: full_screen_media
+            dual_image_columns:
+              display: 'Dual Image Columns'
+              icon: media-image-picture-gallery
+              fields:
+                -
+                  import: dual_image_columns
+            amenity_carousel:
+              display: 'Amenity Carousel'
+              icon: layout-carousel-horizontal
+              fields:
+                -
+                  import: amenity_carousel
+            masonry_images:
+              display: 'Masonry Images'
+              icon: addon-boxes-stack
+              fields:
+                -
+                  import: masonry_images
+        core:
+          display: Core
+          icon: content-book-open
+          sets:
+            contact_sections:
+              display: 'Contact Sections'
+              fields:
+                -
+                  import: contact_sections
+            anchor_nav:
+              display: 'Anchor Nav'
+              fields:
+                -
+                  import: anchor_nav
+            map:
+              display: Map
+              icon: travel-map
+              fields:
+                -
+                  import: map
+        rows_tables:
+          display: Rows/Tables
+          sets:
+            expander_rows:
+              display: 'Expander Rows'
+              icon: layout-table-row-insert
+              fields:
+                -
+                  import: expander_rows
+            availabilities:
+              display: Availabilities
+              icon: home-house
+              fields:
+                -
+                  import: availabilities

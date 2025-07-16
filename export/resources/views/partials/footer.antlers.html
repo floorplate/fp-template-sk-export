@@ -1,0 +1,55 @@
+<div class="p-fm-sm bg-primary-color flex flex-col gap-fm-sm">
+    <div
+        class="bg-primary-light-color rounded-rounded-xs py-fm-lg px-fm-sm flex flex-col gap-y-fm-4xl items-center xl:flex-row xl:justify-between xl:items-center xl:px-fm-xl"
+    >
+        <div class="flex flex-col items-center xl:flex-row xl:items-center gap-fm-md">
+            {{footer:footer_logo}}
+            <img class="w-full max-w-[200px] xl:max-w-[160px]" src="{{glide:url width='250'}}" alt="{{alt}}" />
+            {{/footer:footer_logo}}
+
+            <div class="w-[80%] h-[1px] bg-primary-color xl:h-[90px] xl:w-[1px]"></div>
+            <div class="prose">{{footer:address}}</div>
+        </div>
+        <div class="flex flex-col lg:flex-row items-center gap-fm-lg **:text-dark-text-color">
+            {{nav:footer_links}} {{if button_style}} {{partial:pill_button innerNavStyle="light"}}
+            {{else}}
+            <a href="{{url}}">
+                <div
+                    class="button-text"
+                >
+                    {{title}}
+                </div>
+            </a>
+            {{/if}} {{/nav:footer_links}}
+        </div>
+    </div>
+
+    <div class="bg-primary-light-color rounded-rounded-xs py-fm-lg px-fm-sm flex flex-col gap-y-fm-4xl items-center xl:flex-row xl:justify-between xl:items-center xl:px-fm-xl">
+        <div>
+            {{footer:partner_logos}}
+                {{if partner_link}}
+                <a href="{{partner_link}}" target="_blank">
+                    <img class="w-[76px]" src="{{partner_image:url}}" alt="{{partner_image:alt}}">
+                </a>
+                {{else}}
+                <img class="w-[76px]" src="{{partner_image:url}}" alt="{{partner_image:alt}}">
+                {{/if}}
+            {{/footer:partner_logos}}
+        </div>
+
+        <div class="flex flex-col items-center gap-fm-lg lg:flex-row">
+            <div>©{{ now | format:Y }}</div>
+            <div class="flex flex-col lg:flex-row">
+                {{nav:footer_legal_links}}
+                <a href="{{url}}">
+                    <div
+                        class="button-text"
+                    >
+                        {{title}}
+                    </div>
+                </a>
+                {{/nav:footer_legal_links}}
+            </div>
+        </div>
+    </div>
+</div>

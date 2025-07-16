@@ -1,0 +1,13 @@
+title: 'Site Theme'
+data:
+  light_nav_logo: lightlogo.png
+  dark_nav_logo: darklogo.png
+  primary_color: '#1D1D1D'
+  primary_light_color: '#ffffff'
+  header_font: Literata
+  paragraph_font: Inter
+  dark_text_color: '#1D1D1D'
+  light_text_color: '#FFFFFF'
+  accent_text_color: '#D98E32'
+  secondary_text_color: '#4976AC'
+  media_border_rounding: extra_small

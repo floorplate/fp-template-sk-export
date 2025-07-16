@@ -1,0 +1,15 @@
+title: Availabilities
+fields:
+  -
+    import: background_color_override
+  -
+    import: text_color
+  -
+    handle: post_availabilities_text
+    field:
+      type: section
+      display: 'Post Availabilities Text'
+  -
+    import: text_content
+  -
+    import: spacing_section

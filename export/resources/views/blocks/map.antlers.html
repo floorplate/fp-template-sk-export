@@ -1,0 +1,93 @@
+<script>
+    window.poiData = {{ points_of_interest | to_json }};
+</script>
+<script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
+<div class="p-fm-md bg-primary-color">
+    <div
+        x-data="map(
+'{{building_name}}',
+{{latitude}},
+{{longitude}}, 
+window.poiData
+)"
+        class="overflow-hidden rounded-rounded-sm grid grid-cols-1 lg:grid-cols-3"
+    >
+        <!-- filters -->
+        <div
+            class="max-h-[500px] overflow-y-scroll w-full p-fm-sm bg-primary-light-color lg:max-h-[800px] lg:col-span-1"
+        >
+            <div class="flex flex-col gap-fm-xs">
+                {{points_of_interest}}
+                <div
+                    x-data="{expanderOpen:false}"
+                    class="bg-[#F0F3F6] p-fm-xs rounded-rounded-sm"
+                >
+                    <div class="flex flex-row items-center justify-between">
+                        <div class="flex flex-row items-center gap-x-fm-3xs">
+                            <div
+                                :style="categoryVisibility['{{category_name}}'] ? 'background-color: {{pin_color}};' : 'background-color: #96A0A5;'"
+                                class="w-[44px] h-[24px] rounded-full relative flex items-center"
+                                @click="toggleCategory('{{category_name}}')"
+                            >
+                                <div
+                                    class="absolute top-0 bottom-0 my-auto w-[20px] rounded-full h-[20px] bg-white transition-all duration-150"
+                                    :class="categoryVisibility['{{category_name}}'] ? ' left-[22px]' : 'left-[2px]'"
+                                ></div>
+                            </div>
+                            <!-- toggle here -->
+                            <div class="h5 text-dark-text-color">
+                                {{category_name}}
+                            </div>
+                        </div>
+
+                        <svg
+                            @click="expanderOpen = !expanderOpen"
+                            class="cursor-pointer"
+                            width="31"
+                            height="31"
+                            viewBox="0 0 31 31"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <circle
+                                cx="15.5"
+                                cy="15.5"
+                                r="14.5"
+                                class="{{if text_color == 'light'}}stroke-light-text-color{{else}}stroke-dark-text-color{{/if}}"
+                            />
+                            <path
+                                d="M15.5 22L15.5 9"
+                                :class="expanderOpen ? 'opacity-0' : 'opacity-100'"
+                                class="{{if text_color == 'light'}}stroke-light-text-color{{else}}stroke-dark-text-color{{/if}} transition-all duration-200"
+                            />
+                            <path
+                                d="M9 15.5H22"
+                                class="{{if text_color == 'light'}}stroke-light-text-color{{else}}stroke-dark-text-color{{/if}}"
+                            />
+                        </svg>
+                    </div>
+
+                    <div
+                        x-cloak
+                        class="flex flex-col gap-y-fm-3xs"
+                        :class="expanderOpen ? 'max-h-[3000px] opacity-100 pt-fm-xs' : 'max-h-0 overflow-hidden opacity-0 pt-0'"
+                    >
+                        {{locations}}
+                        <div class="flex flex-row items-center gap-x-fm-3xs">
+                            <div
+                                class="w-[18px] h-[18px] rounded-full flex items-center justify-center border"
+                                style="border-color: {{pin_color}};"
+                            >
+                                <p class="small font-semibold">{{index+1}}</p>
+                            </div>
+                            <p>{{name}}</p>
+                        </div>
+                        {{/locations}}
+                    </div>
+                </div>
+                {{/points_of_interest}}
+            </div>
+        </div>
+        <div id="map" class="w-full h-[500px] lg:h-[800px] lg:col-span-2"></div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+title: 'Anchor Nav'
+fields:
+  -
+    handle: anchor_background_color
+    field:
+      default: '#F0F3F6'
+      type: color
+      display: 'Anchor Background Color'
+      width: 33
+      validate:
+        - required
+  -
+    handle: active_item_background_color
+    field:
+      default: '#FFFFFF'
+      type: color
+      display: 'Active Item Background Color'
+      validate:
+        - required
+      width: 33
+  -
+    handle: text_color
+    field:
+      default: '#576B7D'
+      type: color
+      display: 'Text Color'
+      width: 33
+      validate:
+        - required

@@ -1,0 +1,45 @@
+admin:
+  title: Admin
+  permissions:
+    - super
+editor:
+  title: Editor
+  permissions:
+    - 'access cp'
+    - 'configure collections'
+    - 'view pages entries'
+    - 'edit pages entries'
+    - 'create pages entries'
+    - 'delete pages entries'
+    - 'publish pages entries'
+    - 'reorder pages entries'
+    - 'edit other authors pages entries'
+    - 'publish other authors pages entries'
+    - 'delete other authors pages entries'
+    - 'configure navs'
+    - 'view main nav'
+    - 'edit main nav'
+    - 'edit seo globals'
+    - 'configure asset containers'
+    - 'view assets assets'
+    - 'upload assets assets'
+    - 'edit assets assets'
+    - 'move assets assets'
+    - 'rename assets assets'
+    - 'delete assets assets'
+    - 'configure forms'
+    - 'access cache utility'
+contributor:
+  title: Contributor
+  permissions:
+    - 'access cp'
+    - 'view pages entries'
+    - 'edit pages entries'
+    - 'create pages entries'
+    - 'delete pages entries'
+    - 'publish pages entries'
+    - 'reorder pages entries'
+    - 'edit other authors pages entries'
+    - 'publish other authors pages entries'
+    - 'delete other authors pages entries'
+    - 'access cache utility'

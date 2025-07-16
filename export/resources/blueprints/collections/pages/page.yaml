@@ -1,0 +1,75 @@
+title: Page
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        display: General
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+              width: 66
+          -
+            handle: nav_style
+            field:
+              options:
+                -
+                  key: dark
+                  value: Dark
+                -
+                  key: light
+                  value: Light
+              default: dark
+              type: select
+              display: 'Nav Style'
+              validate:
+                - required
+              width: 33
+      -
+        display: 'Content Blocks'
+        fields:
+          -
+            import: content_blocks
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: parent
+            field:
+              type: entries
+              collections:
+                - pages
+              max_items: 1
+              listable: false
+              localizable: true
+          -
+            handle: template
+            field:
+              type: template
+              display: Template
+              localizable: true
+  SEO:
+    display: SEO
+    sections:
+      -
+        fields:
+          -
+            handle: seo
+            field:
+              type: seo_pro
+              listable: false
+              display: SEO
+              localizable: true

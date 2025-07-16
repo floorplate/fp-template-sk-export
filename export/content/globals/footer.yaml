@@ -1,0 +1,33 @@
+title: Footer
+data:
+  footer_logo: footer_logo.png
+  address:
+    -
+      type: paragraph
+      attrs:
+        textAlign: center
+      content:
+        -
+          type: text
+          marks:
+            -
+              type: bold
+          text: '1 Independent Drive'
+        -
+          type: hardBreak
+          marks:
+            -
+              type: bold
+        -
+          type: text
+          marks:
+            -
+              type: bold
+          text: 'Jacksonville, FL 32202'
+  partner_logos:
+    -
+      id: mc9gdvsq
+      partner_image: 2011_cbre_logo_black_ii.png
+      type: partner_logo
+      enabled: true
+      partner_link: 'https://www.google.com/'

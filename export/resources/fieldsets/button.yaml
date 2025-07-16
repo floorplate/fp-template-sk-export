@@ -1,0 +1,26 @@
+title: Button
+fields:
+  -
+    handle: button_text
+    field:
+      type: text
+      display: 'Button Text'
+      width: 33
+      validate:
+        - required
+  -
+    handle: button_link
+    field:
+      type: link
+      display: 'Button Link'
+      width: 33
+      validate:
+        - required
+  -
+    handle: open_in_new_tab
+    field:
+      type: toggle
+      display: 'Open In New Tab'
+      width: 33
+      validate:
+        - required

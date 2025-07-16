@@ -1,0 +1,11 @@
+<div {{partial:anchor_id}} class="{{if !background_color_override}}bg-primary-light-color{{/if}} px-om {{partial:text_color}} {{if spacing_top_override}}{{partial:spacing_top_override}}{{else}}pt-fm-8xl{{/if}} {{if spacing_bottom_override}}{{partial:spacing_bottom_override}}{{else}}pb-fm-8xl{{/if}}"
+    style="{{if background_color_override}}background-color: {{background_color_override}};{{/if}}">
+    <div class="screen-max gap-y-fm-2xl flex {{if reverse_mobile_stack}}flex-col-reverse{{else}}flex-col{{/if}} lg:flex-row lg:gap-x-fm-8xl {{if center_items_vertically}}lg:items-center{{/if}}">
+        <div class="w-full lg:max-w-[50%]">
+            {{partial:text_content text_content="{{first_text_content}}"}}
+        </div>
+        <div class="w-full lg:max-w-[50%]">
+            {{partial:text_content text_content="{{second_text_content}}"}}
+        </div>
+    </div>
+</div>

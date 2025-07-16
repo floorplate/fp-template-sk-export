@@ -1,0 +1,20 @@
+updatable: true
+export_paths:
+  - app/Fieldtypes
+  - app/Providers
+  - config/statamic/bard_texstyle.php
+  - config/statamic/editions.php
+  - config/statamic/assets.php
+  - content
+  - resources
+  - users
+  - config/filesystems.php
+  - public/assets
+  - package.json
+  - vite.config.js
+dependencies:
+  jacksleight/statamic-bard-texstyle: ^3.4
+  league/flysystem-aws-s3-v3: ^3.0
+  mitydigital/statamic-two-factor: ^2.4
+  statamic/seo-pro: ^6.5
+  statamic/ssg: ^3.1

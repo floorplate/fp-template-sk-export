@@ -1,0 +1,9 @@
+title: '@seo:title'
+description: "An experiential agency. We deliver groundbreaking ideas and meaningful brand experiences. We don't help brands “catch up” we help brands push forward."
+site_name: 'Futureman Digital'
+site_name_position: after
+site_name_separator: '|'
+canonical_url: '@seo:permalink'
+image: false
+priority: 0.5
+change_frequency: monthly

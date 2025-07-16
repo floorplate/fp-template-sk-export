@@ -1,0 +1,23 @@
+title: 'Text Color'
+fields:
+  -
+    handle: text_color
+    field:
+      options:
+        -
+          key: dark
+          value: dark
+        -
+          key: light
+          value: light
+        -
+          key: accent
+          value: accent
+        -
+          key: secondary
+          value: secondary
+      type: select
+      display: 'Text Color'
+      width: 50
+      validate:
+        - required

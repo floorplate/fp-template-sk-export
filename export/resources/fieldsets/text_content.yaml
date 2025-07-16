@@ -1,0 +1,43 @@
+title: 'Text Content'
+fields:
+  -
+    handle: text_content
+    field:
+      buttons:
+        - highlight
+        - secondary
+        - bts_attributes
+        - h1
+        - h2
+        - h3
+        - h4
+        - h5
+        - h6
+        - bold
+        - italic
+        - underline
+        - bts_paragraph
+        - anchor
+        - unorderedlist
+        - alignleft
+        - aligncenter
+        - alignright
+        - image
+      remove_empty_nodes: false
+      type: bard
+      display: 'Text Content'
+      container: assets
+      sets:
+        new_set_group:
+          display: 'New Set Group'
+          sets:
+            button_types:
+              display: 'Button Types'
+              icon: form-text-field
+              fields:
+                -
+                  import: button_types
+            layout_spacer:
+              display: 'Layout Spacer'
+              icon: align-object-center
+              fields: {  }

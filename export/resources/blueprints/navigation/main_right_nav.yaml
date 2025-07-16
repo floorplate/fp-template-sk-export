@@ -1,0 +1,13 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: button_style
+            field:
+              type: toggle
+              display: 'Button Style Link'
+              validate:
+                - required

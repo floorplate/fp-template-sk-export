@@ -1,0 +1,8 @@
+name: conner
+super: true
+two_factor:
+  cancellable: true
+  locked: false
+  setup: false
+id: 8e6db97c-665c-47eb-b476-76d55a45e908
+password_hash: $2y$12$vgAxBesxeb73CGdhycDD.e0LZjF1/e7mOdREcPbM28uyZUCr7TmQ.

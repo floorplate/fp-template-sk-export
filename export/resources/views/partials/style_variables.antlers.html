@@ -1,0 +1,24 @@
+<style>
+    :root {
+        --color-primary-color: {{site_theme:primary_color}};
+        --color-primary-light-color: {{site_theme:primary_light_color}};
+        --color-dark-text-color: {{site_theme:dark_text_color}};
+        --color-light-text-color: {{site_theme:light_text_color}};
+        --color-accent-text-color: {{site_theme:accent_text_color}};
+        --color-secondary-text-color: {{site_theme:secondary_text_color}};
+    }
+    
+    {{if site_theme:media_border_rounding == 'extra_small'}}
+    .prose.text-content img, .text-content img {
+        border-radius: clamp(0.5000rem, 0.3241rem + 0.7504vw, 2.1250rem);
+    }
+    {{elseif site_theme:media_border_rounding == 'small'}}
+    .prose.text-content img, .text-content img {
+        border-radius: clamp(1.1875rem, 0.7548rem + 1.1634vw, 2.5000rem);
+    }
+    {{elseif site_theme:media_border_rounding == 'medium'}}
+    .prose.text-content img, .text-content img {
+        border-radius: clamp(2.0000rem, 1.3407rem + 1.7729vw, 4.0000rem);
+    }
+    {{/if}}
+</style>

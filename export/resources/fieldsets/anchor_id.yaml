@@ -1,0 +1,8 @@
+title: 'Anchor ID'
+fields:
+  -
+    handle: anchor_id
+    field:
+      type: text
+      display: 'Anchor ID'
+      instructions: 'Provide Display Name for Anchor'

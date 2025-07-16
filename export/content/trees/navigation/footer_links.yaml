@@ -1,0 +1,19 @@
+tree:
+  -
+    id: 7f21019c-f4d6-4ab2-b29e-d3127783b7b8
+    entry: 20704273-5182-47d9-abaf-21f3530571d5
+  -
+    id: 98465ac9-e794-4972-af4b-e1fb67e49968
+    entry: b5da3be6-f057-4432-88a9-b09dd20c0fea
+  -
+    id: c3a6875e-7ac3-47fc-bdf0-430075a4a5fc
+    entry: 0f47d728-7788-4169-be5a-3e99c9b7d183
+  -
+    id: b68d9ec5-1281-4878-a2d4-6bb51686adc3
+    entry: 4f13c7ec-75b2-4b03-a12f-d2c683b25445
+  -
+    id: a1609cbb-fd9c-4cb2-8046-53c077ca0adc
+    title: 'Tenant Portal'
+    url: 'https://www.google.com/'
+    data:
+      button_style: true

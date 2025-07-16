@@ -1,0 +1,8 @@
+name: Kevin
+super: true
+two_factor:
+  cancellable: false
+  locked: false
+  setup: false
+id: f2bc5746-8498-46b8-adf9-56ccf6b2400d
+password_hash: $2y$12$VRXFjA.tX1Hg1eB3DyNKgePjYsliyvSp3WMgUxxNdT99ozxWmf7WC

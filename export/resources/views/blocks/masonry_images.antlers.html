@@ -1,0 +1,233 @@
+<div x-data="imageGrid()" class="relative p-fm-sm {{if !background_color_override}}bg-primary-light-color{{/if}}"  style="{{if background_color_override}}background-color: {{background_color_override}};{{/if}}">
+    <div class="screen-max">
+        <div
+            x-ref="gridContainer"
+            class="grid grid-cols-2 gap-fm-sm w-full mx-auto auto-rows-[clamp(160px,15vw,487px)] lg:grid-cols-4"
+        >
+            <div class="bg-gray-500 relative overflow-hidden {{partial:rounding}}">
+                1 {{small_horizontal_rectangle_images}} {{if index == 0 }}
+                <img
+                    x-on:click="viewInLightbox(0)"
+                    src="{{glide:url width='1200'}}"
+                    class="absolute inset-0 m-auto min-w-full min-h-full object-cover w-full"
+                    alt="{{alt}}"
+                />
+                {{/if}} {{/small_horizontal_rectangle_images}}
+            </div>
+
+            <div
+                class="bg-gray-500 relative overflow-hidden lg:row-start-2 lg:col-start-1 {{partial:rounding}}"
+            >
+                2 {{small_horizontal_rectangle_images}} {{if index == 1 }}
+                <img
+                    x-on:click="viewInLightbox(1)"
+                    src="{{glide:url width='1200'}}"
+                    class="absolute inset-0 m-auto min-w-full min-h-full object-cover w-full {{partial:rounding}}"
+                    alt="{{alt}}"
+                />
+                {{/if}} {{/small_horizontal_rectangle_images}}
+            </div>
+
+            <div
+                class="col-span-2 relative bg-gray-500 overflow-hidden lg:row-start-1 lg:col-start-2 {{partial:rounding}}"
+            >
+                3 {{long_horizontal_images}} {{if index == 0 }}
+                <img
+                    x-on:click="viewInLightbox(2)"
+                    src="{{glide:url width='1200'}}"
+                    class="absolute inset-0 m-auto min-w-full min-h-full object-cover w-full"
+                    alt="{{alt}}"
+                />
+                {{/if}} {{/long_horizontal_images}}
+            </div>
+
+            <div
+                class="bg-gray-500 relative overflow-hidden lg:row-span-2 lg:row-start-3 {{partial:rounding}}"
+            >
+                4 {{vertical_rectangle_images}} {{if index == 1 }}
+                <img
+                    x-on:click="viewInLightbox(3)"
+                    src="{{glide:url width='1200'}}"
+                    class="absolute inset-0 m-auto min-w-full min-h-full object-cover w-full"
+                    alt="{{alt}}"
+                />
+                {{/if}} {{/vertical_rectangle_images}}
+            </div>
+
+            <div
+                class="bg-gray-500 relative overflow-hidden lg:col-start-2 lg:row-span-2 lg:row-start-2 {{partial:rounding}}"
+            >
+                5 {{vertical_rectangle_images}} {{if index == 2 }}
+                <img
+                    x-on:click="viewInLightbox(4)"
+                    src="{{glide:url width='1200'}}"
+                    class="absolute inset-0 m-auto min-w-full min-h-full object-cover w-full"
+                    alt="{{alt}}"
+                />
+                {{/if}} {{/vertical_rectangle_images}}
+            </div>
+
+            <div
+                class="{{partial:rounding}} col-span-2 relative row-span-2 row-start-3 bg-gray-500 overflow-hidden lg:row-span-2 lg:col-start-3 lg:row-start-3"
+            >
+                6 {{large_image}}
+
+                <img
+                    x-on:click="viewInLightbox(5)"
+                    src="{{glide:url width='1200'}}"
+                    class="absolute inset-0 m-auto min-w-full min-h-full object-cover w-full"
+                    alt="{{alt}}"
+                />
+
+                {{/large_image}}
+            </div>
+
+            <div
+                class="{{partial:rounding}} col-start-1 relative row-start-5 row-span-2 bg-gray-500 overflow-hidden lg:row-start-1 lg:col-start-4"
+            >
+                7 {{vertical_rectangle_images}} {{if index == 0 }}
+                <img
+                    x-on:click="viewInLightbox(6)"
+                    src="{{glide:url width='1200'}}"
+                    class="absolute inset-0 m-auto min-w-full min-h-full object-cover w-full"
+                    alt="{{alt}}"
+                />
+                {{/if}} {{/vertical_rectangle_images}}
+            </div>
+
+            <div
+                class="{{partial:rounding}} col-start-2 relative row-start-5 bg-gray-500 overflow-hidden lg:col-start-3 lg:row-start-2"
+            >
+                8 {{small_horizontal_rectangle_images}} {{if index == 2 }}
+                <img
+                    x-on:click="viewInLightbox(7)"
+                    src="{{glide:url width='1200'}}"
+                    class="absolute inset-0 m-auto min-w-full min-h-full object-cover w-full"
+                    alt="{{alt}}"
+                />
+                {{/if}} {{/small_horizontal_rectangle_images}}
+            </div>
+
+            <div
+                class="{{partial:rounding}} col-start-1 relative row-start-7 bg-gray-500 overflow-hidden lg:col-start-3 lg:row-start-5"
+            >
+                9 {{small_horizontal_rectangle_images}} {{if index == 3 }}
+                <img
+                    x-on:click="viewInLightbox(8)"
+                    src="{{glide:url width='1200'}}"
+                    class="absolute inset-0 m-auto min-w-full min-h-full object-cover w-full"
+                    alt="{{alt}}"
+                />
+                {{/if}} {{/small_horizontal_rectangle_images}}
+            </div>
+
+            <div
+                class="{{partial:rounding}} col-start-2 relative row-start-6 row-span-2 bg-gray-500 overflow-hidden lg:col-start-2 lg:row-start-4"
+            >
+                10 {{vertical_rectangle_images}} {{if index == 3 }}
+                <img
+                    x-on:click="viewInLightbox(9)"
+                    src="{{glide:url width='1200'}}"
+                    class="absolute inset-0 m-auto min-w-full min-h-full object-cover w-full"
+                    alt="{{alt}}"
+                />
+                {{/if}} {{/vertical_rectangle_images}}
+            </div>
+
+            <div
+                class="{{partial:rounding}} col-span-2 relative bg-gray-500 overflow-hidden lg:col-start-2 "
+            >
+                11 {{long_horizontal_images}} {{if index == 1 }}
+                <img
+                    x-on:click="viewInLightbox(10)"
+                    src="{{glide:url width='1200'}}"
+                    class="absolute inset-0 m-auto min-w-full min-h-full object-cover w-full"
+                    alt="{{alt}}"
+                />
+                {{/if}} {{/long_horizontal_images}}
+            </div>
+
+            <div
+                class="{{partial:rounding}} bg-gray-500 relative overflow-hidden lg:row-span-2 lg:col-start-4 lg:row-start-5"
+            >
+                12 {{vertical_rectangle_images}} {{if index == 4 }}
+                <img
+                    x-on:click="viewInLightbox(11)"
+                    src="{{glide:url width='1200'}}"
+                    class="absolute inset-0 m-auto min-w-full min-h-full object-cover w-full"
+                    alt="{{alt}}"
+                />
+                {{/if}} {{/vertical_rectangle_images}}
+            </div>
+
+            <div
+                class="{{partial:rounding}} bg-gray-500 relative overflow-hidden lg:row-span-2 lg:col-start-1 lg:row-start-5"
+            >
+                13 {{vertical_rectangle_images}} {{if index == 5 }}
+                <img
+                    x-on:click="viewInLightbox(12)"
+                    src="{{glide:url width='1200'}}"
+                    class="absolute inset-0 m-auto min-w-full min-h-full object-cover w-full"
+                    alt="{{alt}}"
+                />
+                {{/if}} {{/vertical_rectangle_images}}
+            </div>
+        </div>
+    </div>
+
+    <div
+        x-show="showLightbox"
+        class="fixed inset-0 z-[2000] flex items-center justify-center"
+    >
+        <div
+            x-on:click="showLightbox = false"
+            class="absolute inset-0 bg-primary-color/60 cursor-pointer"
+        ></div>
+
+        <div class="relative z-[3000] max-w-[80vw] max-h-[80vh]">
+            <img :src="activeImage" alt="" class="max-h-[80vh]" />
+            <div
+                class="w-full bg-light flex flex-row items-center justify-between py-[10px] px-[18px]"
+            >
+                <svg
+                    x-on:click="getPrevious()"
+                    class="w-[30px] rotate-180 cursor-pointer hover:brightness-90 transition-all duration-200"
+                    viewBox="0 0 31 31"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <circle cx="15.5" cy="15.5" r="14.5" stroke="#FFF" />
+                    <path
+                        d="M8.7334 15.5003H21.3001M21.3001 15.5003L16.4667 10.667M21.3001 15.5003L16.4667 20.3337"
+                        stroke="#FFF"
+                    />
+                </svg>
+                <p x-text="activeText" class="mx-10 text-dark"></p>
+                <svg
+                    x-on:click="getNext()"
+                    class="w-[30px] cursor-pointer hover:brightness-90 transition-all duration-200"
+                    viewBox="0 0 31 31"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <circle cx="15.5" cy="15.5" r="14.5" stroke="#FFF" />
+                    <path
+                        d="M8.7334 15.5003H21.3001M21.3001 15.5003L16.4667 10.667M21.3001 15.5003L16.4667 20.3337"
+                        stroke="#FFF"
+                    />
+                </svg>
+            </div>
+
+            <svg
+                x-on:click="showLightbox = false"
+                class="w-[29px] absolute top-[17px] right-[17px] cursor-pointer hover:brightness-90 transition-all duration-200"
+                viewBox="0 0 29 29"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <circle cx="14.5" cy="14.5" r="14.5" fill="#FFF" />
+                <path d="M8 14.5H21" stroke="#5B6F7A" />
+            </svg>
+        </div>
+    </div>
+</div>

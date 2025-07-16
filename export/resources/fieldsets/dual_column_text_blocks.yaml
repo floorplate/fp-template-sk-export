@@ -1,0 +1,30 @@
+title: 'Dual Column Text Blocks'
+fields:
+  -
+    handle: reverse_mobile_stack
+    field:
+      type: toggle
+      display: 'Reverse Mobile Stack'
+      instructions: 'If turned on, the second text column will be on top in mobile stack layout'
+      validate:
+        - required
+      width: 50
+  -
+    handle: center_items_vertically
+    field:
+      type: toggle
+      display: 'Center Items Vertically'
+      instructions: 'When toggled on, items will center vertically. If not items will each align to top.'
+      width: 50
+      validate:
+        - required
+  -
+    import: text_content
+    prefix: first_
+  -
+    import: text_content
+    prefix: second_
+  -
+    import: spacing_section
+  -
+    import: anchor_id

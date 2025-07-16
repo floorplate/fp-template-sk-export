@@ -1,0 +1,39 @@
+title: 'Expander Rows'
+fields:
+  -
+    import: background_color_override
+  -
+    import: text_color
+  -
+    handle: numbered_rows
+    field:
+      type: toggle
+      display: 'Numbered Rows'
+      validate:
+        - required
+      instructions: 'Toggle on to have rows become automatically numbered'
+  -
+    handle: expander_rows
+    field:
+      type: replicator
+      display: 'Expander Rows'
+      validate:
+        - required
+      sets:
+        new_set_group:
+          display: 'New Set Group'
+          sets:
+            expander_row:
+              display: 'Expander Row'
+              fields:
+                -
+                  handle: title
+                  field:
+                    type: textarea
+                    display: Title
+                    validate:
+                      - required
+                -
+                  import: text_content
+  -
+    import: spacing_section

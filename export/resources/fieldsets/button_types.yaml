@@ -1,0 +1,46 @@
+title: 'Button Types'
+fields:
+  -
+    handle: button_types
+    field:
+      max_sets: 1
+      type: replicator
+      display: 'Button Types'
+      validate:
+        - required
+      sets:
+        new_set_group:
+          display: 'New Set Group'
+          sets:
+            no_outline_button:
+              display: 'No Outline Button'
+              icon: text-formatting-all-caps
+              fields:
+                -
+                  import: button
+            download_button:
+              display: 'Download Button'
+              fields:
+                -
+                  handle: button_text
+                  field:
+                    type: text
+                    display: 'Button Text'
+                    width: 50
+                    validate:
+                      - required
+                -
+                  handle: download_asset
+                  field:
+                    max_files: 1
+                    min_files: 1
+                    container: assets
+                    type: assets
+                    display: 'Download Asset'
+                    width: 50
+                    validate:
+                      - required
+  -
+    import: alignment
+  -
+    import: text_color

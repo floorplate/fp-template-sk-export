@@ -1,0 +1,116 @@
+title: Map
+fields:
+  -
+    handle: main_location
+    field:
+      type: section
+      display: 'Main Location'
+  -
+    handle: building_name
+    field:
+      type: text
+      display: 'Building Name'
+      width: 33
+      validate:
+        - required
+  -
+    handle: latitude
+    field:
+      type: float
+      display: Latitude
+      width: 33
+      validate:
+        - required
+  -
+    handle: longitude
+    field:
+      type: float
+      display: Longitude
+      width: 33
+      validate:
+        - required
+  -
+    handle: additional_map_points
+    field:
+      type: section
+      display: 'Additional Map Points'
+  -
+    handle: points_of_interest
+    field:
+      type: replicator
+      display: 'Points of Interest'
+      sets:
+        new_set_group:
+          display: 'New Set Group'
+          sets:
+            poi_category:
+              display: 'POI Category'
+              icon: travel-map
+              fields:
+                -
+                  handle: category_name
+                  field:
+                    type: text
+                    display: 'Category Name'
+                    width: 50
+                    validate:
+                      - required
+                -
+                  handle: pin_color
+                  field:
+                    default: '#0061ff'
+                    type: color
+                    display: 'Pin Color'
+                    width: 50
+                    validate:
+                      - required
+                -
+                  handle: locations
+                  field:
+                    type: replicator
+                    display: Locations
+                    validate:
+                      - required
+                    sets:
+                      new_set_group:
+                        display: 'New Set Group'
+                        sets:
+                          point_of_interest:
+                            display: 'Point of Interest'
+                            icon: travel-map
+                            fields:
+                              -
+                                handle: name
+                                field:
+                                  type: text
+                                  display: Name
+                                  validate:
+                                    - required
+                              -
+                                handle: latitude
+                                field:
+                                  type: float
+                                  display: Latitude
+                                  width: 50
+                                  validate:
+                                    - required
+                              -
+                                handle: longitude
+                                field:
+                                  type: float
+                                  display: Longitude
+                                  width: 50
+                                  validate:
+                                    - required
+                              -
+                                handle: address
+                                field:
+                                  type: textarea
+                                  display: Address
+                                  width: 50
+                              -
+                                handle: description
+                                field:
+                                  type: textarea
+                                  display: Description
+                                  width: 50

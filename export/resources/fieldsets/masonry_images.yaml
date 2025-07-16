@@ -1,0 +1,48 @@
+title: 'Masonry Images'
+fields:
+  -
+    import: background_color_override
+  -
+    handle: small_horizontal_rectangle_images
+    field:
+      max_files: 4
+      min_files: 4
+      container: assets
+      type: assets
+      display: 'Small Horizontal Rectangle Images'
+      validate:
+        - required
+      instructions: 'Please Provide 4 Small Horizontal Rectangle Images'
+  -
+    handle: vertical_rectangle_images
+    field:
+      max_files: 6
+      min_files: 6
+      container: assets
+      type: assets
+      display: 'Vertical Rectangle Images'
+      validate:
+        - required
+      instructions: 'Provide 6 Vertical Rectangle Images'
+  -
+    handle: long_horizontal_images
+    field:
+      max_files: 2
+      min_files: 2
+      container: assets
+      type: assets
+      display: 'Long Horizontal Images'
+      validate:
+        - required
+      instructions: 'Provide 2 Long Horizontal Images'
+  -
+    handle: large_image
+    field:
+      max_files: 1
+      min_files: 1
+      container: assets
+      type: assets
+      display: 'Large Image'
+      validate:
+        - required
+      instructions: 'Provide 1 large image'

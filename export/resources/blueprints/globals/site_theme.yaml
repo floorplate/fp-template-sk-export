@@ -1,0 +1,133 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: logos
+            field:
+              type: section
+              display: Logos
+          -
+            handle: light_nav_logo
+            field:
+              max_files: 1
+              min_files: 1
+              container: assets
+              type: assets
+              display: 'Light Nav Logo'
+              width: 50
+              validate:
+                - required
+          -
+            handle: dark_nav_logo
+            field:
+              max_files: 1
+              min_files: 1
+              container: assets
+              type: assets
+              display: 'Dark Nav Logo'
+              width: 50
+              validate:
+                - required
+          -
+            handle: background_colors
+            field:
+              type: section
+              display: 'Background Colors'
+          -
+            handle: primary_color
+            field:
+              default: '#D98E32'
+              type: color
+              display: 'Primary Color'
+              validate:
+                - required
+              width: 50
+          -
+            handle: primary_light_color
+            field:
+              default: '#FFFFFF'
+              type: color
+              display: 'Primary Light Color'
+              width: 50
+              validate:
+                - required
+          -
+            handle: text_theme
+            field:
+              type: section
+              display: 'Text Theme'
+          -
+            handle: header_font
+            field:
+              type: font_picker
+              display: 'Header Font'
+              width: 50
+          -
+            handle: paragraph_font
+            field:
+              type: font_picker
+              display: 'Paragraph Font'
+              width: 50
+          -
+            handle: dark_text_color
+            field:
+              default: '#1D1D1D'
+              type: color
+              display: 'Dark Text Color'
+              width: 50
+              validate:
+                - required
+          -
+            handle: light_text_color
+            field:
+              default: '#FFFFFF'
+              type: color
+              display: 'Light Text Color'
+              width: 50
+              validate:
+                - required
+          -
+            handle: accent_text_color
+            field:
+              default: '#D98E32'
+              type: color
+              display: 'Accent Text Color'
+              width: 50
+              validate:
+                - required
+          -
+            handle: secondary_text_color
+            field:
+              default: '#4976AC'
+              type: color
+              display: 'Secondary Text Color'
+              width: 50
+              validate:
+                - required
+          -
+            handle: media
+            field:
+              type: section
+              display: Media
+          -
+            handle: media_border_rounding
+            field:
+              options:
+                -
+                  key: none
+                  value: None
+                -
+                  key: extra_small
+                  value: 'Extra Small'
+                -
+                  key: small
+                  value: Small
+                -
+                  key: medium
+                  value: Medium
+              type: select
+              display: 'Media Border Rounding'
+              default: none

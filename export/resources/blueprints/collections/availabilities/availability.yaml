@@ -1,0 +1,75 @@
+title: Availability
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              display: Title
+              validate:
+                - required
+          -
+            handle: text_columns
+            field:
+              max_sets: 3
+              type: replicator
+              display: 'Text Columns'
+              instructions: 'Use this area to add additional columns to availability row. Square footage, availability date, etc...'
+              sets:
+                new_set_group:
+                  display: 'New Set Group'
+                  sets:
+                    text_column:
+                      display: 'Text Column'
+                      fields:
+                        -
+                          handle: column_text
+                          field:
+                            type: text
+                            display: 'Column Text'
+                            validate:
+                              - required
+          -
+            handle: expanded_text_section
+            field:
+              type: section
+              display: 'Expanded Text Section'
+          -
+            import: text_content
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: parent
+            field:
+              type: entries
+              collections:
+                - availabilities
+              max_items: 1
+              listable: false
+              localizable: true
+  SEO:
+    display: SEO
+    sections:
+      -
+        fields:
+          -
+            handle: seo
+            field:
+              type: seo_pro
+              listable: false
+              display: SEO
+              localizable: true

@@ -1,0 +1,98 @@
+{{innerNavStyle = nav_style}}
+<div x-data="nav()" class="sticky top-0 z-[200] w-full">
+
+    <div :class="{
+        'shadow-lg' : isSticky,
+    }" 
+
+    x-ref="desktopNav"
+    class="{{if nav_style == 'dark'}}bg-primary-color{{else}}bg-primary-light-color{{/if}} will-change-transform absolute transition-all pointer-events-none duration-300 h-[68px] w-full flex flex-row items-center justify-between px-5 lg:px-[30px]">
+
+        <!-- logo -->
+        <a href="/" class="block pointer-events-auto">
+            {{if nav_style == 'dark'}}
+            {{site_theme:dark_nav_logo}}
+            <img class="h-[42px]" src="{{url}}" alt="{{alt}}">
+            {{/site_theme:dark_nav_logo}}
+            {{else}}
+            {{site_theme:light_nav_logo}}
+            <img class="h-[42px]" src="{{url}}" alt="{{alt}}">
+            {{/site_theme:light_nav_logo}}
+            {{/if}}
+        </a>
+
+        <!-- desktop center nav -->
+        <div
+            class="hidden pointer-events-auto transition-all duration-300 xl:flex absolute mx-auto max-w-max left-0 right-0 flex-row items-center xl:gap-x-10 2xl:gap-x-[60px]">
+            {{nav:main_center_nav}}
+            <a href="{{url}}" class="button-text {{if innerNavStyle == 'dark'}}text-light-text-color{{else}}text-dark-text-color{{/if}} transition-all duration-200 hover:underline {{ is_current ? 'underline' : '' }}">
+                {{title}}
+            </a>
+            {{/nav:main_center_nav}}
+        </div>
+
+        <div class="">
+
+            <!-- desktop right nav -->
+            <div class="hidden xl:flex xl:pointer-events-auto">
+                {{nav:main_right_nav}}
+                {{if button_style}}
+                    {{partial:pill_button}}
+                {{else}}
+                    <a href="{{url}}">
+                        <div class="button-text {{if innerNavStyle == 'dark'}}text-light-text-color{{else}}text-dark-text-color{{/if}}">
+                            {{title}}
+                        </div>
+                    </a>
+                {{/if}}
+                {{/nav:main_right_nav}}
+            </div>
+
+            <!-- mobile hamburger -->
+            <div x-on:click="mobileNavOpen = !mobileNavOpen"
+                class="pointer-events-auto p-1 transition-colors duration-300 rounded-full xl:hidden">
+                <svg class="cursor-pointer w-[40px]" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g x-bind:class="mobileNavOpen ? 'opacity-0' : 'opacity-100'" class="transition-all duration-200">
+                        <rect x="12" y="14.5" width="16" height="1" class="{{if innerNavStyle == 'dark'}}fill-light-text-color{{else}}fill-dark-text-color{{/if}}" />
+                        <rect x="12" y="19.5" width="16" height="1" class="{{if innerNavStyle == 'dark'}}fill-light-text-color{{else}}fill-dark-text-color{{/if}}" />
+                        <rect x="12" y="24.5" width="16" height="1" class="{{if innerNavStyle == 'dark'}}fill-light-text-color{{else}}fill-dark-text-color{{/if}}" />
+                    </g>
+                    <rect x="0.5" y="0.5" width="39" height="39" rx="19.5" class="{{if innerNavStyle == 'dark'}}stroke-light-text-color{{else}}stroke-dark-text-color{{/if}}" />
+                    <g x-cloak clip-path="url(#clip0_1936_30640)" x-bind:class="mobileNavOpen ? 'opacity-100' : 'opacity-0'" class="transition-all duration-200">
+                        <rect x="14" y="25.3145" width="16" height="1" transform="rotate(-45 14 25.3145)" class="{{if innerNavStyle == 'dark'}}fill-light-text-color{{else}}fill-dark-text-color{{/if}}" />
+                        <rect x="14.707" y="14" width="16" height="1" transform="rotate(45 14.707 14)" class="{{if innerNavStyle == 'dark'}}fill-light-text-color{{else}}fill-dark-text-color{{/if}}" />
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="sticky z-[200] mx-fm-sm  lg:mx-fm-md xl:hidden">
+        <div x-cloak
+            x-bind:class="mobileNavOpen ? 'shadow-lg py-fm-xl max-h-[800px]' : 'shadow-none max-h-0 pointer-events-none'"
+            class="flex flex-col items-center gap-y-fm-lg overflow-hidden z-[200] rounded-lg transition-all duration-300 absolute top-[88px] w-full bg-primary-light-color md:rounded-xl lg:top-[108px] lg:rounded-2xl">
+            <div class="flex flex-col items-center justify-center gap-y-fm-lg md:flex-row md:gap-x-fm-lg">
+                {{nav:main_center_nav}}
+                <a href="{{url}}"
+                    class="button-text text-dark-text-color transition-all duration-200 hover:underline {{ is_current ? 'underline' : '' }}">
+                    {{title}}
+                </a>
+                {{/nav:main_center_nav}}
+            </div>
+            <div>
+                {{nav:main_right_nav}}
+                {{if button_style}}
+                {{partial:pill_button innerNavStyle="light"}}
+                {{else}}
+                <a href="{{url}}">
+                    <div class="button-text text-dark-text-color">
+                        {{title}}
+                    </div>
+                </a>
+                {{/if}}
+                {{/nav:main_right_nav}}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+title: 'Large Media Hero'
+fields:
+  -
+    handle: media_type
+    field:
+      max_sets: 1
+      type: replicator
+      display: 'Media Type'
+      validate:
+        - required
+      sets:
+        new_set_group:
+          display: 'New Set Group'
+          sets:
+            image:
+              display: Image
+              icon: media-image-picture-orientation
+              fields:
+                -
+                  handle: hero_image
+                  field:
+                    container: assets
+                    type: assets
+                    display: 'Hero Image'
+                    validate:
+                      - required
+                    max_files: 1
+                    min_files: 1
+            vimeo_video_embed:
+              display: 'Vimeo Video Embed'
+              icon: media-webcam-video
+              fields:
+                -
+                  handle: vimeo_embed_link
+                  field:
+                    type: link
+                    display: 'Vimeo Embed Link'
+                    validate:
+                      - required

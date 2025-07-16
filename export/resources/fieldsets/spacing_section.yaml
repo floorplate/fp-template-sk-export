@@ -1,0 +1,53 @@
+title: 'Spacing Section'
+fields:
+  -
+    handle: spacing_overrides
+    field:
+      type: section
+      display: 'Spacing Overrides'
+  -
+    handle: spacing_top_override
+    field:
+      options:
+        -
+          key: none
+          value: None
+        -
+          key: small
+          value: Small
+        -
+          key: medium
+          value: Medium
+        -
+          key: large
+          value: Large
+        -
+          key: extra-large
+          value: 'Extra Large'
+      type: select
+      display: 'Spacing Top Override'
+      instructions: 'Override Default Spacing of Component'
+      width: 50
+  -
+    handle: spacing_bottom_override
+    field:
+      options:
+        -
+          key: none
+          value: None
+        -
+          key: small
+          value: Small
+        -
+          key: medium
+          value: Medium
+        -
+          key: large
+          value: Large
+        -
+          key: extra-large
+          value: 'Extra Large'
+      type: select
+      display: 'Spacing Bottom Override'
+      instructions: 'Override default bottom spacing of component'
+      width: 50

@@ -1,0 +1,44 @@
+<div class="w-full">
+    <div class="relative w-full overflow-hidden h-full">
+
+        {{ if mobile_override_media}}
+
+            <span class="hidden lg:block">
+                {{main_media}}
+                {{if type == 'basic_image'}}
+                {{basic_image}}
+                <img class="w-full" src="{{glide:url width='3840'}}" alt="{{alt}}">
+                {{/basic_image}}
+                {{/if}}
+                {{if type == 'vimeo_link'}}
+                <video {{if playback_controls}}controls{{else}}muted loop playsinline autoplay{{/if}} src="{{vimeo_link}}"
+                    class="w-full"></video>
+                {{/if}}
+                {{/main_media}}
+            </span>
+
+            <span class="lg:hidden">
+                {{mobile_override_media}}
+                {{basic_image}}
+                <img class="w-full" src="{{glide:url width='1020'}}" alt="{{alt}}">
+                {{/basic_image}}
+                {{if type == 'vimeo_link'}}
+                <video {{if playback_controls}}controls{{else}}muted loop playsinline autoplay{{/if}} src="{{vimeo_link}}"
+                    class="w-full"></video>
+                {{/if}}
+                {{/mobile_override_media}}
+            </span>
+        {{else}}
+            {{main_media}}
+                {{if type == 'basic_image'}}
+                {{basic_image}}
+                <img class="w-full" src="{{glide:url width='3840'}}" alt="{{alt}}">
+                {{/basic_image}}
+                {{/if}}
+                {{if type == 'vimeo_link'}}
+                <video {{if playback_controls}}controls{{else}}muted loop playsinline autoplay{{/if}} src="{{vimeo_link}}" class="w-full"></video>
+                {{/if}}
+            {{/main_media}}
+        {{/if}}
+    </div>
+</div>

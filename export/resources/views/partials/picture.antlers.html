@@ -1,0 +1,13 @@
+<picture>
+    <source media="(min-width: 1536px)" srcset="{{ glide:url preset='2xl' }} 1x, {{ glide:url preset='2xl2x' }} 2x, {{
+            glide:url preset='2xl3x' }} 3x">
+    <source media="(min-width: 1280px)" srcset="{{ glide:url preset='xl' }} 1x, {{ glide:url preset='xl2x' }} 2x, {{
+            glide:url preset='xl3x' }} 3x">
+    <source media="(min-width: 1024px)" srcset="{{ glide:url preset='large' }} 1x, {{ glide:url preset='large2x' }} 2x,
+            {{ glide:url preset='large3x' }} 3x">
+    <source media="(min-width: 768px)" srcset="{{ glide:url preset='medium' }} 1x, {{ glide:url preset='medium2x' }}
+            2x, {{ glide:url preset='medium3x' }} 3x">
+    <source media="(max-width: 767px)" srcset="{{ glide:url preset='small' }} 1x, {{ glide:url preset='small2x' }} 2x,
+            {{ glide:url preset='small3x' }} 3x">
+    <img loading="{{loading ? '{{loading}}' :'eager'}}" src="" alt="{{alt}}" class="{{classes}}">
+</picture>

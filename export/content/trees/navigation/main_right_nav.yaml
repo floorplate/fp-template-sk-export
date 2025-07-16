@@ -1,0 +1,7 @@
+tree:
+  -
+    id: f01e8792-c659-4713-9574-c7c4903bd6ed
+    title: 'Tenant Portal'
+    url: 'https://www.google.com/'
+    data:
+      button_style: true

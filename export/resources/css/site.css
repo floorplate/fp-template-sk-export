@@ -1,0 +1,128 @@
+@import "tailwindcss";
+@import "./viewTransition.css" layer(utilities);
+@import '@splidejs/splide/css';
+
+@plugin 'futureman-tailwind-clamp-plugin';
+@plugin '@tailwindcss/typography';
+
+@theme {
+    @import "futureman-tailwind-clamp-spacing/futuremanClampSpacing.css";
+    --spacing-om: clamp(2.1875rem, 1.0308rem + 4.9351vw, 12.875rem);
+
+    --color-primary-color: var(--color-primary-color);
+    --color-primary-light-color: var(--color-primary-light-color);
+    --color-dark-text-color: var(--color-dark-text-color);
+    --color-light-text-color: var(--color-light-text-color);
+    --color-accent-text-color: var(--color-accent-text-color);
+    --color-secondary-text-color: var(--color-secondary-text-color);
+
+        /* border radius */
+        --radius-rounded-xs: clamp(0.5000rem, 0.3241rem + 0.7504vw, 2.1250rem); 
+        --radius-rounded-sm: clamp(1.1875rem, 0.7548rem + 1.1634vw, 2.5000rem); 
+        --radius-rounded-md: clamp(2.0000rem, 1.3407rem + 1.7729vw, 4.0000rem); 
+}
+
+.text-accent-text-color{
+    color: var(--color-accent-text-color) !important;
+}
+
+.text-secondary-text-color{
+    color: var(--color-secondary-text-color) !important;
+}
+
+[x-cloak] {
+    display: none !important;
+}
+
+/* max limit for 4K */
+.screen-max {
+    @apply w-full mx-auto max-w-[3840px];
+}
+
+/* TYPOGRAPHY BASE STYLES */
+/* @layer base {
+} */
+
+.h1,
+h1,
+.prose h1,
+.h2,
+h2,
+.prose h2,
+.h3,
+h3,
+.prose h3,
+.h4,
+h4,
+.prose h4,
+.h5,
+h5,
+.prose h5,
+.h6,
+h6,
+.prose h6 {
+    font-family: var(--header-font), sans-serif;
+    /* font-variation-settings: "opsz" 12, "wght" 300; */
+    line-height: 1.2;
+}
+
+p,
+li,
+.button-text {
+    font-family: var(--paragraph-font), sans-serif;
+    /* font-variation-settings: "slnt" 0, "wght" 400; */
+}
+
+.h1,
+h1,
+.prose h1 {
+    @apply text-c-[3.5rem,9rem] leading-[1.0];
+}
+
+.h2,
+h2,
+.prose h2 {
+    @apply text-c-[2.5rem,5.625rem] leading-[1.0];
+}
+
+.h3,
+h3,
+.prose h3 {
+    @apply text-c-[2.125rem,4rem] leading-[1.0];
+}
+
+.h4,
+h4,
+.prose h4 {
+    @apply text-c-[1.75rem,2.8125rem] leading-[1.0];
+}
+
+.h5,
+h5,
+.prose h5 {
+    @apply text-c-[1.25rem,2rem] leading-[1.0];
+}
+
+.h6,
+h6,
+.prose h6 {
+    @apply text-c-[1rem,1.375rem];
+}
+
+p,
+.prose p {
+    @apply text-base;
+}
+
+p.small,
+.prose p.small {
+    @apply text-xs;
+}
+
+.button-text {
+    @apply text-base;
+}
+
+.text-content a {
+    @apply no-underline;
+}

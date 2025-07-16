@@ -1,0 +1,91 @@
+title: 'Full Screen Media'
+fields:
+  -
+    handle: main_media
+    field:
+      max_sets: 1
+      button_label: '1'
+      type: replicator
+      display: 'Main Media'
+      instructions: 'An Image or vimeo embed link.'
+      validate:
+        - required
+      sets:
+        new_set_group:
+          display: 'New Set Group'
+          sets:
+            basic_image:
+              display: 'Basic Image'
+              icon: media-image-picture-orientation
+              fields:
+                -
+                  handle: basic_image
+                  field:
+                    max_files: 1
+                    min_files: 1
+                    container: assets
+                    type: assets
+                    display: 'Basic Image'
+                    validate:
+                      - required
+            vimeo_link:
+              display: 'Vimeo Link'
+              icon: media-webcam-video
+              fields:
+                -
+                  handle: vimeo_link
+                  field:
+                    type: link
+                    display: 'Vimeo Link'
+                    validate:
+                      - required
+                -
+                  handle: playback_controls
+                  field:
+                    default: true
+                    type: toggle
+                    display: 'Playback Controls'
+                    validate:
+                      - required
+  -
+    handle: mobile_override_media
+    field:
+      max_sets: 1
+      type: replicator
+      display: 'Mobile Override Media'
+      instructions: 'If not provided, component will default to use main media for all breakpoints. If provided, this will only be used on mobile and tablet. This allows you to use different aspect ratio media on portrait style devices.'
+      sets:
+        new_set_group:
+          display: 'New Set Group'
+          sets:
+            basic_image:
+              display: 'Basic Image'
+              icon: media-image-picture-orientation
+              fields:
+                -
+                  handle: basic_image
+                  field:
+                    max_files: 1
+                    min_files: 1
+                    container: assets
+                    type: assets
+                    display: 'Basic Image'
+            vimeo_link:
+              display: 'Vimeo Link'
+              icon: media-webcam-video
+              fields:
+                -
+                  handle: vimeo_link
+                  field:
+                    type: link
+                    display: 'Vimeo Link'
+                    validate:
+                      - required
+                -
+                  handle: playback_controls
+                  field:
+                    default: true
+                    type: toggle
+                    display: 'Playback Controls'
+                    validate:
+                      - required

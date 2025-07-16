@@ -1,0 +1,21 @@
+title: Alignment
+fields:
+  -
+    handle: alignment
+    field:
+      options:
+        -
+          key: left
+          value: Left
+        -
+          key: right
+          value: Right
+        -
+          key: center
+          value: Center
+      default: center
+      type: select
+      display: Alignment
+      validate:
+        - required
+      width: 50

@@ -1,0 +1,31 @@
+title: 'Dual Image Columns'
+fields:
+  -
+    import: background_color_override
+  -
+    handle: image_one
+    field:
+      max_files: 1
+      min_files: 1
+      container: assets
+      type: assets
+      display: 'Image One'
+      instructions: 'Photos will auto-resize to landscape orientation'
+      width: 50
+      validate:
+        - required
+  -
+    handle: image_two
+    field:
+      max_files: 1
+      min_files: 1
+      container: assets
+      type: assets
+      display: 'Image Two'
+      width: 50
+      validate:
+        - required
+  -
+    import: spacing_section
+  -
+    import: anchor_id
