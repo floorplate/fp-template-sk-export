@@ -40,16 +40,6 @@ fields:
                   import: text_color
                 -
                   import: dual_column_text_blocks
-            test_text:
-              display: 'Test Text'
-              fields:
-                -
-                  handle: test_text
-                  field:
-                    type: text
-                    display: 'test text'
-                    validate:
-                      - required
         images:
           display: Images/Video
           icon: media-image-picture-gallery

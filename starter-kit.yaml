@@ -5,11 +5,10 @@ export_paths:
   - config/statamic/bard_texstyle.php
   - config/statamic/editions.php
   - config/statamic/assets.php
-  - content
+  - content_starter
   - resources
   - users
   - config/filesystems.php
-  - public/assets
   - package.json
   - vite.config.js
 dependencies:
