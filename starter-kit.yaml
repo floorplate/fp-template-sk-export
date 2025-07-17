@@ -5,7 +5,6 @@ export_paths:
   - config/statamic/bard_texstyle.php
   - config/statamic/editions.php
   - config/statamic/assets.php
-  - content_starter
   - resources
   - users
   - config/filesystems.php
