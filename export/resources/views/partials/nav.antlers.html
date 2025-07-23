@@ -25,25 +25,30 @@
         <div
             class="hidden pointer-events-auto transition-all duration-300 xl:flex absolute mx-auto max-w-max left-0 right-0 flex-row items-center xl:gap-x-10 2xl:gap-x-[60px]">
             {{nav:main_center_nav}}
+            {{if no_results}}
+            {{else}}
             <a href="{{url}}" class="button-text {{if innerNavStyle == 'dark'}}text-light-text-color{{else}}text-dark-text-color{{/if}} transition-all duration-200 hover:underline {{ is_current ? 'underline' : '' }}">
                 {{title}}
             </a>
+            {{/if}}
             {{/nav:main_center_nav}}
         </div>
 
         <div class="">
-
             <!-- desktop right nav -->
-            <div class="hidden xl:flex xl:pointer-events-auto">
+            <div class="hidden xl:flex xl:pointer-events-auto xl:flex-row items-center xl:gap-x-10 2xl:gap-x-[60px]">
                 {{nav:main_right_nav}}
-                {{if button_style}}
-                    {{partial:pill_button}}
+                {{if no_results}}
                 {{else}}
-                    <a href="{{url}}">
-                        <div class="button-text {{if innerNavStyle == 'dark'}}text-light-text-color{{else}}text-dark-text-color{{/if}}">
-                            {{title}}
-                        </div>
-                    </a>
+                    {{if button_style}}
+                        {{partial:pill_button}}
+                    {{else}}
+                        <a href="{{url}}">
+                            <div class="button-text {{if innerNavStyle == 'dark'}}text-light-text-color{{else}}text-dark-text-color{{/if}}">
+                                {{title}}
+                            </div>
+                        </a>
+                    {{/if}}
                 {{/if}}
                 {{/nav:main_right_nav}}
             </div>
