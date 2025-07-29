@@ -6,11 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       
         {{ vite src="resources/js/site.js|resources/css/site.css" }}
-        <link
-            rel="shortcut icon"
-            type="image/x-icon"
-            href="https://cdn.futuremandigital.com/favicon.ico"
-        />
+        {{site_theme:favicon}}
+        <link rel="shortcut icon" type="image/x-icon" href="{{url}}" />
+        {{/site_theme:favicon}}
         {{partial:style_variables}}
         {{ seo_pro:meta }}
         <link rel="stylesheet" href="https://use.typekit.net/xhq8jwx.css" />

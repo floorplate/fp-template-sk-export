@@ -32,6 +32,16 @@ tabs:
               validate:
                 - required
           -
+            handle: favicon
+            field:
+              max_files: 1
+              min_files: 1
+              container: assets
+              type: assets
+              display: Favicon
+              validate:
+                - required
+          -
             handle: background_colors
             field:
               type: section
