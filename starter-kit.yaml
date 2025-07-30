@@ -3,12 +3,21 @@ export_paths:
   - app/Fieldtypes
   - app/Providers
   - config/statamic/bard_texstyle.php
+  - config/statamic/cp.php
   - config/statamic/editions.php
   - config/statamic/assets.php
   - resources
   - users
   - config/filesystems.php
   - package.json
+  - public/assets/favicon.ico
+  - public/assets/favicon.svg
+  - public/assets/logo-mark-black-sm.svg
+  - public/assets/logo-mark-black.svg
+  - public/assets/logo-mark-teal-sm.svg
+  - public/assets/logo-mark-teal.svg
+  - public/assets/logo-mark-white-sm.svg
+  - public/assets/logo-mark-white.svg
   - vite.config.js
 dependencies:
   jacksleight/statamic-bard-texstyle: ^3.4
