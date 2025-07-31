@@ -1,5 +1,5 @@
 <div x-data="{expanderOpen:false}" class="w-full border-t {{if text_color == 'light'}}border-light-text-color{{else}}border-dark-text-color{{/if}} py-fm-md">
-  <div class="flex flex-row justify-between">
+  <div @click="expanderOpen = !expanderOpen" class="flex flex-row justify-between cursor-pointer">
         <div class="flex flex-row">   
             {{if numbered_rows}}
                 <div class="{{partial:text_color}} min-w-c-[33px,600px] h6">
@@ -8,7 +8,7 @@
             {{/if}}
             <div class="h6 text-left">{{title}}</div>
         </div> 
-        <svg @click="expanderOpen = !expanderOpen" class="cursor-pointer" width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="cursor-pointer" width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="15.5" cy="15.5" r="14.5" class="{{if text_color == 'light'}}stroke-light-text-color{{else}}stroke-dark-text-color{{/if}}"/>
             <path d="M15.5 22L15.5 9" :class="expanderOpen ? 'opacity-0' : 'opacity-100'" class="{{if text_color == 'light'}}stroke-light-text-color{{else}}stroke-dark-text-color{{/if}} transition-all duration-200" />
             <path d="M9 15.5H22" class="{{if text_color == 'light'}}stroke-light-text-color{{else}}stroke-dark-text-color{{/if}}" />

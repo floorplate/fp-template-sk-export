@@ -1,6 +1,6 @@
 <div x-data="{expanderOpen:false}"
     class="w-full border-t last-of-type:border-b {{if text_color == 'light'}}border-light-text-color{{else}}border-dark-text-color{{/if}} py-fm-md">
-    <div class="flex flex-row justify-between">
+    <div @click="expanderOpen = !expanderOpen" class="flex flex-row justify-between {{if text_content}}cursor-pointer{{/if}}">
         <div class="grow grid grid-cols-1 lg:grid-cols-4">
             <div class="h6 text-left w-full {{ if text_columns|count < 2 }}lg:col-span-2{{/if}}">{{title}}</div>
             {{text_columns}}
@@ -9,7 +9,7 @@
         </div>
 
         {{if text_content}}
-        <svg @click="expanderOpen = !expanderOpen" class="cursor-pointer" width="31" height="31" viewBox="0 0 31 31"
+        <svg class="cursor-pointer" width="31" height="31" viewBox="0 0 31 31"
             fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="15.5" cy="15.5" r="14.5"
                 class="{{if text_color == 'light'}}stroke-light-text-color{{else}}stroke-dark-text-color{{/if}}" />
