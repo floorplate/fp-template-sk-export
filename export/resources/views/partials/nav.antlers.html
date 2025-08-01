@@ -44,7 +44,7 @@
                         {{partial:pill_button}}
                     {{else}}
                         <a href="{{url}}">
-                            <div class="button-text {{if innerNavStyle == 'dark'}}text-light-text-color{{else}}text-dark-text-color{{/if}}">
+                            <div class="button-text {{if innerNavStyle == 'dark'}}text-light-text-color{{else}}text-dark-text-color{{/if}}  hover:underline {{ is_current ? 'underline' : '' }}">
                                 {{title}}
                             </div>
                         </a>
@@ -80,7 +80,7 @@
             <div class="flex flex-col items-center justify-center gap-y-fm-lg md:flex-row md:gap-x-fm-lg">
                 {{nav:main_center_nav}}
                 <a href="{{url}}"
-                    class="button-text text-dark-text-color transition-all duration-200 hover:underline {{ is_current ? 'underline' : '' }}">
+                    class="button-text text-dark-text-color text-center transition-all duration-200 hover:underline {{ is_current ? 'underline' : '' }}">
                     {{title}}
                 </a>
                 {{/nav:main_center_nav}}
