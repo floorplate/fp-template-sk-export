@@ -85,13 +85,13 @@
                 </a>
                 {{/nav:main_center_nav}}
             </div>
-            <div>
+            <div class="flex flex-col items-center justify-center gap-y-fm-lg md:flex-row md:gap-x-fm-lg">
                 {{nav:main_right_nav}}
                 {{if button_style}}
                 {{partial:pill_button innerNavStyle="light"}}
                 {{else}}
                 <a href="{{url}}">
-                    <div class="button-text text-dark-text-color">
+                    <div class="button-text text-dark-text-color text-center">
                         {{title}}
                     </div>
                 </a>
