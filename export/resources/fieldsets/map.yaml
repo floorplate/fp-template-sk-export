@@ -65,6 +65,24 @@ fields:
                     validate:
                       - required
                 -
+                  handle: mobile_toggle_starts_on
+                  field:
+                    default: true
+                    type: toggle
+                    display: 'Mobile Toggle Starts On'
+                    width: 50
+                    validate:
+                      - required
+                -
+                  handle: desktop_toggle_starts_on
+                  field:
+                    default: true
+                    type: toggle
+                    display: 'Desktop Toggle Starts On'
+                    width: 50
+                    validate:
+                      - required
+                -
                   handle: locations
                   field:
                     type: replicator

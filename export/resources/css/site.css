@@ -76,19 +76,19 @@ li,
 .h1,
 h1,
 .prose h1 {
-    @apply text-c-[3.5rem,9rem] leading-[1.0];
+    @apply text-c-[2.6rem,11.625rem,0.92,0.92] leading-[1.0];
 }
 
 .h2,
 h2,
 .prose h2 {
-    @apply text-c-[2.5rem,5.625rem] leading-[1.0];
+    @apply text-c-[2.25rem,5.625rem] leading-[1.0];
 }
 
 .h3,
 h3,
 .prose h3 {
-    @apply text-c-[2.125rem,4rem] leading-[1.0];
+    @apply text-c-[2.0rem,4rem] leading-[1.0];
 }
 
 .h4,

@@ -30,9 +30,13 @@ export default (building_name, latitude, longitude, points_of_interest) => ({
         map.addAnnotation(building);
 
         if (points_of_interest) {
+            const isDesktop = window.matchMedia('(min-width: 1024px)').matches; // Tailwind lg breakpoint by default
             points_of_interest.forEach((category) => {
-                this.categoryVisibility[category.category_name] = true;
                 const categoryName = category.category_name;
+                // Choose desktop or mobile starting toggle based on current viewport
+                const startsOnRaw = isDesktop ? category.desktop_toggle_starts_on : category.mobile_toggle_starts_on;
+                const startsOn = startsOnRaw === true || startsOnRaw === 'true' || startsOnRaw === 1 || startsOnRaw === '1';
+                this.categoryVisibility[categoryName] = !!startsOn;
                 const pinColor = category.pin_color;
                 const poiList = category.locations;
                 poiList.forEach((point, idx) => {
@@ -52,6 +56,9 @@ export default (building_name, latitude, longitude, points_of_interest) => ({
                         subtitle,
                         idx + 1 // index starting from 1
                     );
+                    // Initialize visibility to match the category's starting state
+                    poiAnnotation.enabled = !!startsOn;
+                    poiAnnotation.visible = !!startsOn;
                     poiAnnotation.category = categoryName;
                     map.addAnnotation(poiAnnotation);
                 });
