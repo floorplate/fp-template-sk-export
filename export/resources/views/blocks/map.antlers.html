@@ -8,6 +8,7 @@
 '{{building_name}}',
 {{latitude}},
 {{longitude}}, 
+'{{optional_map_icon}}',
 window.poiData
 )"
         class="overflow-hidden rounded-rounded-sm grid grid-cols-1 lg:grid-cols-3"
@@ -88,6 +89,25 @@ window.poiData
                 {{/points_of_interest}}
             </div>
         </div>
-        <div id="map" class="w-full h-[500px] lg:h-[800px] lg:col-span-2"></div>
+        <div class="w-full h-[500px] lg:h-[800px] lg:col-span-2 relative">
+            <div id="map" class="w-full h-full"></div>
+            <!-- Custom Zoom Controls -->
+            <div class="absolute bottom-4 right-4 flex flex-col gap-2">
+                <button
+                    @click="zoomIn()"
+                    class="w-10 cursor-pointer h-10 bg-white rounded-md shadow-lg hover:bg-gray-50 flex items-center justify-center text-xl font-semibold transition-colors"
+                    aria-label="Zoom in"
+                >
+                    +
+                </button>
+                <button
+                    @click="zoomOut()"
+                    class="w-10 cursor-pointer h-10 bg-white rounded-md shadow-lg hover:bg-gray-50 flex items-center justify-center text-xl font-semibold transition-colors"
+                    aria-label="Zoom out"
+                >
+                    −
+                </button>
+            </div>
+        </div>
     </div>
 </div>

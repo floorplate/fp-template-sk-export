@@ -16,10 +16,11 @@ tabs:
               min_files: 1
               container: assets
               type: assets
-              display: 'Light Nav Logo'
+              display: 'Dark Nav Logo'
               width: 50
               validate:
                 - required
+              instructions: 'Provide a logo with dark color. This will show up if the nav uses a light color background to create contract.'
           -
             handle: dark_nav_logo
             field:
@@ -27,10 +28,11 @@ tabs:
               min_files: 1
               container: assets
               type: assets
-              display: 'Dark Nav Logo'
+              display: 'Light Nav Logo'
               width: 50
               validate:
                 - required
+              instructions: 'Provide a logo with light color. This will show up if the nav uses a dark color background to create contract.'
           -
             handle: favicon
             field:
@@ -41,6 +43,7 @@ tabs:
               display: Favicon
               validate:
                 - required
+              instructions: 'Favicon icon for the site.'
           -
             handle: background_colors
             field:
@@ -55,6 +58,7 @@ tabs:
               validate:
                 - required
               width: 50
+              instructions: 'Used as the primary background color of elements with a dark or primary background. Can be overridden on a component to component bases.'
           -
             handle: primary_light_color
             field:
@@ -64,6 +68,7 @@ tabs:
               width: 50
               validate:
                 - required
+              instructions: 'Used as the background color of elements with a light background. Can be overridden on a component to component bases.'
           -
             handle: text_theme
             field:
@@ -75,12 +80,14 @@ tabs:
               type: font_picker
               display: 'Header Font'
               width: 50
+              instructions: 'Default header (h1-h6) font family site wide.'
           -
             handle: paragraph_font
             field:
               type: font_picker
               display: 'Paragraph Font'
               width: 50
+              instructions: 'Default paragraph font sitewife'
           -
             handle: dark_text_color
             field:
@@ -90,6 +97,7 @@ tabs:
               width: 50
               validate:
                 - required
+              instructions: 'Default dark text color (site wide).'
           -
             handle: light_text_color
             field:
@@ -99,6 +107,7 @@ tabs:
               width: 50
               validate:
                 - required
+              instructions: 'Default light text color (site wide).'
           -
             handle: accent_text_color
             field:
@@ -108,6 +117,7 @@ tabs:
               width: 50
               validate:
                 - required
+              instructions: 'Customizable accent color for text (site wide).'
           -
             handle: secondary_text_color
             field:
@@ -117,6 +127,7 @@ tabs:
               width: 50
               validate:
                 - required
+              instructions: 'Customizable secondary accent color for text (site wide).'
           -
             handle: media
             field:
@@ -141,3 +152,4 @@ tabs:
               type: select
               display: 'Media Border Rounding'
               default: none
+              instructions: 'Rounding of anything contained In a box - image, cards, etc.'

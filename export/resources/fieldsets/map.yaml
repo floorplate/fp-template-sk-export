@@ -10,7 +10,7 @@ fields:
     field:
       type: text
       display: 'Building Name'
-      width: 33
+      width: 50
       validate:
         - required
   -
@@ -18,7 +18,7 @@ fields:
     field:
       type: float
       display: Latitude
-      width: 33
+      width: 50
       validate:
         - required
   -
@@ -26,9 +26,17 @@ fields:
     field:
       type: float
       display: Longitude
-      width: 33
+      width: 50
       validate:
         - required
+  -
+    handle: optional_map_icon
+    field:
+      max_files: 1
+      container: assets
+      type: assets
+      display: 'Optional Map Icon'
+      width: 50
   -
     handle: additional_map_points
     field:
