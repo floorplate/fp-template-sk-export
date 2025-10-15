@@ -1,4 +1,211 @@
 tabs:
+  typography:
+    display: Typography
+    sections:
+      -
+        display: 'Header Settings'
+        fields:
+          -
+            handle: global_defaults
+            field:
+              type: section
+              display: 'Global Defaults'
+              instructions: 'These setting control the default text setting across the site. They may be overwritten on a specific basis in the "overrides" section below.'
+          -
+            handle: header_font
+            field:
+              type: font_picker
+              display: 'Header Font'
+              instructions: 'Default header (h1-h6) font family.'
+              validate:
+                - required
+          -
+            handle: header_text_scaler
+            field:
+              default: '0'
+              type: integer
+              display: 'Header Text Scaler'
+              width: 50
+              validate:
+                - required
+              instructions: 'This site uses a fluid design system that scales header text size from mobile to 4K. Headers (h1-h6) all have a default scaling curve. You can increase or decrease the scaling curve of all headers here. 0 will use the default system curve. 10 would increase the scaling by 10%, -10 would decrease the scaling by 10%, etc.'
+          -
+            handle: header_line_height
+            field:
+              default: '120'
+              type: integer
+              display: 'Header Line Height'
+              instructions: 'Default line height of all headers (h1-h6). Enter a percentage, with 100 being the exact text size height. Suggested default is approximitely 120(%).'
+              width: 50
+              validate:
+                - required
+          -
+            handle: h1_overrides
+            field:
+              type: section
+              display: 'H1 Overrides'
+              instructions: 'All fields are optional, and will default to global header defaults if not provided.'
+          -
+            handle: h1_font_override
+            field:
+              type: font_picker
+              display: 'H1 Font Override'
+          -
+            handle: h1_text_scaler_override
+            field:
+              type: integer
+              display: 'H1 Text Scaler Override'
+              width: 50
+          -
+            handle: h1_line_height_override
+            field:
+              type: integer
+              display: 'H1 Line Height Override'
+              width: 50
+          -
+            handle: h2_overrides
+            field:
+              type: section
+              display: 'H2 Overrides'
+              instructions: 'All fields are optional, and will default to global header defaults if not provided.'
+          -
+            handle: h2_font_override
+            field:
+              type: font_picker
+              display: 'H2 Font Override'
+          -
+            handle: h2_text_scaler_override
+            field:
+              type: integer
+              display: 'H2 Text Scaler Override'
+              width: 50
+          -
+            handle: h2_line_height_override
+            field:
+              type: integer
+              display: 'H2 Line Height Override'
+              width: 50
+          -
+            handle: h3_overrides
+            field:
+              type: section
+              display: 'H3 Overrides'
+              instructions: 'All fields are optional, and will default to global header defaults if not provided.'
+          -
+            handle: h3_font_override
+            field:
+              type: font_picker
+              display: 'H3 Font Override'
+          -
+            handle: h3_text_scaler_override
+            field:
+              type: integer
+              display: 'H3 Text Scaler Override'
+              width: 50
+          -
+            handle: h3_line_height_override
+            field:
+              type: integer
+              display: 'H3 Line Height Override'
+              width: 50
+          -
+            handle: h4_overrides
+            field:
+              type: section
+              display: 'H4 Overrides'
+              instructions: 'All fields are optional, and will default to global header defaults if not provided.'
+          -
+            handle: h4_font_override
+            field:
+              type: font_picker
+              display: 'H4 Font Override'
+          -
+            handle: h4_text_scaler_override
+            field:
+              type: integer
+              display: 'H4 Text Scaler Override'
+              width: 50
+          -
+            handle: h4_line_height_override
+            field:
+              type: integer
+              display: 'H4 Line Height Override'
+              width: 50
+          -
+            handle: h5_overrides
+            field:
+              type: section
+              display: 'H5 Overrides'
+              instructions: 'All fields are optional, and will default to global header defaults if not provided.'
+          -
+            handle: h5_font_override
+            field:
+              type: font_picker
+              display: 'H5 Font Override'
+          -
+            handle: h5_text_scaler_override
+            field:
+              type: integer
+              display: 'H5 Text Scaler Override'
+              width: 50
+          -
+            handle: h5_line_height_override
+            field:
+              type: integer
+              display: 'H5 Line Height Override'
+              width: 50
+          -
+            handle: h6_overrides
+            field:
+              type: section
+              display: 'H6 Overrides'
+              instructions: 'All fields are optional, and will default to global header defaults if not provided.'
+          -
+            handle: h6_font_override
+            field:
+              type: font_picker
+              display: 'H6 Font Override'
+          -
+            handle: h6_text_scaler_override
+            field:
+              type: integer
+              display: 'H6 Text Scaler Override'
+              width: 50
+          -
+            handle: h6_line_height_override
+            field:
+              type: integer
+              display: 'H6 Line Height Override'
+              width: 50
+      -
+        display: 'Paragraph Settings'
+        fields:
+          -
+            handle: paragraph_font
+            field:
+              type: font_picker
+              display: 'Paragraph Font'
+              instructions: 'Default paragraph font sitewife'
+          -
+            handle: paragraph_text_scaler
+            field:
+              default: '0'
+              type: integer
+              display: 'Paragraph Text Scaler'
+              instructions: 'This site uses a fluid design system that scales paragraph text from mobile to 4K. You can increase or decrease the scaling curve of paragraphs here. 0 will use the default system curve. 10 would increase the scaling by 10%, -10 would decrease the scaling by 10%, etc.'
+              width: 50
+              validate:
+                - required
+          -
+            handle: paragraph_line_height
+            field:
+              default: '130'
+              type: integer
+              display: 'Paragraph Line Height'
+              instructions: 'Default line height of all paragraphs. Enter a percentage, with 100 being the exact text size height. Suggested default is between 120-140 (%).'
+              width: 50
+              validate:
+                - required
   main:
     display: Main
     sections:
@@ -69,25 +276,6 @@ tabs:
               validate:
                 - required
               instructions: 'Used as the background color of elements with a light background. Can be overridden on a component to component bases.'
-          -
-            handle: text_theme
-            field:
-              type: section
-              display: 'Text Theme'
-          -
-            handle: header_font
-            field:
-              type: font_picker
-              display: 'Header Font'
-              width: 50
-              instructions: 'Default header (h1-h6) font family site wide.'
-          -
-            handle: paragraph_font
-            field:
-              type: font_picker
-              display: 'Paragraph Font'
-              width: 50
-              instructions: 'Default paragraph font sitewife'
           -
             handle: dark_text_color
             field:
