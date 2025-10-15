@@ -12,16 +12,17 @@
         {{partial:style_variables}}
         {{ seo_pro:meta }}
         <link rel="stylesheet" href="https://use.typekit.net/xhq8jwx.css" />
+        <!-- expose fonts to JS -->
         <script>
             window.headerFont = "{{site_theme:header_font}}";
             window.paragraphFont = "{{site_theme:paragraph_font}}";
+            window.h1FontOverride = "{{site_theme:h1_font_override}}";
+            window.h2FontOverride = "{{site_theme:h2_font_override}}";
+            window.h3FontOverride = "{{site_theme:h3_font_override}}";
+            window.h4FontOverride = "{{site_theme:h4_font_override}}";
+            window.h5FontOverride = "{{site_theme:h5_font_override}}";
+            window.h6FontOverride = "{{site_theme:h6_font_override}}";
         </script>
-        <style>
-            :root {
-                --header-font: '{{site_theme:header_font}}';
-                --paragraph-font: '{{site_theme:paragraph_font}}';
-            }
-        </style>
     </head>
 
     <body class="">
