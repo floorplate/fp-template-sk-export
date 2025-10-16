@@ -9,36 +9,43 @@
         --paragraph-font: '{{site_theme:paragraph_font}}';
         --paragraph-text-scaler: {{site_theme:paragraph_text_scaler ?? 0}};
         --paragraph-line-height: {{site_theme:paragraph_line_height ?? 120}}%;
+        --paragraph-font-weight: {{site_theme:paragraph_font_weight ?? 400}};
         --h1-font-override: {{site_theme:h1_font_override ?? site_theme:header_font}};
         --h1-text-scaler-override: {{site_theme:h1_text_scaler_override ?? site_theme:header_text_scaler ?? 0}};
         --h1-line-height-override: {{site_theme:h1_line_height_override ?? site_theme:header_line_height}}%;
+        --h1-font-weight-override: {{site_theme:h1_font_weight_override ?? site_theme:header_font_weight ?? 400}};
         --h2-font-override: {{site_theme:h2_font_override ?? site_theme:header_font}};
         --h2-text-scaler-override: {{site_theme:h2_text_scaler_override ?? site_theme:header_text_scaler ?? 0}};
         --h2-line-height-override: {{site_theme:h2_line_height_override ?? site_theme:header_line_height}}%;
+        --h2-font-weight-override: {{site_theme:h2_font_weight_override ?? site_theme:header_font_weight ?? 400}};
         --h3-font-override: {{site_theme:h3_font_override ?? site_theme:header_font}};
         --h3-text-scaler-override: {{site_theme:h3_text_scaler_override ?? site_theme:header_text_scaler ?? 0}};
         --h3-line-height-override: {{site_theme:h3_line_height_override ?? site_theme:header_line_height}}%;
+        --h3-font-weight-override: {{site_theme:h3_font_weight_override ?? site_theme:header_font_weight ?? 400}};
         --h4-font-override: {{site_theme:h4_font_override ?? site_theme:header_font}};
         --h4-text-scaler-override: {{site_theme:h4_text_scaler_override ?? site_theme:header_text_scaler ?? 0}};
         --h4-line-height-override: {{site_theme:h4_line_height_override ?? site_theme:header_line_height}}%;
+        --h4-font-weight-override: {{site_theme:h4_font_weight_override ?? site_theme:header_font_weight ?? 400}};
         --h5-font-override: {{site_theme:h5_font_override ?? site_theme:header_font}};
         --h5-text-scaler-override: {{site_theme:h5_text_scaler_override ?? site_theme:header_text_scaler ?? 0}};
         --h5-line-height-override: {{site_theme:h5_line_height_override ?? site_theme:header_line_height}}%;
+        --h5-font-weight-override: {{site_theme:h5_font_weight_override ?? site_theme:header_font_weight ?? 400}};
         --h6-font-override: {{site_theme:h6_font_override ?? site_theme:header_font}};
         --h6-text-scaler-override: {{site_theme:h6_text_scaler_override ?? site_theme:header_text_scaler ?? 0}};
         --h6-line-height-override: {{site_theme:h6_line_height_override ?? site_theme:header_line_height}}%;
+        --h6-font-weight-override: {{site_theme:h6_font_weight_override ?? site_theme:header_font_weight ?? 400}};
     }
     
     {{if site_theme:media_border_rounding == 'extra_small'}}
-    .prose.text-content img, .text-content img {
+    .rich-text.text-content img, .text-content img {
         border-radius: clamp(0.5000rem, 0.3241rem + 0.7504vw, 2.1250rem);
     }
     {{elseif site_theme:media_border_rounding == 'small'}}
-    .prose.text-content img, .text-content img {
+    .rich-text.text-content img, .text-content img {
         border-radius: clamp(1.1875rem, 0.7548rem + 1.1634vw, 2.5000rem);
     }
     {{elseif site_theme:media_border_rounding == 'medium'}}
-    .prose.text-content img, .text-content img {
+    .rich-text.text-content img, .text-content img {
         border-radius: clamp(2.0000rem, 1.3407rem + 1.7729vw, 4.0000rem);
     }
     {{/if}}

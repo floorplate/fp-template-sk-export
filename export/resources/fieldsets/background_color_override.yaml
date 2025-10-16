@@ -4,12 +4,8 @@ fields:
     handle: background_color_override
     field:
       swatches:
-        - '#D98E32'
         - '#1D1D1D'
         - '#000'
-        - '#4976AC'
-        - '#3D6390'
-        - '#576B7D'
         - '#F0F3F6'
         - '#FFF'
       type: color

@@ -1,9 +1,9 @@
 @import "tailwindcss";
 @import "./viewTransition.css" layer(utilities);
 @import "@splidejs/splide/css";
+@import "./rich-text.css";
 
 @plugin 'futureman-tailwind-clamp-plugin';
-@plugin '@tailwindcss/typography';
 
 @theme {
     @import "futureman-tailwind-clamp-spacing/futuremanClampSpacing.css";
@@ -46,14 +46,15 @@ p,
 li,
 .button-text {
     font-family: var(--paragraph-font), sans-serif;
+    font-weight: var(--paragraph-font-weight);
 }
 
 .h1,
-h1,
-.prose h1 {
+h1 {
     font-family: var(--h1-font-override);
     font-size: calc(2.6250rem * (1 + var(--h1-text-scaler-override) / 100));
     line-height: var(--h1-line-height-override);
+    font-weight: var(--h1-font-weight-override);
 
     @media (min-width: 768px) {
         font-size: clamp(
@@ -65,8 +66,7 @@ h1,
 }
 
 .h2,
-h2,
-.prose h2 {
+h2 {
     font-family: var(--h2-font-override);
     font-size: clamp(
         calc(2.0000rem * (1 + var(--h2-text-scaler-override) / 100)),
@@ -74,11 +74,11 @@ h2,
         calc(5.0000rem * (1 + var(--h2-text-scaler-override) / 100))
     );
     line-height: var(--h2-line-height-override);
+    font-weight: var(--h2-font-weight-override);
 }
 
 .h3,
-h3,
-.prose h3 {
+h3 {
     font-family: var(--h3-font-override);
     font-size: clamp(
         calc(1.7500rem * (1 + var(--h3-text-scaler-override) / 100)),
@@ -86,11 +86,11 @@ h3,
         calc(4.0000rem * (1 + var(--h3-text-scaler-override) / 100))
     );
     line-height: var(--h3-line-height-override);
+    font-weight: var(--h3-font-weight-override);
 }
 
 .h4,
-h4,
-.prose h4 {
+h4 {
     font-family: var(--h4-font-override);
     font-size: clamp(
         calc(1.5000rem * (1 + var(--h4-text-scaler-override) / 100)),
@@ -98,11 +98,11 @@ h4,
         calc(3.0000rem * (1 + var(--h4-text-scaler-override) / 100))
     );
     line-height: var(--h4-line-height-override);
+    font-weight: var(--h4-font-weight-override);
 }
 
 .h5,
-h5,
-.prose h5 {
+h5 {
     font-family: var(--h5-font-override);
     font-size: clamp(
         calc(1.2500rem * (1 + var(--h5-text-scaler-override) / 100)),
@@ -110,11 +110,11 @@ h5,
         calc(2.0000rem * (1 + var(--h5-text-scaler-override) / 100))
     );
     line-height: var(--h5-line-height-override);
+    font-weight: var(--h5-font-weight-override);
 }
 
 .h6,
-h6,
-.prose h6 {
+h6 {
     font-family: var(--h6-font-override);
     font-size: clamp(
         calc(1.1250rem * (1 + var(--h6-text-scaler-override) / 100)),
@@ -122,25 +122,35 @@ h6,
         calc(1.5000rem * (1 + var(--h6-text-scaler-override) / 100))
     );
     line-height: var(--h6-line-height-override);
+    font-weight: var(--h6-font-weight-override);
 }
 
-p,
-.prose p {
+p {
     font-size: calc(1rem * (1 + var(--paragraph-text-scaler) / 100));
     line-height: var(--paragraph-line-height);
+    font-weight: var(--paragraph-font-weight);
 }
 
-p.small,
-.prose p.small {
+p.small {
     font-size: calc(0.75rem * (1 + var(--paragraph-text-scaler) / 100));
     line-height: var(--paragraph-line-height);
+    font-weight: var(--paragraph-font-weight);
+}
+
+.rich-text a {
+    @apply underline;
+}
+
+.rich-text .no-underline {
+    @apply no-underline;
 }
 
 .button-text {
     font-size: calc(1rem * (1 + var(--paragraph-text-scaler) / 100));
     line-height: var(--paragraph-line-height);
+    font-weight: var(--paragraph-font-weight);
 }
-
+/* 
 .text-content a {
     @apply no-underline;
-}
+} */

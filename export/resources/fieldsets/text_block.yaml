@@ -1,0 +1,10 @@
+title: 'Text Block'
+fields:
+  -
+    import: background_color_override
+  -
+    import: text_color
+  -
+    import: text_content
+  -
+    import: spacing_section

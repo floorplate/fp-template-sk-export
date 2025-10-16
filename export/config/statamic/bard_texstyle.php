@@ -190,45 +190,46 @@ return [
             'font-weight' => [
                 'type' => 'select',
                 'display' => 'Font Weight',
-                'default' => 'light',
-                'rendered' => 'class',
+                'default' => null,
+                'rendered' => 'style',
+                'clearable' => true,
                 'options' => [
-                    'font-thin' => 'thin',
-                    'font-extralight' => 'extralight',
-                    'font-light' => 'light',
-                    'font-normal' => 'normal',
-                    'font-medium' => 'medium',
-                    'font-semibold' => 'semibold',
-                    'font-bold' => 'bold',
-                    'font-extrabold' => 'extrabold',
-                    'font-black' => 'black',
+                    '100' => 'Thin',
+                    '200' => 'Extra Light',
+                    '300' => 'Light',
+                    '400' => 'Normal',
+                    '500' => 'Medium',
+                    '600' => 'Semi Bold',
+                    '700' => 'Bold',
+                    '800' => 'Extra Bold',
+                    '900' => 'Black',
                 ],
                 'cp_css' => [
-                    'font-thin' => [
+                    '100' => [
                         '&' => 'font-weight: 100 !important;',
                     ],
-                    'font-extralight' => [
+                    '200' => [
                         '&' => 'font-weight: 200 !important;',
                     ],
-                    'font-light' => [
+                    '300' => [
                         '&' => 'font-weight: 300 !important;',
                     ],
-                    'font-normal' => [
+                    '400' => [
                         '&' => 'font-weight: 400 !important;',
                     ],
-                    'font-medium' => [
+                    '500' => [
                         '&' => 'font-weight: 500 !important;',
                     ],
-                    'font-semibold' => [
+                    '600' => [
                         '&' => 'font-weight: 600 !important;',
                     ],
-                    'font-bold' => [
+                    '700' => [
                         '&' => 'font-weight: 700 !important;',
                     ],
-                    'font-extrabold' => [
+                    '800' => [
                         '&' => 'font-weight: 800 !important;',
                     ],
-                    'font-black' => [
+                    '900' => [
                         '&' => 'font-weight: 900 !important;',
                     ],
                 ],
@@ -248,45 +249,46 @@ return [
             'font-weight' => [
                 'type' => 'select',
                 'display' => 'Font Weight',
-                'default' => 'light',
-                'rendered' => 'class',
+                'default' => null,
+                'rendered' => 'style',
+                'clearable' => true,
                 'options' => [
-                    'font-thin' => 'thin',
-                    'font-extralight' => 'extralight',
-                    'font-light' => 'light',
-                    'font-normal' => 'normal',
-                    'font-medium' => 'medium',
-                    'font-semibold' => 'semibold',
-                    'font-bold' => 'bold',
-                    'font-extrabold' => 'extrabold',
-                    'font-black' => 'black',
+                    '100' => 'Thin',
+                    '200' => 'Extra Light',
+                    '300' => 'Light',
+                    '400' => 'Normal',
+                    '500' => 'Medium',
+                    '600' => 'Semi Bold',
+                    '700' => 'Bold',
+                    '800' => 'Extra Bold',
+                    '900' => 'Black',
                 ],
                 'cp_css' => [
-                    'font-thin' => [
+                    '100' => [
                         '&' => 'font-weight: 100 !important;',
                     ],
-                    'font-extralight' => [
+                    '200' => [
                         '&' => 'font-weight: 200 !important;',
                     ],
-                    'font-light' => [
+                    '300' => [
                         '&' => 'font-weight: 300 !important;',
                     ],
-                    'font-normal' => [
+                    '400' => [
                         '&' => 'font-weight: 400 !important;',
                     ],
-                    'font-medium' => [
+                    '500' => [
                         '&' => 'font-weight: 500 !important;',
                     ],
-                    'font-semibold' => [
+                    '600' => [
                         '&' => 'font-weight: 600 !important;',
                     ],
-                    'font-bold' => [
+                    '700' => [
                         '&' => 'font-weight: 700 !important;',
                     ],
-                    'font-extrabold' => [
+                    '800' => [
                         '&' => 'font-weight: 800 !important;',
                     ],
-                    'font-black' => [
+                    '900' => [
                         '&' => 'font-weight: 900 !important;',
                     ],
                 ],

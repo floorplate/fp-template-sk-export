@@ -20,6 +20,12 @@ fields:
           display: Text
           icon: text-formatting-all-caps
           sets:
+            text_block:
+              display: 'Text Block'
+              icon: text-formatting-image-left
+              fields:
+                -
+                  import: text_block
             intro_text:
               display: 'Intro Text'
               icon: text-formatting-all-caps
