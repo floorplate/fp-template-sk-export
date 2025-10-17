@@ -22,6 +22,7 @@
         "futureman-tailwind-clamp-plugin": "^1.0.2",
         "futureman-tailwind-clamp-spacing": "^1.0.6",
         "gsap": "^3.13.0",
+        "leaflet": "2.0.0-alpha.1",
         "webfontloader": "^1.6.28"
     }
 }

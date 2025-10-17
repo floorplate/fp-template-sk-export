@@ -2,6 +2,7 @@
 @import "./viewTransition.css" layer(utilities);
 @import "@splidejs/splide/css";
 @import "./rich-text.css";
+@import "./leaflet.css";
 
 @plugin 'futureman-tailwind-clamp-plugin';
 

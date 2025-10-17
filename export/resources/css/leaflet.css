@@ -1,0 +1,70 @@
+/* Leaflet map z-index fixes */
+.leaflet-container {
+    z-index: 1 !important;
+}
+
+.leaflet-map-pane {
+    z-index: 1 !important;
+}
+
+/* Leaflet custom marker styles */
+.custom-building-marker,
+.custom-poi-marker {
+    background: transparent !important;
+    border: none !important;
+}
+
+.leaflet-popup-content-wrapper {
+    padding: 0 !important;
+}
+
+.leaflet-popup-content {
+    margin: 0 !important;
+}
+
+/* Custom close button styling for POI popup */
+.leaflet-popup-close-button {
+    position: absolute !important;
+    top: 10px !important;
+    right: 10px !important;
+    width: 20px !important;
+    height: 20px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 20px !important;
+    line-height: 20px !important;
+}
+
+.leaflet-popup-close-button span {
+    width: 20px !important;
+    height: 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Ensure custom zoom controls are above map */
+.leaflet-control-container {
+    z-index: 10 !important;
+}
+
+.leaflet-popup-content p.title {
+    margin-top: 0 !important;
+    margin-bottom: 4px !important;
+}
+
+.leaflet-popup-content p.title:last-child {
+    margin-bottom: 0 !important;
+}
+
+.leaflet-popup-content p.address {
+    margin-top: 0 !important;
+    margin-bottom: 8px !important;
+}
+
+.leaflet-popup-content p.description {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}

@@ -1,7 +1,6 @@
 <script>
     window.poiData = {{ points_of_interest | to_json }};
 </script>
-<script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
 <div class="p-fm-md bg-primary-color">
     <div
         x-data="map(
@@ -9,7 +8,9 @@
 {{latitude}},
 {{longitude}}, 
 '{{optional_map_icon}}',
-window.poiData
+'{{building_pin_color}}',
+window.poiData,
+'{{map_style}}'
 )"
         class="overflow-hidden rounded-rounded-sm grid grid-cols-1 lg:grid-cols-3"
     >
@@ -90,19 +91,30 @@ window.poiData
             </div>
         </div>
         <div class="w-full h-[500px] lg:h-[800px] lg:col-span-2 relative">
-            <div id="map" class="w-full h-full"></div>
-            <!-- Custom Zoom Controls -->
-            <div class="absolute bottom-4 right-4 flex flex-col gap-2">
+            <div id="map" class="w-full h-full relative z-0"></div>
+            <!-- Custom Map Controls -->
+            <div class="absolute bottom-4 right-4 flex flex-col gap-2 z-20">
+                <button
+                    @click="recenterMap()"
+                    class="w-10 cursor-pointer h-10 bg-white rounded-md shadow-lg hover:bg-gray-50 flex items-center justify-center transition-colors relative z-20"
+                    aria-label="Recenter map"
+                    title="Recenter map to show all locations"
+                >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="6"/>
+                        <path d="M12 1v3M12 20v3M1 12h3M20 12h3"/>
+                    </svg>
+                </button>
                 <button
                     @click="zoomIn()"
-                    class="w-10 cursor-pointer h-10 bg-white rounded-md shadow-lg hover:bg-gray-50 flex items-center justify-center text-xl font-semibold transition-colors"
+                    class="w-10 cursor-pointer h-10 bg-white rounded-md shadow-lg hover:bg-gray-50 flex items-center justify-center text-xl font-semibold transition-colors relative z-20"
                     aria-label="Zoom in"
                 >
                     +
                 </button>
                 <button
                     @click="zoomOut()"
-                    class="w-10 cursor-pointer h-10 bg-white rounded-md shadow-lg hover:bg-gray-50 flex items-center justify-center text-xl font-semibold transition-colors"
+                    class="w-10 cursor-pointer h-10 bg-white rounded-md shadow-lg hover:bg-gray-50 flex items-center justify-center text-xl font-semibold transition-colors relative z-20"
                     aria-label="Zoom out"
                 >
                     −
