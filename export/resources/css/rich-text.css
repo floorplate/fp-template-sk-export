@@ -34,11 +34,18 @@
     }
 
     /* Lists  */
-    > ul,
+    > ul {
+        margin-top: 1.25em;
+        margin-bottom: 1.25em;
+        padding-left: 1.625em;
+        list-style-type: disc;
+    }
+
     > ol {
         margin-top: 1.25em;
         margin-bottom: 1.25em;
         padding-left: 1.625em;
+        list-style-type: decimal;
     }
 
     ul > li,
@@ -49,10 +56,16 @@
     }
 
     /* Nested lists */
-    li > ul,
+    li > ul {
+        margin-top: 0.75em;
+        margin-bottom: 0.75em;
+        list-style-type: circle;
+    }
+
     li > ol {
         margin-top: 0.75em;
         margin-bottom: 0.75em;
+        list-style-type: decimal;
     }
 
     /* Paragraphs in lists */
