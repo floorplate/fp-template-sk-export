@@ -5,6 +5,7 @@ fields:
     field:
       type: replicator
       display: 'Content Blocks'
+      collapse: true
       sets:
         heros:
           display: Heros

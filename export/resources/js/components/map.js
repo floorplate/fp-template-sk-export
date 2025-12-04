@@ -70,6 +70,14 @@ export default (building_name, latitude, longitude, optional_map_icon, building_
             maxZoom: 19
         });
 
+        // JAWG STYLES
+        const jawgStreets = new TileLayer('https://tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token={accessToken}', {
+            attribution: '<a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            minZoom: 0,
+            maxZoom: 22,
+            accessToken: 'RKO1r4kc8hB99YzyQSF1gmZd79CkMWcLcWpTr3gnotXAzjHwlbKkmsuVJJIB6gnT'
+        });
+
         // Map style selection based on CMS choice
         const styleMap = {
             'light': cartoLight,
@@ -79,7 +87,8 @@ export default (building_name, latitude, longitude, optional_map_icon, building_
             'warm_topographic': esriWorldTopo,
             'satellite': esriWorldImagery,
             'dark': cartoDarkMatter,
-            'dark_no_labels': cartoDarkNoLabels
+            'dark_no_labels': cartoDarkNoLabels,
+            'jawg_streets': jawgStreets
         };
 
         // Add selected map style or default to Warm Topographic

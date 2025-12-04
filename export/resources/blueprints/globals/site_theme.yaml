@@ -431,6 +431,110 @@ tabs:
               width: 50
               validate:
                 - required
+      -
+        display: 'Navigation Settings'
+        fields:
+          -
+            handle: nav_font
+            field:
+              type: font_picker
+              display: 'Navigation Font'
+              instructions: 'Font family for navigation text.'
+              width: 50
+              validate:
+                - required
+          -
+            handle: nav_font_weight
+            field:
+              type: select
+              display: 'Navigation Font Weight'
+              instructions: 'Font weight for navigation text.'
+              default: 400
+              width: 50
+              validate:
+                - required
+              options:
+                100: Thin
+                200: 'Extra Light'
+                300: Light
+                400: Normal
+                500: Medium
+                600: 'Semi Bold'
+                700: Bold
+                800: 'Extra Bold'
+                900: Black
+          -
+            handle: nav_text_scaler
+            field:
+              default: '0'
+              type: integer
+              display: 'Navigation Text Scaler'
+              instructions: 'This site uses a fluid design system that scales navigation text from mobile to 4K. You can increase or decrease the scaling curve of navigation text here. 0 will use the default system curve. 10 would increase the scaling by 10%, -10 would decrease the scaling by 10%, etc.'
+              width: 50
+              validate:
+                - required
+          -
+            handle: nav_line_height
+            field:
+              default: '120'
+              type: integer
+              display: 'Navigation Line Height'
+              instructions: 'Line height of navigation text. Enter a percentage, with 100 being the exact text size height. Suggested default is approximately 120(%).'
+              width: 50
+              validate:
+                - required
+      -
+        display: 'Button Settings'
+        fields:
+          -
+            handle: button_font
+            field:
+              type: font_picker
+              display: 'Button Font'
+              instructions: 'Font family for button text.'
+              width: 50
+              validate:
+                - required
+          -
+            handle: button_font_weight
+            field:
+              type: select
+              display: 'Button Font Weight'
+              instructions: 'Font weight for button text.'
+              default: 400
+              width: 50
+              validate:
+                - required
+              options:
+                100: Thin
+                200: 'Extra Light'
+                300: Light
+                400: Normal
+                500: Medium
+                600: 'Semi Bold'
+                700: Bold
+                800: 'Extra Bold'
+                900: Black
+          -
+            handle: button_text_scaler
+            field:
+              default: '0'
+              type: integer
+              display: 'Button Text Scaler'
+              instructions: 'This site uses a fluid design system that scales button text from mobile to 4K. You can increase or decrease the scaling curve of button text here. 0 will use the default system curve. 10 would increase the scaling by 10%, -10 would decrease the scaling by 10%, etc.'
+              width: 50
+              validate:
+                - required
+          -
+            handle: button_line_height
+            field:
+              default: '120'
+              type: integer
+              display: 'Button Line Height'
+              instructions: 'Line height of button text. Enter a percentage, with 100 being the exact text size height. Suggested default is approximately 120(%).'
+              width: 50
+              validate:
+                - required
   colors:
     display: Colors
     sections:

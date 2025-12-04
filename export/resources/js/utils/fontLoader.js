@@ -1,7 +1,7 @@
 import WebFont from "webfontloader";
 
 export function loadFonts() {
-    if (window.headerFont || window.paragraphFont || window.h1FontOverride || window.h2FontOverride || window.h3FontOverride || window.h4FontOverride || window.h5FontOverride || window.h6FontOverride) {
+    if (window.headerFont || window.paragraphFont || window.navFont || window.buttonFont || window.h1FontOverride || window.h2FontOverride || window.h3FontOverride || window.h4FontOverride || window.h5FontOverride || window.h6FontOverride) {
         const googleFamilies = [];
         const loadedFonts = new Set(); // Track loaded fonts to avoid duplicates
 
@@ -19,6 +19,22 @@ export function loadFonts() {
                 `${window.paragraphFont}:100,200,300,400,500,600,700,800,900`
             );
             loadedFonts.add(window.paragraphFont);
+        }
+
+        if (window.navFont && !loadedFonts.has(window.navFont)) {
+            console.log("Loading custom nav font:", window.navFont);
+            googleFamilies.push(
+                `${window.navFont}:100,200,300,400,500,600,700,800,900`
+            );
+            loadedFonts.add(window.navFont);
+        }
+
+        if (window.buttonFont && !loadedFonts.has(window.buttonFont)) {
+            console.log("Loading custom button font:", window.buttonFont);
+            googleFamilies.push(
+                `${window.buttonFont}:100,200,300,400,500,600,700,800,900`
+            );
+            loadedFonts.add(window.buttonFont);
         }
 
         // Load override fonts if they're different from header font

@@ -34,6 +34,14 @@
         --h6-text-scaler-override: {{site_theme:h6_text_scaler_override ?? site_theme:header_text_scaler ?? 0}};
         --h6-line-height-override: {{site_theme:h6_line_height_override ?? site_theme:header_line_height}}%;
         --h6-font-weight-override: {{site_theme:h6_font_weight_override ?? site_theme:header_font_weight ?? 400}};
+        --nav-font: {{site_theme:nav_font ?? site_theme:paragraph_font}};
+        --nav-text-scaler: {{site_theme:nav_text_scaler ?? 0}};
+        --nav-line-height: {{site_theme:nav_line_height ?? 120}}%;
+        --nav-font-weight: {{site_theme:nav_font_weight ?? 400}};
+        --button-font: {{site_theme:button_font ?? site_theme:paragraph_font}};
+        --button-text-scaler: {{site_theme:button_text_scaler ?? 0}};
+        --button-line-height: {{site_theme:button_line_height ?? 120}}%;
+        --button-font-weight: {{site_theme:button_font_weight ?? 400}};
     }
     
     {{if site_theme:media_border_rounding == 'extra_small'}}

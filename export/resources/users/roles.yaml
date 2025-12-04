@@ -17,9 +17,12 @@ editor:
     - 'publish other authors pages entries'
     - 'delete other authors pages entries'
     - 'configure navs'
-    - 'view main nav'
-    - 'edit main nav'
-    - 'edit seo globals'
+    - 'view footer_legal_links nav'
+    - 'view footer_links nav'
+    - 'view main_center_nav nav'
+    - 'view main_right_nav nav'
+    - 'edit footer globals'
+    - 'edit site_theme globals'
     - 'configure asset containers'
     - 'view assets assets'
     - 'upload assets assets'
@@ -29,6 +32,7 @@ editor:
     - 'delete assets assets'
     - 'configure forms'
     - 'access cache utility'
+    - 'edit seo site defaults'
 contributor:
   title: Contributor
   permissions:

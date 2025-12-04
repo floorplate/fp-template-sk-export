@@ -19,6 +19,7 @@ fields:
       display: 'Expander Rows'
       validate:
         - required
+      collapse: true
       sets:
         new_set_group:
           display: 'New Set Group'

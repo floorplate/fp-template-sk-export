@@ -43,8 +43,7 @@
 /* @layer base {
 } */
 p,
-li,
-.button-text {
+li {
     font-family: var(--paragraph-font), sans-serif;
     font-weight: var(--paragraph-font-weight);
 }
@@ -146,9 +145,17 @@ p.small {
 }
 
 .button-text {
-    font-size: calc(1rem * (1 + var(--paragraph-text-scaler) / 100));
-    line-height: var(--paragraph-line-height);
-    font-weight: var(--paragraph-font-weight);
+    font-family: var(--button-font), sans-serif;
+    font-size: calc(1rem * (1 + var(--button-text-scaler) / 100));
+    line-height: var(--button-line-height);
+    font-weight: var(--button-font-weight);
+}
+
+.nav-text {
+    font-family: var(--nav-font), sans-serif;
+    font-size: calc(1rem * (1 + var(--nav-text-scaler) / 100));
+    line-height: var(--nav-line-height);
+    font-weight: var(--nav-font-weight);
 }
 /* 
 .text-content a {

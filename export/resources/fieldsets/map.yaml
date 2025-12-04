@@ -20,6 +20,7 @@ fields:
         satellite: 'Satellite Imagery'
         dark: Dark
         dark_no_labels: 'Dark (No Labels)'
+        jawg_streets: 'Jawg Streets'
       validate:
         - required
   -
