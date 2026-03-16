@@ -10,6 +10,8 @@ export_paths:
   - users
   - config/filesystems.php
   - package.json
+  - vite.config.js
+  - vite-cp.config.js
   - public/assets/favicon.ico
   - public/assets/favicon.svg
   - public/assets/logo-mark-black-sm.svg
