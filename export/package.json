@@ -3,20 +3,22 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "dev": "vite"
+        "dev": "vite",
+        "cp:dev": "vite --config vite-cp.config.js",
+        "cp:build": "vite build --config vite-cp.config.js"
     },
     "devDependencies": {
         "@tailwindcss/postcss": "^4.0.0",
         "concurrently": "^9.0.1",
-        "laravel-vite-plugin": "^1.0.2",
+        "laravel-vite-plugin": "^2.1.0",
         "postcss": "^8.4.38",
         "tailwindcss": "^4.0.0",
-        "vite": "^6.0"
+        "vite": "^7.0.4"
     },
     "dependencies": {
         "@splidejs/splide": "^4.1.4",
         "@tailwindcss/vite": "^4.0.17",
-        "@vitejs/plugin-vue2": "^2.3.3",
+        "@statamic/cms": "file:./vendor/statamic/cms/resources/dist-package",
         "alpinejs": "^3.14.8",
         "axios": "^1.9.0",
         "futureman-tailwind-clamp-plugin": "^1.0.2",

@@ -24,6 +24,7 @@
 
 <script>
 
+import { FieldtypeMixin as Fieldtype } from '@statamic/cms';
 import fontData from '../../../data/transformed_fonts.json';
 
 export default {

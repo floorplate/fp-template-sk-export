@@ -2,3 +2,9 @@ name: conner
 super: true
 id: 8e6db97c-665c-47eb-b476-76d55a45e908
 password_hash: $2y$12$vgAxBesxeb73CGdhycDD.e0LZjF1/e7mOdREcPbM28uyZUCr7TmQ.
+preferences:
+  collections:
+    pages:
+      view: tree
+    availabilities:
+      view: tree
