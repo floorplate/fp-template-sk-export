@@ -1,0 +1,69 @@
+title: Stats
+fields:
+  -
+    import: background_color_override
+  -
+    import: text_color
+  -
+    handle: title
+    field:
+      type: text
+      display: Title
+      localizable: true
+  -
+    handle: stats
+    field:
+      type: replicator
+      display: Stats
+      validate:
+        - required
+      sets:
+        stat:
+          display: Stat
+          icon: layout-number
+          fields:
+            -
+              handle: value
+              field:
+                type: replicator
+                display: Value
+                max_sets: 1
+                validate:
+                  - required
+                sets:
+                  text_value:
+                    display: Text
+                    icon: text-formatting-all-caps
+                    fields:
+                      -
+                        handle: text
+                        field:
+                          type: text
+                          display: Value
+                          localizable: true
+                          validate:
+                            - required
+                  icon_value:
+                    display: Icon
+                    icon: media-image-picture-orientation
+                    fields:
+                      -
+                        handle: icon
+                        field:
+                          container: assets
+                          type: assets
+                          display: Icon
+                          max_files: 1
+                          min_files: 1
+                          validate:
+                            - required
+            -
+              handle: description
+              field:
+                type: textarea
+                display: Description
+                localizable: true
+  -
+    import: spacing_section
+  -
+    import: anchor_id

@@ -47,6 +47,12 @@ fields:
                   import: text_color
                 -
                   import: dual_column_text_blocks
+            stats:
+              display: Stats
+              icon: layout-number
+              fields:
+                -
+                  import: stats
         images:
           display: Images/Video
           icon: media-image-picture-gallery
@@ -95,6 +101,12 @@ fields:
               fields:
                 -
                   import: map
+            stats:
+              display: Stats
+              icon: layout-split-header-three-columns
+              fields:
+                -
+                  import: stats
         rows_tables:
           display: Rows/Tables
           sets:

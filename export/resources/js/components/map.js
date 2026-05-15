@@ -4,8 +4,68 @@ import 'leaflet/dist/leaflet.css';
 var map = null;
 var markers = {};
 
+function escapeHtmlAttr(value) {
+    return String(value ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/</g, '&lt;');
+}
+
+/** Statamic link field JSON: `{ url }` or a plain URL string. */
+function resolvePoiLinkUrl(point) {
+    const link = point?.view_more_link;
+    if (!link) {
+        return null;
+    }
+    if (typeof link === 'string' && link.trim() !== '') {
+        return link.trim();
+    }
+    if (typeof link === 'object' && link.url != null && String(link.url).trim() !== '') {
+        return String(link.url).trim();
+    }
+
+    return null;
+}
+
+function safePoiHref(url) {
+    const href = String(url ?? '').trim();
+    if (!href || /^javascript:/i.test(href)) {
+        return null;
+    }
+
+    return href;
+}
+
+function externalLinkAttrs(url) {
+    try {
+        const u = new URL(url, window.location.origin);
+        if (u.origin !== window.location.origin) {
+            return ' target="_blank" rel="noopener noreferrer"';
+        }
+    } catch {
+        //
+    }
+
+    return '';
+}
+
+/** Ensures property pin stacks above POIs (Leaflet uses latLng y-position + this offset for marker z-index). */
+const BUILDING_MARKER_Z_INDEX_OFFSET = 100_000;
+
+/** POI pins stay fixed at 32px; building pin uses a larger base and grows with zoom so it stays prominent vs map detail. */
+function getBuildingPixelSizeForZoom(zoom) {
+    const refZoom = 13;
+    const baseSize = 52;
+    const perLevel = 3;
+    const scaled = baseSize + Math.max(0, zoom - refZoom) * perLevel;
+
+    return Math.round(Math.min(72, Math.max(48, scaled)));
+}
+
 export default (building_name, latitude, longitude, optional_map_icon, building_pin_color, points_of_interest, map_style) => ({
     categoryVisibility: {},
+    buildingMarker: null,
+    buildingPinOpts: null,
     async init() {
         map = new Map('map', {
             center: new LatLng(latitude, longitude),
@@ -104,6 +164,16 @@ export default (building_name, latitude, longitude, optional_map_icon, building_
         );
         buildingMarker.addTo(map);
         markers['building'] = buildingMarker;
+        this.buildingMarker = buildingMarker;
+        this.buildingPinOpts = {
+            title: building_name,
+            customIcon: optional_map_icon,
+            pinColor: building_pin_color,
+        };
+
+        map.on('zoomend', () => {
+            this.refreshBuildingMarkerIcon();
+        });
 
         if (points_of_interest) {
             const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
@@ -130,7 +200,8 @@ export default (building_name, latitude, longitude, optional_map_icon, building_
                         point.name,
                         pinColor,
                         subtitle,
-                        idx + 1
+                        idx + 1,
+                        resolvePoiLinkUrl(point)
                     );
 
                     poiMarker.category = categoryName;
@@ -145,6 +216,28 @@ export default (building_name, latitude, longitude, optional_map_icon, building_
         }
 
         this.frameAllAnnotations();
+        this.refreshBuildingMarkerIcon();
+    },
+
+    refreshBuildingMarkerIcon() {
+        if (!map || !this.buildingMarker || !this.buildingPinOpts) {
+            return;
+        }
+
+        const { title, customIcon, pinColor } = this.buildingPinOpts;
+        const size = getBuildingPixelSizeForZoom(map.getZoom());
+        const half = Math.round(size / 2);
+        const iconHtml = this.getBuildingIconHtml(customIcon, pinColor, size, title);
+
+        const icon = new DivIcon({
+            className: 'custom-building-marker',
+            html: iconHtml,
+            iconSize: [size, size],
+            iconAnchor: [half, half],
+            popupAnchor: [0, -half],
+        });
+
+        this.buildingMarker.setIcon(icon);
     },
 
     toggleCategory(category_name) {
@@ -164,48 +257,56 @@ export default (building_name, latitude, longitude, optional_map_icon, building_
     },
 
     createBuildingMarker(latLng, title, customIcon, pinColor) {
-        const iconHtml = this.getBuildingIconHtml(customIcon, pinColor);
-        
+        const size = map ? getBuildingPixelSizeForZoom(map.getZoom()) : 52;
+        const half = Math.round(size / 2);
+        const iconHtml = this.getBuildingIconHtml(customIcon, pinColor, size, title);
+
         const icon = new DivIcon({
             className: 'custom-building-marker',
             html: iconHtml,
-            iconSize: [40, 40],
-            iconAnchor: [20, 20],
-            popupAnchor: [0, -20]
+            iconSize: [size, size],
+            iconAnchor: [half, half],
+            popupAnchor: [0, -half],
         });
 
-        const marker = new Marker(latLng, { icon });
-        
+        const marker = new Marker(latLng, {
+            icon,
+            zIndexOffset: BUILDING_MARKER_Z_INDEX_OFFSET,
+        });
+
         const popupContent = `
             <div class="bg-white px-fm-xs py-fm-2xs rounded shadow" style="max-width: 300px; min-width: 250px;">
                 <p class="title" style="font-weight: bold; margin-bottom: 4px;">${title}</p>
             </div>
         `;
-        
+
         marker.bindPopup(popupContent);
-        
+
         return marker;
     },
 
-    getBuildingIconHtml(customIcon, pinColor = '#000000') {
+    getBuildingIconHtml(customIcon, pinColor = '#000000', sizePx = 52, titleForAlt = 'Property') {
+        const logoPx = Math.round(sizePx * 0.52);
+        const alt = escapeHtmlAttr(titleForAlt || 'Property');
+
         if (customIcon && customIcon !== '' && customIcon !== 'undefined') {
             return `
-                <div style="width: 40px; height: 40px; border-radius: 50%; background-color: ${pinColor}; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">
-                    <img src="${customIcon}" style="width: 24px; height: 24px; object-fit: contain;" />
-                </div>
-            `;
-        } else {
-            return `
-                <div style="width: 40px; height: 40px; border-radius: 50%; background-color: ${pinColor}; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">
-                    <svg viewBox="0 0 24 24" fill="white" style="width: 60%; height: 60%;">
-                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                    </svg>
+                <div style="width: ${sizePx}px; height: ${sizePx}px; border-radius: 50%; background-color: ${pinColor}; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                    <img src="${customIcon}" alt="${alt}" style="width: ${logoPx}px; height: ${logoPx}px; object-fit: contain;" />
                 </div>
             `;
         }
+
+        return `
+            <div style="width: ${sizePx}px; height: ${sizePx}px; border-radius: 50%; background-color: ${pinColor}; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                <svg viewBox="0 0 24 24" fill="white" style="width: 60%; height: 60%;">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+            </div>
+        `;
     },
 
-    createPOIMarker(latLng, title, color, subtitle, index) {
+    createPOIMarker(latLng, title, color, subtitle, index, viewMoreUrl) {
         const iconHtml = `
             <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background-color: ${color}; color: white; border-radius: 50%; font-weight: bold; font-size: 14px; border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">
                 ${index}
@@ -227,16 +328,26 @@ export default (building_name, latitude, longitude, optional_map_icon, building_
         const description = subtitleParts[1] || '';
 
         let popupContent = `
-            <div class="bg-white px-fm-xs py-fm-xs rounded shadow" style="max-width: 300px; min-width: 250px;">
-                <p style="font-weight: bold; max-width: 90%; margin-bottom: 12px;" class="title">${title}</p>
+            <div class="poi-popup bg-white flex flex-col gap-fm-xs px-fm-xs py-fm-xs rounded shadow" style="max-width: 300px; min-width: 250px;">
+                <p class="title m-0 font-bold max-w-[90%]">${title}</p>
         `;
 
         if (address) {
-            popupContent += `<p class="address small text-gray-600" style="max-width: 90%;">${address}</p>`;
+            popupContent += `<p class="address small text-gray-600 m-0 max-w-[90%]">${address}</p>`;
         }
 
         if (description) {
-            popupContent += `<p class="description">${description}</p>`;
+            popupContent += `<p class="description m-0">${description}</p>`;
+        }
+
+        const href = safePoiHref(viewMoreUrl);
+        if (href) {
+            const attrs = externalLinkAttrs(href);
+            popupContent += `
+                <p class="poi-view-more m-0">
+                    <a href="${escapeHtmlAttr(href)}" class="underline font-semibold text-dark-text-color"${attrs}>View More</a>
+                </p>
+            `;
         }
 
         popupContent += `</div>`;

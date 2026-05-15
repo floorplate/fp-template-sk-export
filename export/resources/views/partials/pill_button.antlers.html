@@ -1,4 +1,4 @@
-<a href="{{url}}" target="_blank">
+<a href="{{url}}" {{if footer_nav}}target="_blank" rel="noopener noreferrer"{{elseif open_in_new_tab}}target="_blank" rel="noopener noreferrer"{{/if}}>
 <div class="py-2  button-text px-3 rounded-full transition-all duration-200 text-center border {{if innerNavStyle == 'dark'}}border-primary-light-color text-light-text-color hover:text-dark-text-color hover:bg-primary-light-color {{else}}border-primary-color text-dark-text-color hover:text-light-text-color hover:bg-primary-color{{/if}}">
     {{title}}
 </div>

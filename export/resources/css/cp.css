@@ -1,0 +1,13 @@
+/**
+ * Statamic’s default Bard typography (bard-fieldtype .bard-content h6) applies
+ * uppercase in the CP only. That makes the editor preview disagree with stored
+ * content and the front end. Preserve the casing authors enter in the CMS.
+ */
+.bard-fieldtype .bard-content h6 {
+    text-transform: none !important;
+}
+
+/* Bard Texstyle: heading_6 preview in the styles UI also uses uppercase */
+.bts-styles .bts-preview[data-bts-type="heading_6"] {
+    text-transform: none !important;
+}

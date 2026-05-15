@@ -1,55 +1,86 @@
 <div class="p-fm-sm bg-primary-color flex flex-col gap-fm-sm">
     <div
-        class="bg-primary-light-color rounded-rounded-xs py-fm-lg px-fm-sm flex flex-col gap-y-fm-4xl items-center xl:flex-row xl:justify-between xl:items-center xl:px-fm-xl"
+        class="footer-top-row bg-primary-light-color rounded-rounded-xs py-fm-lg px-fm-sm flex min-w-0 flex-col gap-y-fm-4xl items-center xl:flex-row xl:justify-start xl:items-center xl:gap-x-fm-8xl xl:gap-y-0 xl:px-fm-xl"
     >
-        <div class="flex flex-col items-center xl:flex-row xl:items-center gap-fm-md">
+        <div class="footer-brand-cluster flex w-full min-w-0 flex-col items-center xl:flex-row xl:items-center gap-fm-md">
             {{footer:footer_logo}}
-            <img class="w-full max-w-[200px] xl:max-w-[160px]" src="{{glide:url width='250'}}" alt="{{alt}}" />
+            <div
+                class="footer-logo shrink-0"
+                style="--footer-logo-max: {{ footer:footer_logo_max_width ?? 200 }}px; --footer-logo-max-xl: {{ footer:footer_logo_max_width_xl ?? 160 }}px;"
+            >
+                <img src="{{glide:url width='800'}}" alt="{{alt}}" loading="lazy" decoding="async" />
+            </div>
             {{/footer:footer_logo}}
 
-            <div class="w-[80%] h-[1px] bg-primary-color xl:h-[90px] xl:w-[1px]"></div>
-            <div class="{{partial:rich_text_class}}">{{footer:address}}</div>
+            <div class="w-[80%] shrink-0 h-[1px] bg-primary-color xl:h-[90px] xl:w-[1px]"></div>
+            <div class="min-w-0 w-full max-w-full xl:w-auto {{partial:rich_text_class}}">{{footer:address}}</div>
         </div>
-        <div class="flex flex-col lg:flex-row items-center gap-fm-lg **:text-dark-text-color">
-            {{nav:footer_links}} {{if button_style}} {{partial:pill_button innerNavStyle="light"}}
-            {{else}}
-            <a href="{{url}}">
-                <div
-                    class="button-text hover:underline"
-                >
-                    {{title}}
-                </div>
-            </a>
-            {{/if}} {{/nav:footer_links}}
-        </div>
+        {{nav:footer_links}}
+            {{unless no_results}}
+                {{if first}}
+                    <div class="footer-top-nav flex min-w-0 shrink-0 flex-col items-center gap-fm-lg lg:flex-row xl:ml-auto **:text-dark-text-color">
+                {{/if}}
+                {{if button_style}}
+                    {{partial:pill_button innerNavStyle="light" footer_nav="true"}}
+                {{else}}
+                    <a href="{{url}}">
+                        <div
+                            class="button-text hover:underline"
+                        >
+                            {{title}}
+                        </div>
+                    </a>
+                {{/if}}
+                {{if last}}
+                    </div>
+                {{/if}}
+            {{/unless}}
+        {{/nav:footer_links}}
     </div>
 
     <div class="bg-primary-light-color rounded-rounded-xs py-fm-lg px-fm-sm flex flex-col gap-fm-4xl items-center xl:flex-row xl:justify-between xl:items-center xl:px-fm-xl">
-        <div class="flex flex-col items-center gap-fm-lg lg:flex-row">
+        <div class="footer-partner-logos flex flex-col items-center gap-fm-lg lg:flex-row">
             {{footer:partner_logos}}
                 {{if partner_link}}
-                <a href="{{partner_link}}" target="_blank">
-                    <img class="w-[76px]" src="{{partner_image:url}}" alt="{{partner_image:alt}}">
+                <a
+                    href="{{partner_link}}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="footer-partner-logo shrink-0"
+                    style="--footer-partner-logo-max: {{ partner_logo_max_width ?? 76 }}px;"
+                >
+                    <img src="{{partner_image:url}}" alt="{{partner_image:alt}}" loading="lazy" decoding="async" />
                 </a>
                 {{else}}
-                <img class="w-[76px]" src="{{partner_image:url}}" alt="{{partner_image:alt}}">
+                <div
+                    class="footer-partner-logo shrink-0"
+                    style="--footer-partner-logo-max: {{ partner_logo_max_width ?? 76 }}px;"
+                >
+                    <img src="{{partner_image:url}}" alt="{{partner_image:alt}}" loading="lazy" decoding="async" />
+                </div>
                 {{/if}}
             {{/footer:partner_logos}}
         </div>
 
         <div class="flex flex-col items-center gap-fm-lg lg:flex-row">
             <div>©{{ now | format:Y }}</div>
-            <div class="flex flex-col lg:flex-row">
-                {{nav:footer_legal_links}}
-                <a href="{{url}}">
-                    <div
-                        class="button-text hover:underline"
-                    >
-                        {{title}}
-                    </div>
-                </a>
-                {{/nav:footer_legal_links}}
-            </div>
+            {{nav:footer_legal_links}}
+                {{unless no_results}}
+                    {{if first}}
+                        <div class="flex flex-col lg:flex-row">
+                    {{/if}}
+                    <a href="{{url}}">
+                        <div
+                            class="button-text hover:underline"
+                        >
+                            {{title}}
+                        </div>
+                    </a>
+                    {{if last}}
+                        </div>
+                    {{/if}}
+                {{/unless}}
+            {{/nav:footer_legal_links}}
         </div>
     </div>
 </div>

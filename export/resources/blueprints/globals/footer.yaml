@@ -16,6 +16,30 @@ tabs:
               validate:
                 - required
           -
+            handle: footer_logo_max_width
+            field:
+              type: integer
+              default: 200
+              display: 'Footer logo max width (px, below xl)'
+              instructions: 'Default 200px (matches the original template). Override to change max width below the xl breakpoint.'
+              width: 50
+              validate:
+                - 'integer'
+                - 'min:40'
+                - 'max:800'
+          -
+            handle: footer_logo_max_width_xl
+            field:
+              type: integer
+              default: 160
+              display: 'Footer logo max width (px, xl and up)'
+              instructions: 'Default 160px (matches the original template). Increase if the logo looks too small next to the address on large screens.'
+              width: 50
+              validate:
+                - 'integer'
+                - 'min:40'
+                - 'max:800'
+          -
             handle: address
             field:
               buttons:
@@ -62,3 +86,15 @@ tabs:
                             type: link
                             display: 'Partner Link'
                             width: 50
+                        -
+                          handle: partner_logo_max_width
+                          field:
+                            type: integer
+                            display: 'Max width (px, optional)'
+                            instructions: 'Override display size for this logo only. Leave empty to use the template default (76px).'
+                            width: 100
+                            validate:
+                              - 'nullable'
+                              - 'integer'
+                              - 'min:24'
+                              - 'max:800'

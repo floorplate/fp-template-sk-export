@@ -5,13 +5,6 @@ tabs:
       -
         fields:
           -
-            handle: button_style
-            field:
-              type: toggle
-              display: 'Button Style Link'
-              validate:
-                - required
-          -
             handle: open_in_new_tab
             field:
               type: toggle

@@ -1,8 +1,8 @@
-<div class="{{if !background_color_override}}bg-primary-color{{/if}} px-om {{partial:text_color}} {{if spacing_top_override}}{{partial:spacing_top_override}}{{else}}pt-fm-8xl{{/if}} {{if spacing_bottom_override}}{{partial:spacing_bottom_override}}{{else}}pb-fm-8xl{{/if}}" style="{{if background_color_override}}background-color: {{background_color_override}};{{/if}}">
+<div class="contact-sections {{if !background_color_override}}bg-primary-color{{/if}} px-om {{partial:text_color}} {{if spacing_top_override}}{{partial:spacing_top_override}}{{else}}pt-fm-8xl{{/if}} {{if spacing_bottom_override}}{{partial:spacing_bottom_override}}{{else}}pb-fm-8xl{{/if}}" style="{{if background_color_override}}background-color: {{background_color_override}};{{/if}}">
     <div class="screen-max flex flex-col gap-fm-8xl">
         {{contact_sections}}
         {{if section_title}}
-            <div class="grid grid-cols-1 lg:grid-cols-3">
+            <div class="grid grid-cols-1 gap-y-fm-4xl lg:grid-cols-3 lg:gap-x-fm-4xl lg:gap-y-0">
                 <div class="{{partial:rich_text_class}} w-full col-span-1">
                     <div class="">{{section_title}}</div>
                 </div>

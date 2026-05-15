@@ -171,3 +171,10 @@ fields:
                                   type: textarea
                                   display: Description
                                   width: 50
+                              -
+                                handle: view_more_link
+                                field:
+                                  type: link
+                                  display: 'View More Link'
+                                  instructions: 'Optional. When set, a "View More" link appears at the bottom of this point’s map popup.'
+                                  width: 100

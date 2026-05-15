@@ -144,6 +144,10 @@ p.small {
     @apply no-underline;
 }
 
+.contact-sections .rich-text a[href^='tel:'] {
+    @apply no-underline;
+}
+
 .button-text {
     font-family: var(--button-font), sans-serif;
     font-size: calc(1rem * (1 + var(--button-text-scaler) / 100));
@@ -156,6 +160,67 @@ p.small {
     font-size: calc(1rem * (1 + var(--nav-text-scaler) / 100));
     line-height: var(--nav-line-height);
     font-weight: var(--nav-font-weight);
+}
+
+/* Footer globals: max-width defaults match original template (200/160, partner 76/76); vars set on .footer-logo in partial.
+   The .footer-logo div must stay only as wide as the logo — width:100% on the wrapper made a huge flex item (~800px) while the img stayed small, pushing divider + address away. */
+.footer-logo {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    max-width: min(100%, var(--footer-logo-max, 200px));
+    margin-inline: auto;
+}
+
+@media (min-width: 1280px) {
+    .footer-logo {
+        max-width: min(100%, var(--footer-logo-max-xl, 160px));
+        margin-inline: 0;
+        justify-content: flex-start;
+    }
+}
+
+.footer-logo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+
+/* Per partner logo: --footer-partner-logo-max set inline when CMS overrides; CSS fallback 76px matches original template */
+.footer-partner-logo {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    max-width: min(100%, var(--footer-partner-logo-max, 76px));
+}
+
+.footer-partner-logo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+
+/* First footer row: logo + rule + address must not span full width and shove nav off-screen */
+@media (min-width: 1280px) {
+    .footer-top-row {
+        flex-wrap: nowrap;
+    }
+
+    .footer-brand-cluster {
+        flex: 0 1 auto;
+        min-width: 0;
+        max-width: min(100%, 58%);
+        width: auto;
+    }
+
+    .footer-brand-cluster .rich-text {
+        width: auto;
+        max-width: 100%;
+    }
 }
 /* 
 .text-content a {

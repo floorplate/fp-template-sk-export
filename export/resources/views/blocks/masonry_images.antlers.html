@@ -1,10 +1,10 @@
-<div x-data="imageGrid()" class="relative p-fm-sm {{if !background_color_override}}bg-primary-light-color{{/if}}"  style="{{if background_color_override}}background-color: {{background_color_override}};{{/if}}">
+<div x-data="imageGrid()" class="relative p-fm-sm {{if !background_color_override}}bg-primary-light-color{{/if}}" style="{{if background_color_override}}background-color: {{ background_color_override }};{{/if}}">
     <div class="screen-max">
         <div
             x-ref="gridContainer"
             class="grid grid-cols-2 gap-fm-sm w-full mx-auto auto-rows-[clamp(160px,15vw,487px)] lg:grid-cols-4"
         >
-            <div class="bg-gray-500 relative overflow-hidden {{partial:rounding}}">
+            <div class="bg-transparent relative overflow-hidden {{partial:rounding}}">
                 1 {{small_horizontal_rectangle_images}} {{if index == 0 }}
                 <img
                     x-on:click="viewInLightbox(0)"
@@ -16,7 +16,7 @@
             </div>
 
             <div
-                class="bg-gray-500 relative overflow-hidden lg:row-start-2 lg:col-start-1 {{partial:rounding}}"
+                class="bg-transparent relative overflow-hidden lg:row-start-2 lg:col-start-1 {{partial:rounding}}"
             >
                 2 {{small_horizontal_rectangle_images}} {{if index == 1 }}
                 <img
@@ -29,7 +29,7 @@
             </div>
 
             <div
-                class="col-span-2 relative bg-gray-500 overflow-hidden lg:row-start-1 lg:col-start-2 {{partial:rounding}}"
+                class="col-span-2 relative bg-transparent overflow-hidden lg:row-start-1 lg:col-start-2 {{partial:rounding}}"
             >
                 3 {{long_horizontal_images}} {{if index == 0 }}
                 <img
@@ -42,7 +42,7 @@
             </div>
 
             <div
-                class="bg-gray-500 relative overflow-hidden lg:row-span-2 lg:row-start-3 {{partial:rounding}}"
+                class="bg-transparent relative overflow-hidden lg:row-span-2 lg:row-start-3 {{partial:rounding}}"
             >
                 4 {{vertical_rectangle_images}} {{if index == 1 }}
                 <img
@@ -55,7 +55,7 @@
             </div>
 
             <div
-                class="bg-gray-500 relative overflow-hidden lg:col-start-2 lg:row-span-2 lg:row-start-2 {{partial:rounding}}"
+                class="bg-transparent relative overflow-hidden lg:col-start-2 lg:row-span-2 lg:row-start-2 {{partial:rounding}}"
             >
                 5 {{vertical_rectangle_images}} {{if index == 2 }}
                 <img
@@ -68,7 +68,7 @@
             </div>
 
             <div
-                class="{{partial:rounding}} col-span-2 relative row-span-2 row-start-3 bg-gray-500 overflow-hidden lg:row-span-2 lg:col-start-3 lg:row-start-3"
+                class="{{partial:rounding}} col-span-2 relative row-span-2 row-start-3 bg-transparent overflow-hidden lg:row-span-2 lg:col-start-3 lg:row-start-3"
             >
                 6 {{large_image}}
 
@@ -83,7 +83,7 @@
             </div>
 
             <div
-                class="{{partial:rounding}} col-start-1 relative row-start-5 row-span-2 bg-gray-500 overflow-hidden lg:row-start-1 lg:col-start-4"
+                class="{{partial:rounding}} col-start-1 relative row-start-5 row-span-2 bg-transparent overflow-hidden lg:row-start-1 lg:col-start-4"
             >
                 7 {{vertical_rectangle_images}} {{if index == 0 }}
                 <img
@@ -96,7 +96,7 @@
             </div>
 
             <div
-                class="{{partial:rounding}} col-start-2 relative row-start-5 bg-gray-500 overflow-hidden lg:col-start-3 lg:row-start-2"
+                class="{{partial:rounding}} col-start-2 relative row-start-5 bg-transparent overflow-hidden lg:col-start-3 lg:row-start-2"
             >
                 8 {{small_horizontal_rectangle_images}} {{if index == 2 }}
                 <img
@@ -109,7 +109,7 @@
             </div>
 
             <div
-                class="{{partial:rounding}} col-start-1 relative row-start-7 bg-gray-500 overflow-hidden lg:col-start-3 lg:row-start-5"
+                class="{{partial:rounding}} col-start-1 relative row-start-7 bg-transparent overflow-hidden lg:col-start-3 lg:row-start-5"
             >
                 9 {{small_horizontal_rectangle_images}} {{if index == 3 }}
                 <img
@@ -122,7 +122,7 @@
             </div>
 
             <div
-                class="{{partial:rounding}} col-start-2 relative row-start-6 row-span-2 bg-gray-500 overflow-hidden lg:col-start-2 lg:row-start-4"
+                class="{{partial:rounding}} col-start-2 relative row-start-6 row-span-2 bg-transparent overflow-hidden lg:col-start-2 lg:row-start-4"
             >
                 10 {{vertical_rectangle_images}} {{if index == 3 }}
                 <img
@@ -135,7 +135,7 @@
             </div>
 
             <div
-                class="{{partial:rounding}} col-span-2 relative bg-gray-500 overflow-hidden lg:col-start-2 "
+                class="{{partial:rounding}} col-span-2 relative bg-transparent overflow-hidden lg:col-start-2 "
             >
                 11 {{long_horizontal_images}} {{if index == 1 }}
                 <img
@@ -148,7 +148,7 @@
             </div>
 
             <div
-                class="{{partial:rounding}} bg-gray-500 relative overflow-hidden lg:row-span-2 lg:col-start-4 lg:row-start-5"
+                class="{{partial:rounding}} bg-transparent relative overflow-hidden lg:row-span-2 lg:col-start-4 lg:row-start-5"
             >
                 12 {{vertical_rectangle_images}} {{if index == 4 }}
                 <img
@@ -161,7 +161,7 @@
             </div>
 
             <div
-                class="{{partial:rounding}} bg-gray-500 relative overflow-hidden lg:row-span-2 lg:col-start-1 lg:row-start-5"
+                class="{{partial:rounding}} bg-transparent relative overflow-hidden lg:row-span-2 lg:col-start-1 lg:row-start-5"
             >
                 13 {{vertical_rectangle_images}} {{if index == 5 }}
                 <img

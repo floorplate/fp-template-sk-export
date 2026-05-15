@@ -6,6 +6,14 @@
             {{partial:button_types}}
         {{elseif type == "layout_spacer"}}
             <div class="w-full h-fm-xl"></div>
+        {{elseif type == "inline_image"}}
+            <div class="inline-image-set w-full flex {{if (align ?? 'center') == 'left'}}justify-start{{elseif (align ?? 'center') == 'right'}}justify-end{{else}}justify-center{{/if}}">
+                {{image}}
+                <figure class="my-fm-md block shrink-0" style="width: {{ width_percent ?? 75 }}%; max-width: 100%;">
+                    <img src="{{ glide:url width='2000' }}" alt="{{ alt }}" class="w-full h-auto" loading="lazy" decoding="async" />
+                </figure>
+                {{/image}}
+            </div>
         {{ /if }}
     {{/text_content}}
 </div>

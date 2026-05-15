@@ -1,6 +1,15 @@
 title: 'Large Media Hero'
 fields:
   -
+    handle: mobile_aspect_video
+    field:
+      type: toggle
+      display: 'Video aspect on mobile'
+      instructions: 'When enabled, the hero uses 16:9 (aspect-video) on mobile. When off, mobile uses a taller portrait ratio and desktop stays 16:9.'
+      default: false
+      validate:
+        - required
+  -
     handle: media_type
     field:
       max_sets: 1
