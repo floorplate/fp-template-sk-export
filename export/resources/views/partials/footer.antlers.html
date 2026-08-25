@@ -23,7 +23,7 @@
                 {{if button_style}}
                     {{partial:pill_button innerNavStyle="light" footer_nav="true"}}
                 {{else}}
-                    <a href="{{url}}">
+                    <a href="{{ url }}{{ section_anchor | anchor_fragment }}">
                         <div
                             class="button-text hover:underline"
                         >

@@ -1,0 +1,29 @@
+{
+    "name": "floorplate/anchors",
+    "autoload": {
+        "psr-4": {
+            "Floorplate\\Anchors\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Floorplate\\Anchors\\Tests\\": "tests"
+        }
+    },
+    "require": {
+        "statamic/cms": "^6.0"
+    },
+    "extra": {
+        "statamic": {
+            "name": "Anchors",
+            "description": "Rename-proof in-page anchor links"
+        },
+        "laravel": {
+            "providers": [
+                "Floorplate\\Anchors\\ServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

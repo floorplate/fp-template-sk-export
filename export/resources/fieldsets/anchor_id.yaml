@@ -3,6 +3,6 @@ fields:
   -
     handle: anchor_id
     field:
-      type: text
+      type: anchor
       display: 'Anchor ID'
-      instructions: 'Provide Display Name for Anchor'
+      instructions: 'Name this section so nav links and the anchor nav can point to it. Saved as a URL slug; the anchor nav shows it title-cased.'

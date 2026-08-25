@@ -1,4 +1,4 @@
-<div x-data="imageGrid()" class="relative p-fm-sm {{if !background_color_override}}bg-primary-light-color{{/if}}" style="{{if background_color_override}}background-color: {{ background_color_override }};{{/if}}">
+<div {{partial:anchor_id}} x-data="imageGrid()" class="relative p-fm-sm {{if !background_color_override}}bg-primary-light-color{{/if}}" style="{{if background_color_override}}background-color: {{ background_color_override }};{{/if}}">
     <div class="screen-max">
         <div
             x-ref="gridContainer"

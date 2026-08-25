@@ -20,6 +20,14 @@ export_paths:
   - public/assets/logo-mark-teal.svg
   - public/assets/logo-mark-white-sm.svg
   - public/assets/logo-mark-white.svg
+  - addons/floorplate/anchors/composer.json
+  - addons/floorplate/anchors/package.json
+  - addons/floorplate/anchors/vite.config.js
+  - addons/floorplate/anchors/README.md
+  - addons/floorplate/anchors/src
+  - addons/floorplate/anchors/routes
+  - addons/floorplate/anchors/resources/js
+  - addons/floorplate/anchors/resources/dist/build
 dependencies:
   jacksleight/statamic-bard-texstyle: ^4.0
   league/flysystem-aws-s3-v3: ^3.0

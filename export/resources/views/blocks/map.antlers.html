@@ -1,20 +1,23 @@
 <script>
     window.poiData = {{ points_of_interest | to_json }};
 </script>
-<div class="p-fm-md bg-primary-color">
+{{ has_border = component_border !== false }}
+{{ show_sidebar = !hide_sidebar && points_of_interest }}
+<div {{partial:anchor_id}} class="{{ if has_border }}p-fm-md {{ /if }}bg-primary-color">
     <div
         x-data="map(
 '{{building_name}}',
 {{latitude}},
-{{longitude}}, 
+{{longitude}},
 '{{optional_map_icon}}',
 '{{building_pin_color}}',
 window.poiData,
 '{{map_style}}'
 )"
-        class="overflow-hidden rounded-rounded-sm grid grid-cols-1 lg:grid-cols-3"
+        class="overflow-hidden {{ if has_border }}rounded-rounded-sm {{ /if }}grid grid-cols-1 {{ if show_sidebar }}lg:grid-cols-3{{ /if }}"
     >
         <!-- filters -->
+        {{ if show_sidebar }}
         <div
             class="max-h-[500px] overflow-y-scroll w-full p-fm-sm bg-primary-light-color lg:max-h-[800px] lg:col-span-1"
         >
@@ -90,7 +93,8 @@ window.poiData,
                 {{/points_of_interest}}
             </div>
         </div>
-        <div class="w-full h-[500px] lg:h-[800px] lg:col-span-2 relative">
+        {{ /if }}
+        <div class="w-full h-[500px] lg:h-[800px] {{ if show_sidebar }}lg:col-span-2 {{ /if }}relative">
             <div id="map" class="w-full h-full relative z-0"></div>
             <!-- Custom Map Controls -->
             <div class="absolute bottom-4 right-4 flex flex-col gap-2 z-20">

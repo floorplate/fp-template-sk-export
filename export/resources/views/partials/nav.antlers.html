@@ -27,7 +27,7 @@
             {{nav:main_center_nav}}
             {{if no_results}}
             {{else}}
-            <a href="{{url}}" class="nav-text {{if innerNavStyle == 'dark'}}text-light-text-color{{else}}text-dark-text-color{{/if}} transition-all duration-200 hover:underline {{ is_current ? 'underline' : '' }}" {{if open_in_new_tab}}target="_blank" rel="noopener noreferrer"{{/if}}>
+            <a href="{{ url }}{{ section_anchor | anchor_fragment }}" class="nav-text {{if innerNavStyle == 'dark'}}text-light-text-color{{else}}text-dark-text-color{{/if}} transition-all duration-200 hover:underline {{ is_current ? 'underline' : '' }}" {{if open_in_new_tab}}target="_blank" rel="noopener noreferrer"{{/if}}>
                 {{title}}
             </a>
             {{/if}}
@@ -43,7 +43,7 @@
                     {{if button_style}}
                         {{partial:pill_button}}
                     {{else}}
-                        <a href="{{url}}" {{if open_in_new_tab}}target="_blank" rel="noopener noreferrer"{{/if}}>
+                        <a href="{{ url }}{{ section_anchor | anchor_fragment }}" {{if open_in_new_tab}}target="_blank" rel="noopener noreferrer"{{/if}}>
                             <div class="nav-text {{if innerNavStyle == 'dark'}}text-light-text-color{{else}}text-dark-text-color{{/if}}  hover:underline {{ is_current ? 'underline' : '' }}">
                                 {{title}}
                             </div>
@@ -79,7 +79,7 @@
             class="flex flex-col items-center gap-y-fm-lg overflow-hidden z-[200] rounded-lg transition-all duration-300 absolute top-[88px] w-full bg-primary-light-color md:rounded-xl lg:top-[108px] lg:rounded-2xl">
             <div class="flex flex-col items-center justify-center gap-y-fm-lg md:flex-row md:gap-x-fm-lg">
                 {{nav:main_center_nav}}
-                <a href="{{url}}"
+                <a href="{{ url }}{{ section_anchor | anchor_fragment }}"
                     class="nav-text text-dark-text-color text-center transition-all duration-200 hover:underline {{ is_current ? 'underline' : '' }}"
                     {{if open_in_new_tab}}target="_blank" rel="noopener noreferrer"{{/if}}>
                     {{title}}
@@ -91,7 +91,7 @@
                 {{if button_style}}
                 {{partial:pill_button innerNavStyle="light"}}
                 {{else}}
-                <a href="{{url}}" {{if open_in_new_tab}}target="_blank" rel="noopener noreferrer"{{/if}}>
+                <a href="{{ url }}{{ section_anchor | anchor_fragment }}" {{if open_in_new_tab}}target="_blank" rel="noopener noreferrer"{{/if}}>
                     <div class="nav-text text-dark-text-color text-center">
                         {{title}}
                     </div>

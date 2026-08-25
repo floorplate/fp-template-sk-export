@@ -62,6 +62,22 @@ fields:
       validate:
         - required
   -
+    handle: component_border
+    field:
+      default: true
+      type: toggle
+      display: 'Component Border'
+      instructions: 'When off, the border around the component is removed and the map uses the full width.'
+      width: 50
+  -
+    handle: hide_sidebar
+    field:
+      default: false
+      type: toggle
+      display: 'Hide Sidebar'
+      instructions: 'When on, the sidebar is never rendered and the map uses the full width. The sidebar is automatically hidden when no POI Categories are added.'
+      width: 50
+  -
     handle: optional_map_icon
     field:
       max_files: 1
@@ -178,3 +194,5 @@ fields:
                                   display: 'View More Link'
                                   instructions: 'Optional. When set, a "View More" link appears at the bottom of this point’s map popup.'
                                   width: 100
+  -
+    import: anchor_id

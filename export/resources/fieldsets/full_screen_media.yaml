@@ -89,3 +89,5 @@ fields:
                     display: 'Playback Controls'
                     validate:
                       - required
+  -
+    import: anchor_id

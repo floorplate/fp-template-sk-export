@@ -38,3 +38,5 @@ fields:
                   import: text_content
   -
     import: spacing_section
+  -
+    import: anchor_id

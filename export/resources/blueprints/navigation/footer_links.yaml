@@ -5,6 +5,12 @@ tabs:
       -
         fields:
           -
+            handle: section_anchor
+            field:
+              type: section_anchor
+              display: 'Section Anchor'
+              instructions: 'Optional. Jump to a section on the linked page instead of its top. Renaming that section’s Anchor ID will not break this link.'
+          -
             handle: button_style
             field:
               type: toggle

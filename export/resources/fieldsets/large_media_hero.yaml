@@ -46,3 +46,5 @@ fields:
                     display: 'Vimeo Embed Link'
                     validate:
                       - required
+  -
+    import: anchor_id
