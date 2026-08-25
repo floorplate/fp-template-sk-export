@@ -31,7 +31,10 @@ class StarterKitPostInstall
 
         $console->line('Installing addon ['.self::PACKAGE.']');
 
-        Composer::withoutQueue()->throwOnFailure()->require(self::PACKAGE, '*');
+        // Resolved from the container rather than via Statamic's real-time
+        // `Facades\` alias, which is not reliably autoloadable from a hook file
+        // that the installer pulls in with require_once.
+        app(Composer::class)->withoutQueue()->throwOnFailure()->require(self::PACKAGE, '*');
 
         $this->pruneStaleAssets($console);
     }
