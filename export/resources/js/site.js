@@ -1,9 +1,11 @@
 import Alpine from "alpinejs";
 import setupViewTransition from "./components/viewTransition";
+import setupAnchorScroll from "./components/anchorScroll";
 import { loadFonts } from "./utils/fontLoader";
 
 // import.meta.glob(["../images/**", "../fonts/**"]);
-setupViewTransition(); 
+setupViewTransition();
+setupAnchorScroll();
 
 import nav from "./components/nav";
 import imageGrid from "./components/imageGrid";
