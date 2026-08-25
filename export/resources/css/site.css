@@ -34,6 +34,28 @@
     display: none !important;
 }
 
+/* ANCHOR LINKS */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Keeps the sticky nav from covering the section you land on. Also applies to
+   the anchor nav's scrollIntoView calls, which respect scroll-margin. */
+[id][data-anchor-title] {
+    scroll-margin-top: 88px;
+}
+
+/* Pages carrying the sticky anchor nav have to clear that bar as well. */
+body:has([x-data="anchorNav()"]) [id][data-anchor-title] {
+    scroll-margin-top: 148px;
+
+    @media (min-width: 1280px) {
+        scroll-margin-top: 168px;
+    }
+}
+
 /* max limit for 4K */
 .screen-max {
     @apply w-full mx-auto max-w-[3840px];
