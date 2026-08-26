@@ -21,6 +21,7 @@ fields:
         dark: Dark
         dark_no_labels: 'Dark (No Labels)'
         jawg_streets: 'Jawg Streets'
+        jawg_sunny: 'Jawg Sunny'
       validate:
         - required
   -
@@ -61,6 +62,18 @@ fields:
       width: 50
       validate:
         - required
+  -
+    handle: default_zoom
+    field:
+      type: integer
+      display: 'Default Zoom'
+      instructions: 'Optional. Leave blank to fit the view to every visible pin on load. Set a level to control the starting zoom instead, centred on the building — roughly 11 for a city, 14 for a neighbourhood, 17 for a block. The recenter button still frames all pins.'
+      width: 50
+      validate:
+        - 'nullable'
+        - 'integer'
+        - 'min:1'
+        - 'max:20'
   -
     handle: component_border
     field:

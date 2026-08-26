@@ -62,14 +62,31 @@ function getBuildingPixelSizeForZoom(zoom) {
     return Math.round(Math.min(72, Math.max(48, scaled)));
 }
 
-export default (building_name, latitude, longitude, optional_map_icon, building_pin_color, points_of_interest, map_style) => ({
+const JAWG_ACCESS_TOKEN = 'RKO1r4kc8hB99YzyQSF1gmZd79CkMWcLcWpTr3gnotXAzjHwlbKkmsuVJJIB6gnT';
+
+const JAWG_ATTRIBUTION = '<a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+
+/**
+ * Optional starting zoom from the CMS. Blank (the default) means the map frames
+ * every visible pin instead. Arrives as a string because the field is optional
+ * and an empty Antlers tag would otherwise break the x-data expression.
+ */
+function parseDefaultZoom(value) {
+    const zoom = parseInt(value, 10);
+
+    return Number.isFinite(zoom) && zoom >= 1 && zoom <= 20 ? zoom : null;
+}
+
+export default (building_name, latitude, longitude, optional_map_icon, building_pin_color, points_of_interest, map_style, default_zoom) => ({
     categoryVisibility: {},
     buildingMarker: null,
     buildingPinOpts: null,
     async init() {
+        const startingZoom = parseDefaultZoom(default_zoom);
+
         map = new Map('map', {
             center: new LatLng(latitude, longitude),
-            zoom: 13,
+            zoom: startingZoom ?? 13,
             zoomControl: false,
             scrollWheelZoom: false,
             dragging: true,
@@ -131,12 +148,20 @@ export default (building_name, latitude, longitude, optional_map_icon, building_
         });
 
         // JAWG STYLES
-        const jawgStreets = new TileLayer('https://tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token={accessToken}', {
-            attribution: '<a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-            minZoom: 0,
-            maxZoom: 22,
-            accessToken: 'RKO1r4kc8hB99YzyQSF1gmZd79CkMWcLcWpTr3gnotXAzjHwlbKkmsuVJJIB6gnT'
-        });
+        // Every Jawg style shares one token and attribution, so build them from
+        // the style slug rather than repeating the config per layer.
+        const jawgLayer = (style) => new TileLayer(
+            `https://tile.jawg.io/${style}/{z}/{x}/{y}{r}.png?access-token={accessToken}`,
+            {
+                attribution: JAWG_ATTRIBUTION,
+                minZoom: 0,
+                maxZoom: 22,
+                accessToken: JAWG_ACCESS_TOKEN,
+            }
+        );
+
+        const jawgStreets = jawgLayer('jawg-streets');
+        const jawgSunny = jawgLayer('jawg-sunny');
 
         // Map style selection based on CMS choice
         const styleMap = {
@@ -148,7 +173,8 @@ export default (building_name, latitude, longitude, optional_map_icon, building_
             'satellite': esriWorldImagery,
             'dark': cartoDarkMatter,
             'dark_no_labels': cartoDarkNoLabels,
-            'jawg_streets': jawgStreets
+            'jawg_streets': jawgStreets,
+            'jawg_sunny': jawgSunny
         };
 
         // Add selected map style or default to Warm Topographic
@@ -215,7 +241,12 @@ export default (building_name, latitude, longitude, optional_map_icon, building_
             });
         }
 
-        this.frameAllAnnotations();
+        // An explicit zoom means the editor picked the framing themselves; the
+        // recenter control still frames every pin on demand.
+        if (startingZoom === null) {
+            this.frameAllAnnotations();
+        }
+
         this.refreshBuildingMarkerIcon();
     },
 
