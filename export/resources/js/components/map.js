@@ -98,26 +98,26 @@ export default (building_name, latitude, longitude, optional_map_icon, building_
         });
 
         // LIGHT STYLES
-        const cartoLight = new TileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        const cartoLight = new TileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png?key=cb1_2di7_1_3e16d74b657b9e9f1fa73075', {
             attribution: '© OpenStreetMap © CARTO',
             subdomains: 'abcd',
             maxZoom: 19
         });
 
-        const cartoPositron = new TileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+        const cartoPositron = new TileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png?key=cb1_2di7_1_3e16d74b657b9e9f1fa73075', {
             attribution: '© OpenStreetMap © CARTO',
             subdomains: 'abcd',
             maxZoom: 19
         });
 
         // LIGHT BLUE STYLES
-        const cartoVoyager = new TileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        const cartoVoyager = new TileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png?key=cb1_2di7_1_3e16d74b657b9e9f1fa73075', {
             attribution: '© OpenStreetMap © CARTO',
             subdomains: 'abcd',
             maxZoom: 19
         });
 
-        const cartoVoyagerNoLabels = new TileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png', {
+        const cartoVoyagerNoLabels = new TileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png?key=cb1_2di7_1_3e16d74b657b9e9f1fa73075', {
             attribution: '© OpenStreetMap © CARTO',
             subdomains: 'abcd',
             maxZoom: 19
@@ -135,13 +135,13 @@ export default (building_name, latitude, longitude, optional_map_icon, building_
         });
 
         // DARK STYLES
-        const cartoDarkMatter = new TileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        const cartoDarkMatter = new TileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png?key=cb1_2di7_1_3e16d74b657b9e9f1fa73075', {
             attribution: '© OpenStreetMap © CARTO',
             subdomains: 'abcd',
             maxZoom: 19
         });
 
-        const cartoDarkNoLabels = new TileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
+        const cartoDarkNoLabels = new TileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png?key=cb1_2di7_1_3e16d74b657b9e9f1fa73075', {
             attribution: '© OpenStreetMap © CARTO',
             subdomains: 'abcd',
             maxZoom: 19
