@@ -12,11 +12,13 @@ import imageGrid from "./components/imageGrid";
 import amenityCarousel from "./components/amenityCarousel";
 import anchorNav from "./components/anchorNav";
 import map from "./components/map";
+import statamicForm from "./components/form";
 Alpine.data("nav", nav);
 Alpine.data("imageGrid", imageGrid);
 Alpine.data("amenityCarousel", amenityCarousel);
 Alpine.data("anchorNav", anchorNav);
 Alpine.data("map", map);
+Alpine.data("statamicForm", statamicForm);
 
 window.Alpine = Alpine;
 Alpine.start();

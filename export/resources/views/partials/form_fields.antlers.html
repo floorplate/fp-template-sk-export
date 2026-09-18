@@ -1,0 +1,32 @@
+{{#
+    Renders every field of the surrounding {{ form:create }} with the kit's
+    styling. Statamic only auto-renders the per-fieldtype partials in
+    resources/views/vendor/statamic/forms/fields/ — the label/error wrapper is
+    ours, so it lives here.
+#}}
+{{ fields }}
+    <div class="form-field flex flex-col gap-fm-3xs" data-width="{{ if (width ?? 100) <= 50 }}half{{ else }}full{{ /if }}">
+        <label class="form-label" for="{{ id }}">
+            {{ display }}
+            {{ if validate | contains:required }}
+                <sup class="form-required" aria-label="{{ trans:Required }}">*</sup>
+            {{ /if }}
+        </label>
+
+        {{ field }}
+
+        {{ if instructions }}
+            <p class="form-instructions" id="{{ id }}-instructions">{{ instructions }}</p>
+        {{ /if }}
+
+        <p
+            class="form-error"
+            id="{{ id }}-error"
+            data-field-error="{{ handle }}"
+            data-server-error="{{ error }}"
+            x-text="errorFor('{{ handle }}')"
+            x-show="errorFor('{{ handle }}')"
+            {{ unless error }}style="display: none"{{ /unless }}
+        >{{ error }}</p>
+    </div>
+{{ /fields }}

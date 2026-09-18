@@ -1,0 +1,8 @@
+{{#
+    Caps the form column on large screens. Uses the clamp plugin rather than
+    breakpoint variants because the kit's `screen-max` runs to 3840px and there
+    is no `3xl:` breakpoint defined — the values interpolate 375px → 3840px.
+    `{{else}}` (not `??`) covers medium and blocks saved before this field
+    existed, where the value is a blueprint-defined null.
+#}}
+{{ if form_width == 'narrow' }}max-w-c-[375px,1000px]{{ elseif form_width == 'wide' }}max-w-c-[600px,2300px]{{ elseif form_width == 'full' }}max-w-full{{ else }}max-w-c-[420px,1400px]{{ /if }}

@@ -1,0 +1,86 @@
+title: Event
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: name
+            field:
+              type: text
+              display: Name
+              width: 50
+              autocomplete: name
+              validate:
+                - required
+                - 'max:255'
+          -
+            handle: email
+            field:
+              type: text
+              input_type: email
+              display: Email
+              width: 50
+              autocomplete: email
+              validate:
+                - required
+                - email
+                - 'max:255'
+          -
+            handle: company
+            field:
+              type: text
+              display: 'Company / Organization'
+              width: 50
+              autocomplete: organization
+              validate:
+                - required
+                - 'max:255'
+          -
+            handle: phone
+            field:
+              type: text
+              input_type: tel
+              display: Phone
+              width: 50
+              autocomplete: tel
+              validate:
+                - 'max:50'
+          -
+            handle: preferred_event_date
+            field:
+              type: text
+              input_type: date
+              display: 'Preferred Event Date'
+              width: 50
+              validate:
+                - nullable
+                - date
+          -
+            handle: estimated_guests
+            field:
+              type: text
+              input_type: number
+              display: 'Estimated Number of Guests'
+              width: 50
+              validate:
+                - nullable
+                - integer
+                - 'min:1'
+                - 'max:100000'
+          -
+            handle: event_type
+            field:
+              type: text
+              display: 'Type of Event'
+              width: 50
+              validate:
+                - 'max:255'
+          -
+            handle: message
+            field:
+              type: textarea
+              display: 'How can we help? / Tell us about your event'
+              validate:
+                - 'max:5000'

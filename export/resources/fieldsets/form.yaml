@@ -1,0 +1,66 @@
+title: Form
+fields:
+  -
+    import: background_color_override
+  -
+    import: text_color
+  -
+    handle: selected_form
+    field:
+      type: form
+      display: Form
+      instructions: 'Which form to show. Forms and their fields are managed under Forms in the main nav.'
+      max_items: 1
+      mode: select
+      validate:
+        - required
+  -
+    import: text_content
+  -
+    handle: form_width
+    field:
+      type: select
+      display: 'Form Width'
+      instructions: 'How wide the heading and form get on large screens. They stay centred in the section. Not required — blocks left unset use Medium.'
+      default: medium
+      width: 50
+      options:
+        -
+          key: narrow
+          value: Narrow
+        -
+          key: medium
+          value: Medium
+        -
+          key: wide
+          value: Wide
+        -
+          key: full
+          value: 'Full Width'
+  -
+    handle: submit_text
+    field:
+      type: text
+      display: 'Submit Button Text'
+      instructions: 'Defaults to "Submit".'
+      width: 50
+      localizable: true
+  -
+    handle: success_heading
+    field:
+      type: text
+      display: 'Success Heading'
+      instructions: 'Shown after a successful submission. Defaults to "Thank you".'
+      width: 50
+      localizable: true
+  -
+    handle: success_message
+    field:
+      type: textarea
+      display: 'Success Message'
+      instructions: 'Shown under the success heading. Defaults to a generic confirmation.'
+      localizable: true
+  -
+    import: spacing_section
+  -
+    import: anchor_id

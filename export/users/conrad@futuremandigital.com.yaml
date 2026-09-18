@@ -1,0 +1,8 @@
+name: Conrad
+super: true
+id: e228a63d-226c-4f9a-91af-cafdad202e8f
+password_hash: $2y$12$qR8Yn/S1ZpxDbEZa98FoceAYzsgd6WtNCcVyj2SWU0nMSPIbR66Hq
+preferences:
+  collections:
+    pages:
+      view: tree

@@ -1,0 +1,90 @@
+<div {{partial:anchor_id}}
+    class="{{if !background_color_override}}bg-primary-light-color{{/if}} px-om {{partial:text_color}} {{if spacing_top_override}}{{partial:spacing_top_override}}{{else}}pt-fm-8xl{{/if}} {{if spacing_bottom_override}}{{partial:spacing_bottom_override}}{{else}}pb-fm-8xl{{/if}}"
+    style="--form-section-bg: {{if background_color_override}}{{background_color_override}}{{else}}{{site_theme:primary_light_color}}{{/if}};{{if background_color_override}} background-color: {{background_color_override}};{{/if}}">
+    <div class="screen-max">
+        {{#
+            The centred column. `form-measure` names a CSS container so the
+            field grid can go two-up on its own width rather than the
+            viewport's — at Narrow the column is far smaller than the screen.
+        #}}
+        <div class="form-measure w-full mx-auto {{partial:form_width}} flex flex-col gap-fm-4xl">
+            {{ if text_content }}
+                {{partial:text_content}}
+            {{ /if }}
+
+            {{ if selected_form }}
+                <div
+                    class="w-full flex flex-col gap-fm-2xl"
+                    x-data="statamicForm()"
+                    @submit.prevent="submit">
+
+                {{#
+                    One permanently-present, text-only live region. Announcing by
+                    changing text inside a stable region is reliable; toggling a
+                    region's visibility is not. The visible panels get focus
+                    instead, so nothing is announced twice.
+                #}}
+                <p class="sr-only" role="status" aria-live="polite" aria-atomic="true" x-text="announcement"></p>
+
+                {{# Network, 419 or server failure — distinct from per-field validation. #}}
+                <div
+                    x-cloak
+                    x-show="generalError"
+                    x-ref="errorStatus"
+                    tabindex="-1"
+                    class="form-status form-status--error">
+                    <p x-text="generalError"></p>
+                </div>
+
+                {{ form:create :handle="selected_form" }}
+                    {{#
+                        Success state. `success` is the session flash Statamic sets
+                        on the non-AJAX redirect-back; `succeeded` is the AJAX flag.
+                        The server decides the first paint via the inline style and
+                        Alpine takes over from there, so there is no flash of the
+                        wrong state and no x-cloak needed.
+
+                        The copy is server-rendered rather than a JS string so
+                        editors can use any punctuation they like.
+                    #}}
+                    {{ if success }}<span data-form-succeeded hidden></span>{{ /if }}
+
+                    <div
+                        x-show="succeeded"
+                        x-ref="status"
+                        tabindex="-1"
+                        class="form-status flex flex-col gap-fm-3xs"
+                        {{ unless success }}style="display: none"{{ /unless }}>
+                        <p class="h6">{{ if success_heading }}{{ success_heading }}{{ else }}Thank you{{ /if }}</p>
+                        <p>{{ if success_message }}{{ success_message }}{{ else }}Your message has been sent. We'll be in touch shortly.{{ /if }}</p>
+                    </div>
+
+                    <div
+                        x-show="!succeeded"
+                        {{ if success }}style="display: none"{{ /if }}>
+                        <div class="form-grid">
+                            {{partial:form_fields}}
+                        </div>
+
+                        {{# Statamic's honeypot: a filled value is a silent success, so bots get no signal. #}}
+                        <div class="form-honeypot" aria-hidden="true">
+                            <input type="text" name="{{ honeypot }}" value="" tabindex="-1" autocomplete="off" />
+                        </div>
+
+                        <div class="mt-fm-2xl">
+                            <button
+                                type="submit"
+                                class="form-submit button-text"
+                                :disabled="submitting"
+                                :aria-busy="submitting ? 'true' : 'false'">
+                                <span x-show="!submitting">{{ if submit_text }}{{ submit_text }}{{ else }}Submit{{ /if }}</span>
+                                <span x-cloak x-show="submitting">Sending&hellip;</span>
+                            </button>
+                        </div>
+                    </div>
+                {{ /form:create }}
+                </div>
+            {{ /if }}
+        </div>
+    </div>
+</div>

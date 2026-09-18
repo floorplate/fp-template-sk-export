@@ -1,0 +1,233 @@
+/*
+ * Form controls for Statamic forms rendered through
+ * resources/views/vendor/statamic/forms/*.
+ *
+ * Everything here is driven by `currentColor` and the site_theme CSS custom
+ * properties, so controls invert correctly between sections using
+ * bg-primary-color (dark) and bg-primary-light-color (light) without any
+ * per-block overrides. Do not hardcode colors in this file.
+ */
+
+/*
+ * The form sits in a centred column whose width the editor picks (Narrow …
+ * Full), so the field grid keys off that column rather than the viewport — a
+ * Narrow form on a wide screen must still stack. blocks/form.antlers.html puts
+ * `.form-measure` on the column.
+ */
+.form-measure {
+    container: form-measure / inline-size;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-fm-lg) var(--spacing-fm-md);
+}
+
+/* Two-up only once each column would get a comfortable ~19rem. */
+@container form-measure (min-width: 38rem) {
+    .form-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .form-field[data-width="full"] {
+        grid-column: 1 / -1;
+    }
+}
+
+.form-label {
+    font-family: var(--paragraph-font), sans-serif;
+    font-size: calc(0.875rem * (1 + var(--paragraph-text-scaler) / 100));
+    line-height: var(--paragraph-line-height);
+    font-weight: var(--paragraph-font-weight);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+.form-required {
+    /* The asterisk is decorative; the accessible name comes from aria-label. */
+    top: 0;
+    font-size: inherit;
+}
+
+/* Inputs are underline-style: the kit's radius tokens clamp up to 2rem+, which
+   reads wrong on a control, so we avoid boxes entirely. */
+.form-input {
+    width: 100%;
+    appearance: none;
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid color-mix(in srgb, currentColor 35%, transparent);
+    border-radius: 0;
+    color: inherit;
+    font-family: var(--paragraph-font), sans-serif;
+    /* 1rem minimum keeps iOS Safari from zooming the viewport on focus. */
+    font-size: max(1rem, calc(1rem * (1 + var(--paragraph-text-scaler) / 100)));
+    line-height: var(--paragraph-line-height);
+    font-weight: var(--paragraph-font-weight);
+    padding-block: var(--spacing-fm-3xs);
+    /* ≥44px tap target. */
+    min-height: 2.75rem;
+    transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 8rem;
+}
+
+.form-input::placeholder {
+    color: color-mix(in srgb, currentColor 45%, transparent);
+    opacity: 1;
+}
+
+.form-input:hover {
+    border-bottom-color: color-mix(in srgb, currentColor 60%, transparent);
+}
+
+.form-input:focus {
+    outline: none;
+    border-bottom-color: currentColor;
+}
+
+.form-input:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+    border-radius: 2px;
+}
+
+.form-input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Chrome autofill slams a pale blue background with !important, which reads as
+   four broken bars on a dark section. The long transition is the standard way
+   to defer it past any realistic page life. */
+.form-input:-webkit-autofill,
+.form-input:-webkit-autofill:hover,
+.form-input:-webkit-autofill:focus {
+    -webkit-text-fill-color: currentColor;
+    caret-color: currentColor;
+    transition:
+        background-color 600000s 0s,
+        color 600000s 0s;
+}
+
+.form-input[aria-invalid="true"] {
+    border-bottom-color: currentColor;
+    border-bottom-width: 2px;
+}
+
+/* Native date + number controls render near-black glyphs that vanish on a dark
+   section. currentColor isn't available to these pseudo-elements, so key off
+   the section's text color class instead. */
+.form-input::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.form-input::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
+.text-light-text-color .form-input::-webkit-calendar-picker-indicator,
+.text-light-text-color .form-input::-webkit-inner-spin-button {
+    filter: invert(1);
+}
+
+/* Safari renders empty date inputs with centered, oddly-spaced placeholder text. */
+.form-input::-webkit-date-and-time-value {
+    text-align: left;
+    min-height: 1.5em;
+}
+
+/* The native <select> popup is painted by the OS from the select's own colors.
+   partials/text_color.antlers.html emits a `**:text-*-color` descendant utility
+   that reaches <option>, which on a light section means white-on-white in
+   Windows Chrome. System colors keep it legible and OS-dark-mode aware.
+   No shipped form uses a select; this is insurance for sites that add one. */
+.form-field option,
+.form-field optgroup {
+    color: CanvasText;
+    background-color: Canvas;
+}
+
+.form-instructions {
+    font-size: calc(0.8125rem * (1 + var(--paragraph-text-scaler) / 100));
+    line-height: var(--paragraph-line-height);
+    opacity: 0.6;
+}
+
+.form-error {
+    font-size: calc(0.8125rem * (1 + var(--paragraph-text-scaler) / 100));
+    line-height: var(--paragraph-line-height);
+    font-weight: 600;
+}
+
+/* Deliberately not `.button` — rich-text.css owns `.rich-text > .button`. */
+.form-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    padding: 0.625rem 1.75rem;
+    border: 1px solid currentColor;
+    border-radius: 9999px;
+    background-color: transparent;
+    color: inherit;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        opacity 0.2s ease;
+}
+
+/* Fill on hover by inverting against the section background. The block
+   template sets --form-section-bg to the actual background in play (the
+   background_color_override, or the theme color the section defaults to), so
+   this stays exact even when an editor picks an arbitrary color. */
+.form-submit:hover:not(:disabled),
+.form-submit:focus-visible:not(:disabled) {
+    background-color: currentColor;
+    color: var(--form-section-bg, transparent);
+}
+
+.form-submit:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+}
+
+.form-submit:disabled {
+    opacity: 0.5;
+    cursor: progress;
+}
+
+.form-status {
+    border: 1px solid color-mix(in srgb, currentColor 35%, transparent);
+    border-radius: 2px;
+    padding: var(--spacing-fm-md);
+}
+
+.form-status--error {
+    border-color: currentColor;
+    border-width: 2px;
+}
+
+.form-status:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+}
+
+/* Honeypot: hidden from sight and from assistive tech, still submitted. */
+.form-honeypot {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}

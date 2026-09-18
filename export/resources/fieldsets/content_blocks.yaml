@@ -107,6 +107,12 @@ fields:
               fields:
                 -
                   import: stats
+            form:
+              display: Form
+              icon: mail-send-email
+              fields:
+                -
+                  import: form
         rows_tables:
           display: Rows/Tables
           sets:

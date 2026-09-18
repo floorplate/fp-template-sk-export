@@ -21,6 +21,8 @@ class StarterKitPostInstall
 
     public function handle($console): void
     {
+        $this->seedForms($console);
+
         if (! is_dir(base_path(self::PATH))) {
             $console->warn('Anchors addon not found at ['.self::PATH.']; skipping. In-page anchor links will be unavailable.');
 
@@ -37,6 +39,68 @@ class StarterKitPostInstall
         app(Composer::class)->withoutQueue()->throwOnFailure()->require(self::PACKAGE, '*');
 
         $this->pruneStaleAssets($console);
+    }
+
+    /**
+     * Installs the kit's forms into a site that does not have them yet.
+     *
+     * Forms are the one part of the kit a site owns outright: the CP writes the
+     * notification recipients into resources/forms/<handle>.yaml and any field
+     * an editor adds into resources/blueprints/forms/<handle>.yaml. Neither
+     * path is in starter-kit.yaml's export_paths, because the installer copies
+     * what it ships unconditionally on EVERY deploy and would reset both.
+     *
+     * So the kit carries resources/form-seeds instead, and we copy from it —
+     * strictly when the destination is absent. A site that already has the form
+     * keeps whatever it has, forever; a brand new site gets a working one.
+     */
+    private function seedForms($console): void
+    {
+        $seeds = base_path('resources/form-seeds');
+
+        if (! is_dir($seeds)) {
+            return;
+        }
+
+        // Guard against a future export_paths change silently re-introducing
+        // the overwrite: if the kit ever ships the live paths again, the copy
+        // below is pointless and the site's settings are already gone.
+        foreach (['forms', 'blueprints/forms'] as $shipped) {
+            if (is_dir(base_path("vendor/floorplate/fp-template-sk-export/export/resources/{$shipped}"))) {
+                $console->warn(
+                    "Starter kit ships resources/{$shipped}; per-site form settings are being overwritten on every deploy. "
+                    .'Remove it from export_paths in package/starter-kit.yaml.'
+                );
+            }
+        }
+
+        $seeded = 0;
+
+        foreach ([
+            'forms' => 'resources/forms',
+            'blueprints' => 'resources/blueprints/forms',
+        ] as $from => $to) {
+            foreach (glob("{$seeds}/{$from}/*.yaml") ?: [] as $seed) {
+                $destination = base_path($to.'/'.basename($seed));
+
+                if (file_exists($destination)) {
+                    continue;
+                }
+
+                if (! is_dir(dirname($destination))) {
+                    mkdir(dirname($destination), 0755, true);
+                }
+
+                copy($seed, $destination);
+                $seeded++;
+
+                $console->line('Seeding form file ['.$to.'/'.basename($seed).']');
+            }
+        }
+
+        if ($seeded === 0) {
+            $console->line('Forms already present; leaving this site\'s form settings untouched.');
+        }
     }
 
     /**

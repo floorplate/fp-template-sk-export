@@ -1,0 +1,16 @@
+<textarea
+    class="form-input form-textarea"
+    id="{{ id }}"
+    name="{{ name }}"
+    rows="{{ rows ?? 6 }}"
+    {{ if placeholder }}placeholder="{{ placeholder }}"{{ /if }}
+    {{ if character_limit }}maxlength="{{ character_limit }}"{{ /if }}
+    {{ if js_driver }}{{ js_attributes }}{{ /if }}
+    {{ if validate|contains:required }}required{{ /if }}
+    x-bind="fieldBindings('{{ handle }}')"
+    {{ if error }}
+        aria-invalid="true" aria-describedby="{{ id }}-error"
+    {{ elseif instructions }}
+        aria-describedby="{{ id }}-instructions"
+    {{ /if }}
+>{{ value }}</textarea>

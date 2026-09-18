@@ -6,7 +6,20 @@ export_paths:
   - config/statamic/cp.php
   - config/statamic/editions.php
   - config/statamic/assets.php
-  - resources
+  - resources/addons
+  - resources/blueprints/assets
+  - resources/blueprints/collections
+  - resources/blueprints/globals
+  - resources/blueprints/navigation
+  - resources/blueprints/default.yaml
+  - resources/blueprints/user.yaml
+  - resources/css
+  - resources/data
+  - resources/fieldsets
+  - resources/form-seeds
+  - resources/js
+  - resources/users
+  - resources/views
   - users
   - config/filesystems.php
   - package.json
