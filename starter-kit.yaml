@@ -6,7 +6,7 @@ export_paths:
   - config/statamic/cp.php
   - config/statamic/editions.php
   - config/statamic/assets.php
-  - resources/addons
+  - resources/addon-seeds
   - resources/blueprints/assets
   - resources/blueprints/collections
   - resources/blueprints/globals

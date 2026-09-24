@@ -1,6 +1,8 @@
 <?php
 
 use Statamic\Console\Processes\Composer;
+use Symfony\Component\Yaml\Exception\ParseException;
+use Symfony\Component\Yaml\Yaml;
 
 /**
  * Wires the bundled Anchors addon into the freshly installed site.
@@ -25,10 +27,29 @@ class StarterKitPostInstall
      */
     private const STARTER_CONTENT_MARKER = 'content/.starter-content-installed';
 
+    /**
+     * The SEO Pro settings every kit before resources/addon-seeds shipped at the
+     * live path, and so wrote over each site's own on every install.
+     */
+    private const LEGACY_SEO_PRO_SETTINGS = [
+        'site_defaults' => [
+            'title' => '@seo:title',
+            'description' => "An experiential agency. We deliver groundbreaking ideas and meaningful brand experiences. We don't help brands “catch up” we help brands push forward.",
+            'site_name' => 'Futureman Digital',
+            'site_name_position' => 'after',
+            'site_name_separator' => '|',
+            'canonical_url' => '@seo:permalink',
+            'image' => false,
+            'priority' => 0.5,
+            'change_frequency' => 'monthly',
+        ],
+    ];
+
     public function handle($console): void
     {
         $this->seedForms($console);
         $this->seedStarterContent($console);
+        $this->seedAddonSettings($console);
 
         if (! is_dir(base_path(self::PATH))) {
             $console->warn('Anchors addon not found at ['.self::PATH.']; skipping. In-page anchor links will be unavailable.');
@@ -179,6 +200,49 @@ class StarterKitPostInstall
         );
 
         $console->line("Seeded {$seeded} starter content file(s).");
+    }
+
+    /**
+     * Installs addon settings (SEO Pro's site defaults) into a site without them.
+     *
+     * Like forms, these are the site's own: the CP writes SEO → Site Defaults
+     * into resources/addons/seo-pro.yaml. So the kit ships them as
+     * resources/addon-seeds and copies each one only where the site has none.
+     *
+     * The one exception: a file that is still exactly what older kits shipped
+     * (the Futureman Digital defaults) is replaced. Those kits overwrote it on
+     * every install, so on those sites it holds nothing an editor chose.
+     */
+    private function seedAddonSettings($console): void
+    {
+        foreach (glob(base_path('resources/addon-seeds/*.yaml')) ?: [] as $seed) {
+            $destination = base_path('resources/addons/'.basename($seed));
+
+            if (file_exists($destination) && ! $this->isLegacySeoProSettings($seed, $destination)) {
+                continue;
+            }
+
+            if (! is_dir(dirname($destination))) {
+                mkdir(dirname($destination), 0755, true);
+            }
+
+            copy($seed, $destination);
+
+            $console->line('Seeding addon settings [resources/addons/'.basename($seed).']');
+        }
+    }
+
+    private function isLegacySeoProSettings(string $seed, string $destination): bool
+    {
+        if (basename($seed) !== 'seo-pro.yaml') {
+            return false;
+        }
+
+        try {
+            return Yaml::parseFile($destination) === self::LEGACY_SEO_PRO_SETTINGS;
+        } catch (ParseException) {
+            return false;
+        }
     }
 
     /**
