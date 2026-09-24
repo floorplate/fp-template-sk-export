@@ -16,6 +16,7 @@ export_paths:
   - resources/css
   - resources/data
   - resources/fieldsets
+  - resources/content-seeds
   - resources/form-seeds
   - resources/js
   - resources/users

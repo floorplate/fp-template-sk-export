@@ -4,6 +4,7 @@
 @import "./rich-text.css";
 @import "./leaflet.css";
 @import "./forms.css";
+@import "./welcome.css";
 @import "futureman-tailwind-clamp-spacing/futuremanClampSpacingTheme.css";
 @plugin 'futureman-tailwind-clamp-plugin';
 

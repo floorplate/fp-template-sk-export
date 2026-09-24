@@ -1,0 +1,28 @@
+{{#
+    Placeholder homepage for a freshly installed site. Once the entry has any
+    content blocks it renders like every other page, so building the real
+    homepage replaces this screen without switching templates.
+#}}
+{{ if content_blocks }}
+    {{ partial:default }}
+{{ else }}
+    <main class="fp-welcome">
+        <div class="fp-welcome__grid" aria-hidden="true"></div>
+
+        <div class="fp-welcome__inner">
+            <img class="fp-welcome__mark" src="/assets/logo-mark-teal.svg" alt="Floorplate" width="56" height="62" />
+
+            <h1 class="fp-welcome__title">Welcome to <em>Floorplate</em></h1>
+            <p class="fp-welcome__lede">We can’t wait to get your site going!</p>
+
+            <div class="fp-welcome__actions">
+                {{ collection:pages slug:is="demo" limit="1" }}
+                    <a class="fp-welcome__button fp-welcome__button--primary" href="{{ url }}">See the demo page</a>
+                {{ /collection:pages }}
+                <a class="fp-welcome__button" href="/{{ config:statamic:cp:route }}">Open the control panel</a>
+            </div>
+
+            <p class="fp-welcome__hint">To replace this screen, add a content block to the Home page.</p>
+        </div>
+    </main>
+{{ /if }}

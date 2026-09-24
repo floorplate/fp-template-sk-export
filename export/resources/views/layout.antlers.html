@@ -6,9 +6,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       
         {{ vite src="resources/js/site.js|resources/css/site.css" }}
+        {{if site_theme:favicon}}
         {{site_theme:favicon}}
         <link rel="shortcut icon" type="image/x-icon" href="{{url}}" />
         {{/site_theme:favicon}}
+        {{else}}
+        <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+        {{/if}}
         {{partial:style_variables}}
         {{ seo_pro:meta }}
         <link rel="stylesheet" href="https://use.typekit.net/xhq8jwx.css" />

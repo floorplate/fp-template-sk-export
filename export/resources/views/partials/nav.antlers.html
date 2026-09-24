@@ -11,13 +11,21 @@
         <!-- logo -->
         <a href="/" class="block pointer-events-auto">
             {{if nav_style == 'dark'}}
+            {{if site_theme:dark_nav_logo}}
             {{site_theme:dark_nav_logo}}
             <img class="h-[42px]" src="{{url}}" alt="{{alt}}">
             {{/site_theme:dark_nav_logo}}
             {{else}}
+            <img class="h-[42px]" src="/assets/logo-mark-teal.svg" alt="{{ site:name }}">
+            {{/if}}
+            {{else}}
+            {{if site_theme:light_nav_logo}}
             {{site_theme:light_nav_logo}}
             <img class="h-[42px]" src="{{url}}" alt="{{alt}}">
             {{/site_theme:light_nav_logo}}
+            {{else}}
+            <img class="h-[42px]" src="/assets/logo-mark-teal.svg" alt="{{ site:name }}">
+            {{/if}}
             {{/if}}
         </a>
 

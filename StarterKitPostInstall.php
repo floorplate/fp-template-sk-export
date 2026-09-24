@@ -19,9 +19,16 @@ class StarterKitPostInstall
 
     private const PATH = 'addons/floorplate/anchors';
 
+    /**
+     * Written when starter content is seeded. Its presence means "this site
+     * has had its starter content"; it's committed with the rest of content/.
+     */
+    private const STARTER_CONTENT_MARKER = 'content/.starter-content-installed';
+
     public function handle($console): void
     {
         $this->seedForms($console);
+        $this->seedStarterContent($console);
 
         if (! is_dir(base_path(self::PATH))) {
             $console->warn('Anchors addon not found at ['.self::PATH.']; skipping. In-page anchor links will be unavailable.');
@@ -101,6 +108,77 @@ class StarterKitPostInstall
         if ($seeded === 0) {
             $console->line('Forms already present; leaving this site\'s form settings untouched.');
         }
+    }
+
+    /**
+     * Gives a brand new site its starter content, once: the welcome homepage,
+     * the demo page, the availability examples, a starter nav and the
+     * Floorplate theme.
+     *
+     * This hook runs on every kit update as well as the first install, and
+     * content belongs to the site from the moment it exists: editors rewrite
+     * the homepage, delete the demo, build their own navigation. So no content/
+     * path is in export_paths. The kit carries resources/content-seeds instead,
+     * mirroring content/, and we copy from it only on a site that has never
+     * had starter content. That means no marker file and no pages at all. Even
+     * then a file that already exists is never replaced.
+     *
+     * The marker is what makes this permanent. Without it, a site whose editors
+     * deleted every page would get the demo back on the next kit update.
+     */
+    private function seedStarterContent($console): void
+    {
+        $seeds = base_path('resources/content-seeds');
+
+        if (! is_dir($seeds)) {
+            return;
+        }
+
+        if (file_exists(base_path(self::STARTER_CONTENT_MARKER))) {
+            $console->line('Starter content already installed; leaving this site\'s content untouched.');
+
+            return;
+        }
+
+        if (glob(base_path('content/collections/pages/*.md'))) {
+            $console->line('Site already has pages; skipping starter content.');
+
+            return;
+        }
+
+        $files = new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator($seeds, FilesystemIterator::SKIP_DOTS)
+        );
+
+        $seeded = 0;
+
+        foreach ($files as $seed) {
+            if (! $seed->isFile()) {
+                continue;
+            }
+
+            $relative = ltrim(substr($seed->getPathname(), strlen($seeds)), DIRECTORY_SEPARATOR);
+            $destination = base_path('content/'.$relative);
+
+            if (file_exists($destination)) {
+                continue;
+            }
+
+            if (! is_dir(dirname($destination))) {
+                mkdir(dirname($destination), 0755, true);
+            }
+
+            copy($seed->getPathname(), $destination);
+            $seeded++;
+        }
+
+        file_put_contents(
+            base_path(self::STARTER_CONTENT_MARKER),
+            "Floorplate starter content was installed on this site.\n"
+            ."While this file exists, starter kit installs and updates never add starter pages again.\n"
+        );
+
+        $console->line("Seeded {$seeded} starter content file(s).");
     }
 
     /**

@@ -1,0 +1,24 @@
+rich_text_spacing: default
+header_font: 'DM Serif Display'
+header_font_weight: 400
+header_text_scaler: 0
+header_line_height: 115
+paragraph_font: 'DM Sans'
+paragraph_font_weight: '400'
+paragraph_text_scaler: 0
+paragraph_line_height: 150
+nav_font: 'DM Sans'
+nav_font_weight: 400
+nav_text_scaler: 0
+nav_line_height: 120
+button_font: 'DM Sans'
+button_font_weight: 400
+button_text_scaler: 0
+button_line_height: 120
+primary_color: '#080F1A'
+primary_light_color: '#FFFFFF'
+dark_text_color: '#0B1422'
+light_text_color: '#EEF0F4'
+accent_text_color: '#14B8A6'
+secondary_text_color: '#4976AC'
+media_border_rounding: extra_small

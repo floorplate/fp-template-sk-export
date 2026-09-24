@@ -1,0 +1,20 @@
+address:
+  -
+    type: paragraph
+    attrs:
+      textAlign: center
+    content:
+      -
+        type: text
+        marks:
+          -
+            type: bold
+        text: 'Your Building'
+  -
+    type: paragraph
+    attrs:
+      textAlign: center
+    content:
+      -
+        type: text
+        text: 'Add your address, logo and partner logos under Globals → Footer.'

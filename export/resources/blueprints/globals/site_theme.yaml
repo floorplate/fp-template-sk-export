@@ -9,37 +9,28 @@ tabs:
             handle: light_nav_logo
             field:
               max_files: 1
-              min_files: 1
               container: assets
               type: assets
               display: 'Dark Nav Logo'
               width: 50
-              validate:
-                - required
-              instructions: 'Provide a logo with dark color. This will show up if the nav uses a light color background to create contract.'
+              instructions: 'Provide a logo with dark color. This will show up if the nav uses a light color background to create contrast. Leave empty to use the Floorplate mark.'
           -
             handle: dark_nav_logo
             field:
               max_files: 1
-              min_files: 1
               container: assets
               type: assets
               display: 'Light Nav Logo'
               width: 50
-              validate:
-                - required
-              instructions: 'Provide a logo with light color. This will show up if the nav uses a dark color background to create contract.'
+              instructions: 'Provide a logo with light color. This will show up if the nav uses a dark color background to create contrast. Leave empty to use the Floorplate mark.'
           -
             handle: favicon
             field:
               max_files: 1
-              min_files: 1
               container: assets
               type: assets
               display: Favicon
-              validate:
-                - required
-              instructions: 'Favicon icon for the site.'
+              instructions: 'Favicon icon for the site. Leave empty to use the Floorplate favicon.'
   typography:
     display: Typography
     sections:
