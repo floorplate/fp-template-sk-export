@@ -44,6 +44,8 @@ fields:
                   field:
                     type: link
                     display: 'Vimeo Embed Link'
+                    instructions: 'A direct link to a video file (.mp4), or choose Asset to pick a video uploaded to the Assets container.'
+                    container: assets
                     validate:
                       - required
   -

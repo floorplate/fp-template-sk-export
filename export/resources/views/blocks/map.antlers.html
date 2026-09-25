@@ -1,5 +1,7 @@
+{{# Keyed by set id so several Map blocks can share a page. #}}
 <script>
-    window.poiData = {{ points_of_interest | to_json }};
+    window.poiData = window.poiData || {};
+    window.poiData['{{ id }}'] = {{ points_of_interest | to_json }};
 </script>
 {{ has_border = component_border !== false }}
 {{ show_sidebar = !hide_sidebar && points_of_interest }}
@@ -11,7 +13,7 @@
 {{longitude}},
 '{{optional_map_icon}}',
 '{{building_pin_color}}',
-window.poiData,
+window.poiData['{{ id }}'],
 '{{map_style}}',
 '{{default_zoom}}'
 )"
@@ -96,7 +98,7 @@ window.poiData,
         </div>
         {{ /if }}
         <div class="w-full h-[500px] lg:h-[800px] {{ if show_sidebar }}lg:col-span-2 {{ /if }}relative">
-            <div id="map" class="w-full h-full relative z-0"></div>
+            <div x-ref="map" class="w-full h-full relative z-0"></div>
             <!-- Custom Map Controls -->
             <div class="absolute bottom-4 right-4 flex flex-col gap-2 z-20">
                 <button

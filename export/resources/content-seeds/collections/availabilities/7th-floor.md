@@ -4,8 +4,8 @@ blueprint: availability
 title: '7th Floor'
 text_columns:
   -
-    id: mckmy0ji
-    column_text: 'Available August 2025'
+    id: fpdemo2r
+    column_text: 'Full floor'
     type: text_column
     enabled: true
 text_content:
@@ -16,5 +16,5 @@ text_content:
     content:
       -
         type: text
-        text: 'Consequatur vel eaque architecto id sed reiciendis unde officiis adipisci eum iure amet eum. Voluptatem id numquam libero et dolores saepe reprehenderit. Nihil hic molestias ut. Iusto ipsum natus alias nihil sunt eaque exercitationem voluptatem quo recusandae. Nam possimus voluptas id laboriosam minima voluptatem quis ab commodi distinctio inventore. Repellat fugiat quisquam non amet facere sit omnis esse assumenda quaerat.'
+        text: 'Example listing with a single detail column, which stretches wider.'
 ---

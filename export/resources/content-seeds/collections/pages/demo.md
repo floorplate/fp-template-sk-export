@@ -11,9 +11,9 @@ content_blocks:
     media_type:
       -
         id: fpdemo01
-        type: image
+        type: vimeo_video_embed
         enabled: true
-        hero_image: placeholder_landscape.jpg
+        vimeo_embed_link: 'asset::assets::videos/demo/tower-timelapse.mp4'
     type: large_media_hero
     enabled: true
   -
@@ -46,7 +46,7 @@ content_blocks:
         content:
           -
             type: text
-            text: 'This demo walks through every content block that ships with Floorplate. Each section below is one block: add them to any page from the '
+            text: 'This demo walks through every content block that ships with Floorplate, and the settings that change how each one looks. Add blocks to any page from the '
           -
             type: text
             marks:
@@ -63,7 +63,7 @@ content_blocks:
         content:
           -
             type: text
-            text: 'Colors, fonts and logos live in '
+            text: 'The video above is the Large Media Hero set to a looping video. Colors, fonts and logos live in '
           -
             type: text
             marks:
@@ -107,7 +107,7 @@ content_blocks:
   -
     id: fpdemo08
     text_color: dark
-    anchor_id: text-block
+    anchor_id: text
     text_content:
       -
         type: heading
@@ -174,61 +174,26 @@ content_blocks:
         content:
           -
             type: text
-            text: 'Inside any text area you can also drop in:'
+            text: 'Inside any text area you can also drop in buttons, inline images and layout spacers, shown in the next two sections. Most blocks also take a background color override, a text color (dark, light, accent or secondary) and top/bottom spacing overrides.'
+    type: text_block
+    enabled: true
+  -
+    id: fpdemo0g
+    background_color_override: '#F0F3F6'
+    text_color: dark
+    spacing_top_override: medium
+    spacing_bottom_override: medium
+    text_content:
       -
-        type: bulletList
+        type: heading
+        attrs:
+          textAlign: left
+          level: 3
+          font-weight: '400'
         content:
           -
-            type: listItem
-            content:
-              -
-                type: paragraph
-                attrs:
-                  textAlign: left
-                content:
-                  -
-                    type: text
-                    marks:
-                      -
-                        type: bold
-                    text: Buttons
-                  -
-                    type: text
-                    text: ' — link, file download or email, each with its own alignment and color.'
-          -
-            type: listItem
-            content:
-              -
-                type: paragraph
-                attrs:
-                  textAlign: left
-                content:
-                  -
-                    type: text
-                    marks:
-                      -
-                        type: bold
-                    text: 'Inline images'
-                  -
-                    type: text
-                    text: ' — sized as a percentage of the column and aligned left, middle or right.'
-          -
-            type: listItem
-            content:
-              -
-                type: paragraph
-                attrs:
-                  textAlign: left
-                content:
-                  -
-                    type: text
-                    marks:
-                      -
-                        type: bold
-                    text: 'Layout spacers'
-                  -
-                    type: text
-                    text: ' — a little breathing room between elements.'
+            type: text
+            text: Buttons
       -
         type: paragraph
         attrs:
@@ -236,16 +201,170 @@ content_blocks:
         content:
           -
             type: text
-            text: 'Most blocks also take a background color override, a text color (dark, light, accent or secondary) and top/bottom spacing overrides.'
+            text: 'Three kinds, each with its own alignment and color. This section also shows a '
+          -
+            type: text
+            marks:
+              -
+                type: bold
+            text: 'background color override'
+          -
+            type: text
+            text: ' and '
+          -
+            type: text
+            marks:
+              -
+                type: bold
+            text: 'medium spacing'
+          -
+            type: text
+            text: ' instead of the default.'
+      -
+        type: set
+        attrs:
+          id: fpdemo09
+          values:
+            type: layout_spacer
+      -
+        type: set
+        attrs:
+          id: fpdemo0a
+          values:
+            type: button_types
+            button_types:
+              -
+                id: fpdemo0b
+                button_text: 'A link button, aligned left'
+                button_link: /cp
+                open_in_new_tab: false
+                type: no_outline_button
+                enabled: true
+            alignment: left
+            text_color: accent
+      -
+        type: set
+        attrs:
+          id: fpdemo0c
+          values:
+            type: button_types
+            button_types:
+              -
+                id: fpdemo0d
+                button_text: 'A download button (sample brochure PDF), centered'
+                download_asset: downloads/demo/sample-brochure.pdf
+                type: download_button
+                enabled: true
+            alignment: center
+            text_color: secondary
+      -
+        type: set
+        attrs:
+          id: fpdemo0e
+          values:
+            type: button_types
+            button_types:
+              -
+                id: fpdemo0f
+                button_text: 'An email button, aligned right'
+                email_address: leasing@example.com
+                type: email_button
+                enabled: true
+            alignment: right
+            text_color: dark
     type: text_block
     enabled: true
   -
-    id: fpdemo09
+    id: fpdemo0k
+    text_color: dark
+    text_content:
+      -
+        type: heading
+        attrs:
+          textAlign: left
+          level: 3
+          font-weight: '400'
+        content:
+          -
+            type: text
+            text: 'Inline Images'
+      -
+        type: paragraph
+        attrs:
+          textAlign: left
+        content:
+          -
+            type: text
+            text: 'Images placed inside a text area are sized as a percentage of the column and aligned left, middle or right. The corner rounding comes from '
+          -
+            type: text
+            marks:
+              -
+                type: bold
+            text: 'Media Border Rounding'
+          -
+            type: text
+            text: ' in Site Theme.'
+      -
+        type: set
+        attrs:
+          id: fpdemo0h
+          values:
+            type: inline_image
+            image: floorplans/demo/sample-floor-plan.jpg
+            width_percent: 100
+            align: center
+      -
+        type: paragraph
+        attrs:
+          textAlign: center
+        content:
+          -
+            type: text
+            text: 'Full width, centered: a floor plan.'
+      -
+        type: set
+        attrs:
+          id: fpdemo0i
+          values:
+            type: inline_image
+            image: photos/demo/lobby-atrium.jpg
+            width_percent: 60
+            align: left
+      -
+        type: paragraph
+        attrs:
+          textAlign: left
+        content:
+          -
+            type: text
+            text: '60% width, aligned left.'
+      -
+        type: set
+        attrs:
+          id: fpdemo0j
+          values:
+            type: inline_image
+            image: photos/demo/rooftop-terrace.jpg
+            width_percent: 40
+            align: right
+      -
+        type: paragraph
+        attrs:
+          textAlign: right
+        content:
+          -
+            type: text
+            text: '40% width, aligned right.'
+    type: text_block
+    enabled: true
+  -
+    id: fpdemo0l
     background_color_override: '#F0F3F6'
     text_color: dark
     reverse_mobile_stack: false
     center_items_vertically: true
-    anchor_id: dual-columns
+    anchor_id: columns
     first_text_content:
       -
         type: heading
@@ -273,16 +392,7 @@ content_blocks:
         content:
           -
             type: text
-            text: 'Two rich text columns side by side, stacking on mobile. Flip the mobile order with '
-          -
-            type: text
-            marks:
-              -
-                type: bold
-            text: 'Reverse Mobile Stack'
-          -
-            type: text
-            text: ', and use '
+            text: 'Two rich text columns side by side, stacking on phones. This one has '
           -
             type: text
             marks:
@@ -291,70 +401,241 @@ content_blocks:
             text: 'Center Items Vertically'
           -
             type: text
-            text: ' when one column is much shorter than the other — like this one.'
+            text: ' turned on, so the short heading sits level with this longer paragraph.'
     type: dual_column_text_blocks
     enabled: true
   -
-    id: fpdemo0g
+    id: fpdemo0n
+    background_color_override: '#080F1A'
+    text_color: light
+    reverse_mobile_stack: true
+    center_items_vertically: false
+    first_text_content:
+      -
+        type: set
+        attrs:
+          id: fpdemo0m
+          values:
+            type: inline_image
+            image: photos/demo/lounge.jpg
+            width_percent: 100
+            align: center
+    second_text_content:
+      -
+        type: heading
+        attrs:
+          textAlign: left
+          level: 4
+          font-weight: '400'
+        content:
+          -
+            type: text
+            text: 'Reverse Mobile Stack'
+      -
+        type: paragraph
+        attrs:
+          textAlign: left
+        content:
+          -
+            type: text
+            text: 'Here the image is in the first column, but '
+          -
+            type: text
+            marks:
+              -
+                type: bold
+            text: 'Reverse Mobile Stack'
+          -
+            type: text
+            text: ' is on, so on a phone this text comes first. '
+          -
+            type: text
+            marks:
+              -
+                type: bold
+            text: 'Center Items Vertically'
+          -
+            type: text
+            text: ' is off, so both columns align to the top.'
+      -
+        type: paragraph
+        attrs:
+          textAlign: left
+        content:
+          -
+            type: text
+            text: 'It also shows a dark background override with light text.'
+    type: dual_column_text_blocks
+    enabled: true
+  -
+    id: fpdemo0u
     text_color: dark
     anchor_id: stats
     title: 'A few numbers about this kit'
     stats:
       -
-        id: fpdemo0a
+        id: fpdemo0o
+        type: stat
+        enabled: true
+        description: 'content blocks, all on this page'
         value:
           -
-            id: fpdemo0b
+            id: fpdemo0p
             text: '15'
             type: text_value
             enabled: true
-        description: 'content blocks, all on this page'
+      -
+        id: fpdemo0q
         type: stat
         enabled: true
-      -
-        id: fpdemo0c
+        description: 'theme colors, set once in Site Theme'
         value:
           -
-            id: fpdemo0d
+            id: fpdemo0r
             text: '6'
             type: text_value
             enabled: true
-        description: 'theme colors, set once in Site Theme'
+      -
+        id: fpdemo0s
         type: stat
         enabled: true
-      -
-        id: fpdemo0e
+        description: 'Google Fonts in the font pickers'
         value:
           -
-            id: fpdemo0f
+            id: fpdemo0t
             text: '1,800+'
             type: text_value
             enabled: true
-        description: 'Google Fonts in the font pickers'
-        type: stat
-        enabled: true
     type: stats
     enabled: true
   -
-    id: fpdemo0j
+    id: fpdemo13
+    background_color_override: '#F0F3F6'
+    text_color: dark
+    title: 'Stats can show an icon instead of a number'
+    spacing_top_override: small
+    stats:
+      -
+        id: fpdemo0v
+        type: stat
+        enabled: true
+        description: 'Example: transit nearby'
+        value:
+          -
+            id: fpdemo0w
+            icon: icons/demo/transit.png
+            type: icon_value
+            enabled: true
+      -
+        id: fpdemo0x
+        type: stat
+        enabled: true
+        description: 'Example: bike storage'
+        value:
+          -
+            id: fpdemo0y
+            icon: icons/demo/bike.png
+            type: icon_value
+            enabled: true
+      -
+        id: fpdemo0z
+        type: stat
+        enabled: true
+        description: 'Example: sustainability'
+        value:
+          -
+            id: fpdemo10
+            icon: icons/demo/leaf.png
+            type: icon_value
+            enabled: true
+      -
+        id: fpdemo11
+        type: stat
+        enabled: true
+        description: 'Example: on-site parking'
+        value:
+          -
+            id: fpdemo12
+            icon: icons/demo/parking.png
+            type: icon_value
+            enabled: true
+    type: stats
+    enabled: true
+  -
+    id: fpdemo14
+    text_color: dark
     anchor_id: media
+    spacing_bottom_override: small
+    text_content:
+      -
+        type: heading
+        attrs:
+          textAlign: left
+          level: 3
+          font-weight: '400'
+        content:
+          -
+            type: text
+            text: 'Images & Video'
+      -
+        type: paragraph
+        attrs:
+          textAlign: left
+        content:
+          -
+            type: text
+            text: 'Full Screen Media takes an image or a video. The first one below has a separate '
+          -
+            type: text
+            marks:
+              -
+                type: bold
+            text: 'Mobile Override'
+          -
+            type: text
+            text: ' image, so phones and tablets get a portrait crop (narrow your browser to see it swap). The second is a video with '
+          -
+            type: text
+            marks:
+              -
+                type: bold
+            text: 'Playback Controls'
+          -
+            type: text
+            text: ' turned on.'
+    type: text_block
+    enabled: true
+  -
+    id: fpdemo17
     main_media:
       -
-        id: fpdemo0h
-        basic_image: placeholder_landscape.jpg
+        id: fpdemo15
+        basic_image: photos/demo/exterior-towers.jpg
         type: basic_image
         enabled: true
     mobile_override_media:
       -
-        id: fpdemo0i
-        basic_image: placeholder_1.jpg
+        id: fpdemo16
+        basic_image: photos/demo/exterior-glass-tower-portrait.jpg
         type: basic_image
         enabled: true
     type: full_screen_media
     enabled: true
   -
-    id: fpdemo0k
+    id: fpdemo19
+    main_media:
+      -
+        id: fpdemo18
+        vimeo_link: 'asset::assets::videos/demo/skyline.mp4'
+        playback_controls: true
+        type: vimeo_link
+        enabled: true
+    type: full_screen_media
+    enabled: true
+  -
+    id: fpdemo1a
     text_color: dark
+    anchor_id: carousels
     text_content:
       -
         type: heading
@@ -373,49 +654,133 @@ content_blocks:
         content:
           -
             type: text
-            text: 'A slideshow paired with copy. Choose which side the images sit on and the color of the pagination dots. The Full Screen Media block above can also take a separate image for phones, so portrait screens get a better crop.'
+            text: 'A slideshow paired with copy. This one has the images on the '
+          -
+            type: text
+            marks:
+              -
+                type: bold
+            text: right
+          -
+            type: text
+            text: ' and teal pagination.'
     carousel_images:
-      - placeholder_1.jpg
-      - placeholder_2.jpg
-      - placeholder_3.jpg
+      - photos/demo/lounge-glass.jpg
+      - photos/demo/fitness.jpg
+      - photos/demo/rooftop-terrace.jpg
+      - photos/demo/conference.jpg
     image_side: right
     pagination_color: '#14B8A6'
     type: amenity_carousel
     enabled: true
   -
-    id: fpdemo0l
-    image_one: placeholder_2.jpg
-    image_two: placeholder_3.jpg
+    id: fpdemo1b
+    background_color_override: '#080F1A'
+    text_color: light
+    text_content:
+      -
+        type: heading
+        attrs:
+          textAlign: left
+          level: 3
+          font-weight: '400'
+        content:
+          -
+            type: text
+            text: 'Images on the '
+          -
+            type: text
+            marks:
+              -
+                type: btsSpan
+                attrs:
+                  class: text-accent-text-color
+            text: left
+      -
+        type: paragraph
+        attrs:
+          textAlign: left
+        content:
+          -
+            type: text
+            text: 'The same block with '
+          -
+            type: text
+            marks:
+              -
+                type: bold
+            text: 'Image Side'
+          -
+            type: text
+            text: ' set to left, a dark background and white pagination.'
+    carousel_images:
+      - photos/demo/lobby-atrium.jpg
+      - photos/demo/lobby-seating.jpg
+      - photos/demo/lobby-hall.jpg
+    image_side: left
+    pagination_color: '#FFFFFF'
+    type: amenity_carousel
+    enabled: true
+  -
+    id: fpdemo1c
+    text_color: dark
+    anchor_id: galleries
+    spacing_bottom_override: small
+    text_content:
+      -
+        type: heading
+        attrs:
+          textAlign: left
+          level: 3
+          font-weight: '400'
+        content:
+          -
+            type: text
+            text: Galleries
+      -
+        type: paragraph
+        attrs:
+          textAlign: left
+        content:
+          -
+            type: text
+            text: 'Dual Image Columns shows two images side by side. Masonry Images arranges 13 images in a fixed pattern: 4 small, 6 tall, 2 wide and 1 large.'
+    type: text_block
+    enabled: true
+  -
+    id: fpdemo1d
+    image_one: photos/demo/lobby-entrance.jpg
+    image_two: photos/demo/lounge-glass.jpg
     type: dual_image_columns
     enabled: true
   -
-    id: fpdemo0m
+    id: fpdemo1e
     small_horizontal_rectangle_images:
-      - placeholder_1.jpg
-      - placeholder_2.jpg
-      - placeholder_3.jpg
-      - placeholder_4.jpg
+      - photos/demo/facade-detail.jpg
+      - photos/demo/conference.jpg
+      - photos/demo/lobby-hall.jpg
+      - photos/demo/facade-curve.jpg
     vertical_rectangle_images:
-      - placeholder_1.jpg
-      - placeholder_2.jpg
-      - placeholder_3.jpg
-      - placeholder_4.jpg
-      - placeholder_5.jpg
-      - placeholder_6.jpg
+      - photos/demo/exterior-glass-tower.jpg
+      - photos/demo/lobby-atrium.jpg
+      - photos/demo/fitness.jpg
+      - photos/demo/rooftop-terrace.jpg
+      - photos/demo/lounge.jpg
+      - photos/demo/lobby-seating.jpg
     long_horizontal_images:
-      - placeholder_landscape.jpg
-      - placeholder_1.jpg
-    large_image: placeholder_landscape.jpg
+      - photos/demo/skyline-dusk.jpg
+      - photos/demo/exterior-night.jpg
+    large_image: photos/demo/exterior-towers.jpg
     type: masonry_images
     enabled: true
   -
-    id: fpdemo0t
+    id: fpdemo1l
     text_color: light
     numbered_rows: true
     anchor_id: customize
     expander_rows:
       -
-        id: fpdemo0n
+        id: fpdemo1f
         title: Colors
         text_content:
           -
@@ -438,7 +803,7 @@ content_blocks:
         type: expander_row
         enabled: true
       -
-        id: fpdemo0o
+        id: fpdemo1g
         title: Typography
         text_content:
           -
@@ -452,7 +817,7 @@ content_blocks:
         type: expander_row
         enabled: true
       -
-        id: fpdemo0p
+        id: fpdemo1h
         title: 'Logos and favicon'
         text_content:
           -
@@ -475,7 +840,7 @@ content_blocks:
         type: expander_row
         enabled: true
       -
-        id: fpdemo0q
+        id: fpdemo1i
         title: Navigation
         text_content:
           -
@@ -489,7 +854,7 @@ content_blocks:
         type: expander_row
         enabled: true
       -
-        id: fpdemo0r
+        id: fpdemo1j
         title: 'Pages and SEO'
         text_content:
           -
@@ -508,11 +873,20 @@ content_blocks:
                 text: 'Collections → Pages'
               -
                 type: text
-                text: '. Every page has an SEO tab for its title, description and social image. The homepage is the Home entry; add a content block to it and this site’s welcome screen is replaced by your page.'
+                text: '. Every page has an SEO tab for its title, description and social image, and site-wide defaults are under '
+              -
+                type: text
+                marks:
+                  -
+                    type: bold
+                text: 'SEO → Site Defaults'
+              -
+                type: text
+                text: '. The homepage is the Home entry; add a content block to it and this site’s welcome screen is replaced by your page.'
         type: expander_row
         enabled: true
       -
-        id: fpdemo0s
+        id: fpdemo1k
         title: Forms
         text_content:
           -
@@ -537,10 +911,69 @@ content_blocks:
     type: expander_rows
     enabled: true
   -
-    id: fpdemo0w
+    id: fpdemo1p
+    background_color_override: '#FFFFFF'
+    text_color: dark
+    numbered_rows: false
+    spacing_top_override: small
+    expander_rows:
+      -
+        id: fpdemo1m
+        title: 'The same block without numbers'
+        text_content:
+          -
+            type: paragraph
+            attrs:
+              textAlign: left
+            content:
+              -
+                type: text
+                text: 'Turn '
+              -
+                type: text
+                marks:
+                  -
+                    type: bold
+                text: 'Numbered Rows'
+              -
+                type: text
+                text: ' off for FAQ-style rows. This one also has a white background and a small top spacing override.'
+        type: expander_row
+        enabled: true
+      -
+        id: fpdemo1n
+        title: 'What do the spacing overrides do?'
+        text_content:
+          -
+            type: paragraph
+            attrs:
+              textAlign: left
+            content:
+              -
+                type: text
+                text: 'Every block has default padding above and below. The overrides swap it for none, small, medium, large or extra large, so you can tighten or open up the rhythm of a page without touching code.'
+        type: expander_row
+        enabled: true
+      -
+        id: fpdemo1o
+        title: 'How do anchor links work?'
+        text_content:
+          -
+            type: paragraph
+            attrs:
+              textAlign: left
+            content:
+              -
+                type: text
+                text: 'Give a block an Anchor ID and it becomes a jump target. The Anchor Nav near the top of this page lists every block that has one, and navigation links can point straight to them.'
+        type: expander_row
+        enabled: true
+    type: expander_rows
+    enabled: true
+  -
+    id: fpdemo1s
     text_color: light
     anchor_id: availabilities
-    spacing_top_override: none
     text_content:
       -
         type: paragraph
@@ -549,16 +982,16 @@ content_blocks:
         content:
           -
             type: text
-            text: 'The Availabilities block lists every entry in the Availabilities collection — one per floor or suite, each with short detail columns and an expandable description.'
+            text: 'The Availabilities block lists every entry in the Availabilities collection: one per floor or suite, each with short detail columns and an expandable description. Open the 5th Floor to see a floor plan with download and email buttons.'
       -
         type: set
         attrs:
-          id: fpdemo0u
+          id: fpdemo1q
           values:
             type: button_types
             button_types:
               -
-                id: fpdemo0v
+                id: fpdemo1r
                 button_text: 'Manage availabilities'
                 button_link: /cp/collections/availabilities
                 open_in_new_tab: false
@@ -569,8 +1002,60 @@ content_blocks:
     type: availabilities
     enabled: true
   -
-    id: fpdemo12
+    id: fpdemo1t
+    text_color: dark
     anchor_id: location
+    spacing_bottom_override: small
+    text_content:
+      -
+        type: heading
+        attrs:
+          textAlign: left
+          level: 3
+          font-weight: '400'
+        content:
+          -
+            type: text
+            text: Maps
+      -
+        type: paragraph
+        attrs:
+          textAlign: left
+        content:
+          -
+            type: text
+            text: 'The first map uses the '
+          -
+            type: text
+            marks:
+              -
+                type: bold
+            text: 'Warm Topographic'
+          -
+            type: text
+            text: ' style with its border and category sidebar. The second switches to '
+          -
+            type: text
+            marks:
+              -
+                type: bold
+            text: Dark
+          -
+            type: text
+            text: ', turns the border off, hides the sidebar and sets a fixed '
+          -
+            type: text
+            marks:
+              -
+                type: bold
+            text: 'Default Zoom'
+          -
+            type: text
+            text: '. There are ten styles in all.'
+    type: text_block
+    enabled: true
+  -
+    id: fpdemo1z
     map_style: warm_topographic
     building_name: 'Your Building'
     building_pin_color: '#14B8A6'
@@ -580,14 +1065,14 @@ content_blocks:
     hide_sidebar: false
     points_of_interest:
       -
-        id: fpdemo0x
+        id: fpdemo1u
         category_name: Dining
         pin_color: '#D98E32'
         mobile_toggle_starts_on: true
         desktop_toggle_starts_on: true
         locations:
           -
-            id: fpdemo0y
+            id: fpdemo1v
             name: 'Example café'
             latitude: 41.8851
             longitude: -87.63
@@ -595,7 +1080,7 @@ content_blocks:
             type: point_of_interest
             enabled: true
           -
-            id: fpdemo0z
+            id: fpdemo1w
             name: 'Example restaurant'
             latitude: 41.8815
             longitude: -87.6352
@@ -605,14 +1090,14 @@ content_blocks:
         type: poi_category
         enabled: true
       -
-        id: fpdemo10
+        id: fpdemo1x
         category_name: Transit
         pin_color: '#4976AC'
         mobile_toggle_starts_on: true
         desktop_toggle_starts_on: true
         locations:
           -
-            id: fpdemo11
+            id: fpdemo1y
             name: 'Example station'
             latitude: 41.8858
             longitude: -87.6341
@@ -624,9 +1109,64 @@ content_blocks:
     type: map
     enabled: true
   -
-    id: fpdemo13
+    id: fpdemo25
+    map_style: dark
+    building_name: 'Your Building'
+    building_pin_color: '#14B8A6'
+    latitude: 41.8837
+    longitude: -87.6324
+    default_zoom: 15
+    component_border: false
+    hide_sidebar: true
+    points_of_interest:
+      -
+        id: fpdemo20
+        category_name: Dining
+        pin_color: '#D98E32'
+        mobile_toggle_starts_on: true
+        desktop_toggle_starts_on: true
+        locations:
+          -
+            id: fpdemo21
+            name: 'Example café'
+            latitude: 41.8851
+            longitude: -87.63
+            description: 'Points are grouped into categories, and each category gets its own pin color and on/off toggle.'
+            type: point_of_interest
+            enabled: true
+          -
+            id: fpdemo22
+            name: 'Example restaurant'
+            latitude: 41.8815
+            longitude: -87.6352
+            description: 'Set the building’s coordinates, the map style and an optional custom pin icon in the Map block.'
+            type: point_of_interest
+            enabled: true
+        type: poi_category
+        enabled: true
+      -
+        id: fpdemo23
+        category_name: Transit
+        pin_color: '#4976AC'
+        mobile_toggle_starts_on: true
+        desktop_toggle_starts_on: true
+        locations:
+          -
+            id: fpdemo24
+            name: 'Example station'
+            latitude: 41.8858
+            longitude: -87.6341
+            description: 'Add an optional View More link to any point.'
+            type: point_of_interest
+            enabled: true
+        type: poi_category
+        enabled: true
+    type: map
+    enabled: true
+  -
+    id: fpdemo26
     text_color: dark
-    anchor_id: contact
+    anchor_id: forms
     selected_form: contact
     form_width: medium
     submit_text: 'Send Message'
@@ -648,7 +1188,16 @@ content_blocks:
         content:
           -
             type: text
-            text: 'This is the Contact form. Its fields and notification recipients are edited under '
+            text: 'The Contact form at '
+          -
+            type: text
+            marks:
+              -
+                type: bold
+            text: Medium
+          -
+            type: text
+            text: ' width. Its fields and notification recipients are edited under '
           -
             type: text
             marks:
@@ -661,11 +1210,51 @@ content_blocks:
     type: form
     enabled: true
   -
-    id: fpdemo17
+    id: fpdemo27
+    background_color_override: '#F0F3F6'
+    text_color: dark
+    selected_form: event
+    form_width: wide
+    submit_text: 'Request a Date'
+    success_heading: 'Request received'
+    success_message: 'This is a custom success message, set on the block.'
+    text_content:
+      -
+        type: heading
+        attrs:
+          textAlign: center
+          level: 3
+          font-weight: '400'
+        content:
+          -
+            type: text
+            text: 'Event Form'
+      -
+        type: paragraph
+        attrs:
+          textAlign: center
+        content:
+          -
+            type: text
+            text: 'The Event form at '
+          -
+            type: text
+            marks:
+              -
+                type: bold
+            text: Wide
+          -
+            type: text
+            text: ' width, with custom submit button text and success message. Forms can also be Narrow or Full Width.'
+    type: form
+    enabled: true
+  -
+    id: fpdemo2f
     text_color: light
+    anchor_id: contact
     contact_sections:
       -
-        id: fpdemo14
+        id: fpdemo28
         section_title:
           -
             type: paragraph
@@ -677,7 +1266,7 @@ content_blocks:
                 text: 'Contact Sections'
         section_contacts:
           -
-            id: fpdemo15
+            id: fpdemo29
             type: contact
             enabled: true
             text_content:
@@ -698,17 +1287,24 @@ content_blocks:
                 content:
                   -
                     type: text
-                    text: 'Group contacts under a heading — leasing, management, press.'
+                    text: 'Group contacts under a heading: leasing, management, press.'
               -
-                type: paragraph
+                type: set
                 attrs:
-                  textAlign: left
-                content:
-                  -
-                    type: text
-                    text: leasing@example.com
+                  id: fpdemo2a
+                  values:
+                    type: button_types
+                    button_types:
+                      -
+                        id: fpdemo2b
+                        button_text: leasing@example.com
+                        email_address: leasing@example.com
+                        type: email_button
+                        enabled: true
+                    alignment: left
+                    text_color: accent
           -
-            id: fpdemo16
+            id: fpdemo2c
             type: contact
             enabled: true
             text_content:
@@ -729,15 +1325,22 @@ content_blocks:
                 content:
                   -
                     type: text
-                    text: 'Each contact is its own rich text area, so add phone numbers, links or buttons.'
+                    text: 'Each contact is its own rich text area, so it can hold buttons like the email link below.'
               -
-                type: paragraph
+                type: set
                 attrs:
-                  textAlign: left
-                content:
-                  -
-                    type: text
-                    text: manager@example.com
+                  id: fpdemo2d
+                  values:
+                    type: button_types
+                    button_types:
+                      -
+                        id: fpdemo2e
+                        button_text: manager@example.com
+                        email_address: manager@example.com
+                        type: email_button
+                        enabled: true
+                    alignment: left
+                    text_color: accent
         type: contact_section
         enabled: true
     type: contact_sections

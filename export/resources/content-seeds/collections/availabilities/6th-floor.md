@@ -2,6 +2,17 @@
 id: 376c131b-5bfc-4b80-a644-bba6f19b3e76
 blueprint: availability
 title: '6th Floor'
+text_columns:
+  -
+    id: fpdemo2n
+    column_text: '24,800 RSF'
+    type: text_column
+    enabled: true
+  -
+    id: fpdemo2o
+    column_text: 'Available Q3'
+    type: text_column
+    enabled: true
 text_content:
   -
     type: paragraph
@@ -10,13 +21,20 @@ text_content:
     content:
       -
         type: text
-        text: 'Corrupti possimus veniam odio necessitatibus provident aut dolores provident est corrupti autem eveniet. Nulla consequatur deserunt iusto voluptatem. Consequatur veritatis modi ut enim omnis sapiente debitis ex enim. Et ut illum non ullam quod ut et. Et nesciunt minima iure voluptas quisquam blanditiis ratione. Ut et quae et sit enim id ut rem dignissimos error similique voluptatem aut veritatis. Necessitatibus aut provident dolor perferendis magnam fugit assumenda id qui.'
+        text: 'Example listing with two detail columns. Titles and columns are plain text; the description below is rich text.'
   -
-    type: paragraph
+    type: set
     attrs:
-      textAlign: left
-    content:
-      -
-        type: text
-        text: 'Inventore commodi voluptatem voluptatem tenetur perspiciatis quam aut architecto in non distinctio voluptates non. Libero eligendi quasi impedit est qui dolorum sint non inventore ipsam consequatur nesciunt quam. Animi quam eligendi quas autem doloremque cupiditate cupiditate facilis nesciunt nam eligendi unde.'
+      id: fpdemo2p
+      values:
+        type: button_types
+        button_types:
+          -
+            id: fpdemo2q
+            button_text: 'Download Brochure (PDF)'
+            download_asset: downloads/demo/sample-brochure.pdf
+            type: download_button
+            enabled: true
+        alignment: left
+        text_color: accent
 ---

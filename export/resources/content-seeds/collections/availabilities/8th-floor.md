@@ -4,8 +4,8 @@ blueprint: availability
 title: '8th Floor'
 text_columns:
   -
-    id: mckmyncf
-    column_text: 'Available August 2025'
+    id: fpdemo2s
+    column_text: Leased
     type: text_column
     enabled: true
 ---
