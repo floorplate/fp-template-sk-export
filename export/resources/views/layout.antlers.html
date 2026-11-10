@@ -15,6 +15,10 @@
         {{/if}}
         {{partial:style_variables}}
         {{ seo_pro:meta }}
+        {{# ── Analytics ── Globals → Analytics. Fleet creates the Fathom site and fills in its ID. #}}
+        {{ if analytics:fathom_site_id }}
+        <script src="https://cdn.usefathom.com/script.js" data-site="{{ analytics:fathom_site_id | sanitize }}" defer></script>
+        {{ /if }}
         <link rel="stylesheet" href="https://use.typekit.net/xhq8jwx.css" />
         <!-- expose fonts to JS -->
         <script>

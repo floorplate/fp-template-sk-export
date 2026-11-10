@@ -5,9 +5,9 @@ use Symfony\Component\Yaml\Exception\ParseException;
 use Symfony\Component\Yaml\Yaml;
 
 /**
- * Wires the bundled Anchors addon into the freshly installed site.
+ * Wires the bundled addons (Anchors, Fleet Agent) into the freshly installed site.
  *
- * The addon ships as files under addons/floorplate/anchors rather than as a
+ * Each addon ships as files under addons/floorplate/anchors rather than as a
  * Packagist package, so it cannot be listed in starter-kit.yaml's
  * `dependencies` — the installer dry-runs those against Packagist and would
  * abort. Instead we register a local path repository and require it here.
@@ -17,9 +17,18 @@ use Symfony\Component\Yaml\Yaml;
  */
 class StarterKitPostInstall
 {
-    private const PACKAGE = 'floorplate/anchors';
-
     private const PATH = 'addons/floorplate/anchors';
+
+    /**
+     * Local addons the kit ships under addons/, as package => path.
+     * Each also needs its files listed in starter-kit.yaml's export_paths.
+     */
+    private const ADDONS = [
+        'floorplate/anchors' => self::PATH,
+        // One-click CP login from Fleet with a per-site managed admin, instead
+        // of personal accounts shared across every site.
+        'floorplate/fleet-agent' => 'addons/floorplate/fleet-agent',
+    ];
 
     /**
      * Written when starter content is seeded. Its presence means "this site
@@ -51,20 +60,9 @@ class StarterKitPostInstall
         $this->seedStarterContent($console);
         $this->seedAddonSettings($console);
 
-        if (! is_dir(base_path(self::PATH))) {
-            $console->warn('Anchors addon not found at ['.self::PATH.']; skipping. In-page anchor links will be unavailable.');
-
-            return;
+        foreach (self::ADDONS as $package => $path) {
+            $this->installAddon($console, $package, $path);
         }
-
-        $this->registerPathRepository($console);
-
-        $console->line('Installing addon ['.self::PACKAGE.']');
-
-        // Resolved from the container rather than via Statamic's real-time
-        // `Facades\` alias, which is not reliably autoloadable from a hook file
-        // that the installer pulls in with require_once.
-        app(Composer::class)->withoutQueue()->throwOnFailure()->require(self::PACKAGE, '*');
 
         $this->pruneStaleAssets($console);
     }
@@ -293,28 +291,48 @@ class StarterKitPostInstall
         }
     }
 
-    private function registerPathRepository($console): void
+    private function installAddon($console, string $package, string $path): void
+    {
+        if (! is_dir(base_path($path))) {
+            $console->warn("Addon [{$package}] not found at [{$path}]; skipping.");
+
+            return;
+        }
+
+        if (! $this->registerPathRepository($console, $path)) {
+            return;
+        }
+
+        $console->line("Installing addon [{$package}]");
+
+        // Resolved from the container rather than via Statamic's real-time
+        // `Facades\` alias, which is not reliably autoloadable from a hook file
+        // that the installer pulls in with require_once.
+        app(Composer::class)->withoutQueue()->throwOnFailure()->require($package, '*');
+    }
+
+    private function registerPathRepository($console, string $path): bool
     {
         $file = base_path('composer.json');
         $json = json_decode(file_get_contents($file), true);
 
         if (! is_array($json)) {
-            $console->error('Could not read composer.json; skipping Anchors addon setup.');
+            $console->error("Could not read composer.json; skipping addon setup for [{$path}].");
 
-            return;
+            return false;
         }
 
         $repositories = $json['repositories'] ?? [];
 
         foreach ($repositories as $repository) {
-            if (($repository['url'] ?? null) === self::PATH) {
-                return;
+            if (($repository['url'] ?? null) === $path) {
+                return true;
             }
         }
 
         $repositories[] = [
             'type' => 'path',
-            'url' => self::PATH,
+            'url' => $path,
             'options' => ['symlink' => true],
         ];
 
@@ -324,5 +342,7 @@ class StarterKitPostInstall
             $file,
             json_encode($json, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)."\n"
         );
+
+        return true;
     }
 }

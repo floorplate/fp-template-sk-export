@@ -1,0 +1,25 @@
+{
+    "name": "floorplate/fleet-agent",
+    "version": "1.0.0",
+    "autoload": {
+        "psr-4": {
+            "Floorplate\\FleetAgent\\": "src"
+        }
+    },
+    "require": {
+        "statamic/cms": "^6.0"
+    },
+    "extra": {
+        "statamic": {
+            "name": "Fleet Agent",
+            "description": "One-click Control Panel login from Floorplate Fleet"
+        },
+        "laravel": {
+            "providers": [
+                "Floorplate\\FleetAgent\\ServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

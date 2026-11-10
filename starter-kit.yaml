@@ -6,6 +6,7 @@ export_paths:
   - config/statamic/cp.php
   - config/statamic/editions.php
   - config/statamic/assets.php
+  - config/statamic/search.php
   - resources/addon-seeds
   - resources/blueprints/assets
   - resources/blueprints/collections
@@ -21,7 +22,6 @@ export_paths:
   - resources/js
   - resources/users
   - resources/views
-  - users
   - config/filesystems.php
   - package.json
   - vite.config.js
@@ -42,6 +42,7 @@ export_paths:
   - addons/floorplate/anchors/routes
   - addons/floorplate/anchors/resources/js
   - addons/floorplate/anchors/resources/dist/build
+  - addons/floorplate/fleet-agent
 dependencies:
   jacksleight/statamic-bard-texstyle: ^4.0
   league/flysystem-aws-s3-v3: ^3.0
