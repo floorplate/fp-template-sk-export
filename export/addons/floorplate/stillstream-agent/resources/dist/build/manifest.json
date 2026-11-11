@@ -1,0 +1,17 @@
+{
+  "resources/css/addon.css": {
+    "file": "assets/addon-B4J3OEkB.css",
+    "src": "resources/css/addon.css",
+    "isEntry": true,
+    "name": "addon",
+    "names": [
+      "addon.css"
+    ]
+  },
+  "resources/js/agent.js": {
+    "file": "assets/agent-CGUwZZbJ.js",
+    "name": "agent",
+    "src": "resources/js/agent.js",
+    "isEntry": true
+  }
+}

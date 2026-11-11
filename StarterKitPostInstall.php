@@ -7,7 +7,8 @@ use Symfony\Component\Yaml\Exception\ParseException;
 use Symfony\Component\Yaml\Yaml;
 
 /**
- * Wires the bundled addons (Anchors, Fleet Agent) into the freshly installed site.
+ * Wires the bundled addons (Anchors, Fleet Agent, StillStream Agent) into the
+ * freshly installed site.
  *
  * Each addon ships as files under addons/floorplate/anchors rather than as a
  * Packagist package, so it cannot be listed in starter-kit.yaml's
@@ -30,6 +31,8 @@ class StarterKitPostInstall
         // One-click CP login from Fleet with a per-site managed admin, instead
         // of personal accounts shared across every site.
         'floorplate/fleet-agent' => 'addons/floorplate/fleet-agent',
+        // StillStream in the CP, through Floorplate. Needs Fleet Agent, above.
+        'floorplate/stillstream-agent' => 'addons/floorplate/stillstream-agent',
     ];
 
     /**

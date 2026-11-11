@@ -33,6 +33,10 @@ editor:
     - 'configure forms'
     - 'access cache utility'
     - 'edit seo site defaults'
+    - 'access stillstream'
+    - 'create stillstream projects'
+    - 'generate stillstream media'
+    - 'render stillstream videos'
 contributor:
   title: Contributor
   permissions:

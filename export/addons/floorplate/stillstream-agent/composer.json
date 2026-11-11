@@ -1,0 +1,26 @@
+{
+    "name": "floorplate/stillstream-agent",
+    "version": "1.0.0",
+    "autoload": {
+        "psr-4": {
+            "Floorplate\\StillStreamAgent\\": "src"
+        }
+    },
+    "require": {
+        "statamic/cms": "^6.0",
+        "floorplate/fleet-agent": "*"
+    },
+    "extra": {
+        "statamic": {
+            "name": "StillStream",
+            "description": "Make listing videos from photos, in the Control Panel, through Floorplate"
+        },
+        "laravel": {
+            "providers": [
+                "Floorplate\\StillStreamAgent\\ServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
