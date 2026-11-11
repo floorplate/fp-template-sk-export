@@ -119,6 +119,8 @@ class ProjectsController extends CpController
 
         return $this->forward('POST', "projects/{$project}/photos", [
             'path' => $asset->path(),
+            // Used when this site is not on a Floorplate assets bucket.
+            'url' => $asset->absoluteUrl(),
             'width' => $asset->width(),
             'height' => $asset->height(),
             'size' => $asset->size(),
@@ -139,6 +141,8 @@ class ProjectsController extends CpController
 
         return $this->forward('POST', "projects/{$project}/fonts", [
             'path' => $asset->path(),
+            // Used when this site is not on a Floorplate assets bucket.
+            'url' => $asset->absoluteUrl(),
             'family' => $data['family'],
             'size' => $asset->size(),
             'mime' => $asset->mimeType(),
