@@ -1,6 +1,8 @@
 <?php
 
 use Statamic\Console\Processes\Composer;
+use Statamic\Facades\Site;
+use Statamic\Facades\Stache;
 use Symfony\Component\Yaml\Exception\ParseException;
 use Symfony\Component\Yaml\Yaml;
 
@@ -59,6 +61,7 @@ class StarterKitPostInstall
         $this->seedForms($console);
         $this->seedStarterContent($console);
         $this->seedAddonSettings($console);
+        $this->ensureIntegrationsGlobal($console);
 
         foreach (self::ADDONS as $package => $path) {
             $this->installAddon($console, $package, $path);
@@ -241,6 +244,90 @@ class StarterKitPostInstall
         } catch (ParseException) {
             return false;
         }
+    }
+
+    /**
+     * Gives every site the Integrations global set (Fathom, Realty Ads) and
+     * moves an older kit's Analytics set into it.
+     *
+     * The set's own file lives in content/, which the kit never ships, so it
+     * is created here when missing; the blueprint ships normally. Kits before
+     * Integrations called it Analytics, and Fleet may already have saved a
+     * Fathom ID there. That set's values move across (values already in
+     * Integrations win), then its files and the old blueprint are removed:
+     * the installer only ever adds files, so nothing else would delete them,
+     * and the CP would list both sets. Fleet commits content/globals with the
+     * kit update.
+     */
+    private function ensureIntegrationsGlobal($console): void
+    {
+        $globals = base_path('content/globals');
+        $changed = false;
+
+        if (! is_dir($globals)) {
+            mkdir($globals, 0755, true);
+        }
+
+        if (! file_exists("{$globals}/integrations.yaml")) {
+            file_put_contents("{$globals}/integrations.yaml", "title: Integrations\n");
+            $console->line('Created Globals → Integrations.');
+            $changed = true;
+        }
+
+        if (file_exists("{$globals}/analytics.yaml")) {
+            $legacy = $this->readYaml("{$globals}/analytics.yaml");
+
+            // A Statamic 5 style set keeps its values in the set file itself.
+            if (is_array($legacy['data'] ?? null) && $legacy['data']) {
+                $this->mergeGlobalVariables("{$globals}/".Site::default()->handle().'/integrations.yaml', $legacy['data']);
+            }
+
+            foreach (glob("{$globals}/*/analytics.yaml") ?: [] as $variables) {
+                $this->mergeGlobalVariables(dirname($variables).'/integrations.yaml', $this->readYaml($variables));
+                unlink($variables);
+            }
+
+            unlink("{$globals}/analytics.yaml");
+            $console->line('Moved Globals → Analytics into Globals → Integrations.');
+            $changed = true;
+        }
+
+        if (file_exists($blueprint = base_path('resources/blueprints/globals/analytics.yaml'))) {
+            unlink($blueprint);
+            $changed = true;
+        }
+
+        if ($changed) {
+            Stache::clear();
+        }
+    }
+
+    /** Adds values to a set's per-site variables file without replacing any already there. */
+    private function mergeGlobalVariables(string $file, array $values): void
+    {
+        $current = file_exists($file) ? $this->readYaml($file) : [];
+        $merged = $current + array_filter($values, fn ($value) => $value !== null && $value !== '');
+
+        if ($merged === $current) {
+            return;
+        }
+
+        if (! is_dir(dirname($file))) {
+            mkdir(dirname($file), 0755, true);
+        }
+
+        file_put_contents($file, Yaml::dump($merged, 99, 2));
+    }
+
+    private function readYaml(string $file): array
+    {
+        try {
+            $data = Yaml::parseFile($file);
+        } catch (ParseException) {
+            return [];
+        }
+
+        return is_array($data) ? $data : [];
     }
 
     /**

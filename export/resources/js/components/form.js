@@ -123,6 +123,13 @@ export default (options = {}) => ({
             // it back rather than duplicating it as a JS string.
             this.announcement = this.successText();
             form.reset();
+            // Picked up by fathomEvents.js as a "Form: …" event.
+            this.$el.dispatchEvent(
+                new CustomEvent("fp:form-submitted", {
+                    bubbles: true,
+                    detail: { form: this.$el.dataset.fpForm || "" },
+                })
+            );
             this.$nextTick(() => this.$refs.status?.focus());
 
             return;

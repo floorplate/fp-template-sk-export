@@ -1,8 +1,11 @@
 import axios from "axios";
 import FontPicker from "./components/fieldtypes/FontPicker.vue";
+import FathomAnalyticsWidget from "./components/analytics/FathomAnalyticsWidget.vue";
 
 Statamic.booting(() => {
     Statamic.$components.register("font_picker-fieldtype", FontPicker);
+    // Dashboard widget from the Fleet Agent addon (fathom_analytics).
+    Statamic.$components.register("fathom-analytics-widget", FathomAnalyticsWidget);
     axios
         .get("/api/globals/site_theme")
         .then((response) => {

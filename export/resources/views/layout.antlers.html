@@ -15,9 +15,10 @@
         {{/if}}
         {{partial:style_variables}}
         {{ seo_pro:meta }}
-        {{# ── Analytics ── Globals → Analytics. Fleet creates the Fathom site and fills in its ID. #}}
-        {{ if analytics:fathom_site_id }}
-        <script src="https://cdn.usefathom.com/script.js" data-site="{{ analytics:fathom_site_id | sanitize }}" defer></script>
+        {{# ── Analytics ── Globals → Integrations. Fleet creates the Fathom site and fills in its ID.
+            data-fp-events is read by resources/js/components/fathomEvents.js: unset means on. #}}
+        {{ if integrations:fathom_site_id }}
+        <script src="https://cdn.usefathom.com/script.js" data-site="{{ integrations:fathom_site_id | sanitize }}" data-fp-events="{{ integrations:fathom_events | to_json | sanitize }}" defer></script>
         {{ /if }}
         <link rel="stylesheet" href="https://use.typekit.net/xhq8jwx.css" />
         <!-- expose fonts to JS -->
@@ -37,5 +38,9 @@
 
     <body class="">
         {{ template_content }} {{ vite src="resources/js/site.js" }}
+        {{# ── Realty Ads ── Globals → Integrations. Self-contained and fail-safe, so it loads async. #}}
+        {{ if integrations:realty_ads_id }}
+        <script src="https://realtyads.com/px/{{ integrations:realty_ads_id | sanitize }}" async></script>
+        {{ /if }}
     </body>
 </html>

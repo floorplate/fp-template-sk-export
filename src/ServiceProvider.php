@@ -3,6 +3,9 @@
 namespace Floorplate\FloorplateStarterKit;
 
 use Floorplate\FloorplateStarterKit\StaticCaching\ApplicationCacher;
+use Illuminate\Support\Facades\Event;
+use Statamic\Events\GlobalVariablesSaved;
+use Statamic\Facades\StaticCache;
 use Statamic\Providers\AddonServiceProvider;
 use Statamic\Statamic;
 use Statamic\StaticCaching\StaticCacheManager;
@@ -41,5 +44,14 @@ class ServiceProvider extends AddonServiceProvider
         if (version_compare(Statamic::version(), self::SAFE_SHARED_ERRORS_VERSION, '>=')) {
             config(['statamic.static_caching.share_errors' => true]);
         }
+
+        // Globals → Integrations puts scripts (Fathom, Realty Ads) on every
+        // page, and the site's invalidation rules don't cover globals: without
+        // this a change waits for the next deploy to clear the static cache.
+        Event::listen(GlobalVariablesSaved::class, function (GlobalVariablesSaved $event) {
+            if ($event->variables->globalSet()?->handle() === 'integrations' && config('statamic.static_caching.strategy')) {
+                StaticCache::flush();
+            }
+        });
     }
 }

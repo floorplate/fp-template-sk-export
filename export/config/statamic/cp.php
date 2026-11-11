@@ -54,6 +54,12 @@ return [
 
     'widgets' => [
         // 'getting_started',
+        // Fathom figures via Fleet (Fleet Agent addon). Draws nothing until
+        // Globals → Integrations has a Fathom Site ID.
+        [
+            'type' => 'fathom_analytics',
+            'width' => 100,
+        ],
     ],
 
     /*

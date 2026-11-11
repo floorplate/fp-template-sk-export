@@ -12,7 +12,7 @@
     "extra": {
         "statamic": {
             "name": "Fleet Agent",
-            "description": "One-click Control Panel login from Floorplate Fleet"
+            "description": "One-click Control Panel login and the analytics dashboard, from Floorplate Fleet"
         },
         "laravel": {
             "providers": [

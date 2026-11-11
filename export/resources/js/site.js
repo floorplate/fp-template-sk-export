@@ -1,11 +1,13 @@
 import Alpine from "alpinejs";
 import setupViewTransition from "./components/viewTransition";
 import setupAnchorScroll from "./components/anchorScroll";
+import setupFathomEvents from "./components/fathomEvents";
 import { loadFonts } from "./utils/fontLoader";
 
 // import.meta.glob(["../images/**", "../fonts/**"]);
 setupViewTransition();
 setupAnchorScroll();
+setupFathomEvents();
 
 import nav from "./components/nav";
 import imageGrid from "./components/imageGrid";

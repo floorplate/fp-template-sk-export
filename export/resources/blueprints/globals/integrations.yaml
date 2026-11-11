@@ -1,0 +1,43 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        display: 'Fathom Analytics'
+        instructions: 'Privacy-friendly analytics. Floorplate creates a Fathom site for every site and fills this in; the figures appear on the Dashboard.'
+        fields:
+          -
+            handle: fathom_site_id
+            field:
+              type: text
+              display: 'Fathom Site ID'
+              instructions: 'The Site ID shown in Fathom under Settings → Sites (e.g. ABCDEFG). Leave empty to turn tracking off.'
+              input_type: text
+              antlers: false
+              validate:
+                - nullable
+                - 'regex:/^[A-Za-z0-9]+$/'
+                - 'max:32'
+          -
+            handle: fathom_events
+            field:
+              type: toggle
+              display: 'Track clicks as events'
+              instructions: 'Records which buttons, phone numbers, email links, downloads, outbound links and forms visitors use, named for what was clicked and where (e.g. "Button: Schedule a Tour (Hero)"). Turn off to record page views only.'
+              default: true
+      -
+        display: 'Realty Ads'
+        instructions: 'Retargeting and attribution pixel from Realty Ads.'
+        fields:
+          -
+            handle: realty_ads_id
+            field:
+              type: text
+              display: 'Realty Ads Account ID'
+              instructions: 'The number at the end of your Realty Ads pixel: 5122 in realtyads.com/px/5122. Leave empty to turn the pixel off.'
+              input_type: text
+              antlers: false
+              validate:
+                - nullable
+                - 'regex:/^[0-9]+$/'
+                - 'max:12'

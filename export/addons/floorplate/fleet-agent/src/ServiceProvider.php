@@ -12,6 +12,11 @@ class ServiceProvider extends AddonServiceProvider
 
     protected $routes = [
         'web' => __DIR__.'/../routes/web.php',
+        'cp' => __DIR__.'/../routes/cp.php',
+    ];
+
+    protected $widgets = [
+        Widgets\FathomAnalytics::class,
     ];
 
     public function register(): void
